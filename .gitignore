@@ -6,6 +6,7 @@
 !.gitignore
 !assets/
 !core/
+!UserExtra/
 !_SASS/
 !_JS/
 
