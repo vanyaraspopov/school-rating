@@ -42,7 +42,7 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
             ));
         }
 
-        $userGroup = $this->getProperty('usergroup',0);
+        $userGroup = $this->modx->getOption('schoolrating_usergroup_users');
         if (!empty($userGroup)) {
             if ($userGroup === 'anonymous') {
                 $c->join('modUserGroupMember','UserGroupMembers', 'LEFT OUTER JOIN');
@@ -87,6 +87,7 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
     public function afterIteration(array $list) {
         foreach ($list as &$item) {
             $item['extended'] = json_decode($item['extended'], true);
+            if ($item['extended'] == null) continue;
             foreach ($item['extended'] as $k => $v) {
                 $item[$k] = $v;
             }

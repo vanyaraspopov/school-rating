@@ -5,6 +5,8 @@ $_lang['userextra'] = 'Пользователи +';
 $_lang['userextra_menu_desc'] = 'Расширенные свойства пользователей';
 $_lang['userextra_intro_msg'] = 'Здесь Вы можете просмотреть расширенные свойства пользователей.';
 
+$_lang['userextra_personal_data'] = 'Персональные данные';
+
 $_lang['userextra_items'] = 'Пользователи';
 $_lang['userextra_item_id'] = 'Id';
 $_lang['userextra_item_name'] = 'Название';

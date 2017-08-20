@@ -28,6 +28,8 @@ UserExtra.grid.Items = function (config) {
         paging: true,
         remoteSort: true,
         autoHeight: true,
+        autosave: true,
+        save_action: 'mgr/item/updatefromgrid'
     });
     UserExtra.grid.Items.superclass.constructor.call(this, config);
 

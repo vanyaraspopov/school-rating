@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f606f69d10f80cd8edb326fb70bb337",
+    "content-hash": "44a467ec114413dda2b6cf26e9c1def4",
     "packages": [
         {
             "name": "jhaoda/smscenter",
@@ -124,6 +124,47 @@
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "time": "2017-07-26T21:00:20+00:00"
+        },
+        {
+            "name": "verot/class.upload.php",
+            "version": "0.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verot/class.upload.php.git",
+                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/class.upload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Verot",
+                    "email": "colin@verot.net"
+                }
+            ],
+            "description": "This PHP class uploads files and manipulates images very easily.",
+            "homepage": "http://www.verot.net/php_class_upload.htm",
+            "keywords": [
+                "gd",
+                "upload"
+            ],
+            "time": "2016-07-16T19:59:53+00:00"
         }
     ],
     "packages-dev": [],

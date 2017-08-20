@@ -20,7 +20,7 @@ UserExtra.panel.Home = function (config) {
             border: true,
             hideMode: 'offsets',
             items: [{
-                title: _('userextra_items'),
+                title: _('userextra_personal_data'),
                 layout: 'anchor',
                 items: [{
                     html: _('userextra_intro_msg'),
