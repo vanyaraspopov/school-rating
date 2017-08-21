@@ -17,6 +17,9 @@ manager/config.core.php
 connectors/config.core.php
 .DS_Store
 
+# ignore minifyX
+minifyx/
+
 # ignore composer components
 vendor/
 
