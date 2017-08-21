@@ -6,7 +6,6 @@
 !.gitignore
 !assets/
 !core/
-!UserExtra/
 !_SASS/
 !_JS/
 
@@ -18,5 +17,9 @@ manager/config.core.php
 connectors/config.core.php
 .DS_Store
 
-#ignore composer components
+# ignore composer components
 vendor/
+
+# do not ignore components in development
+!UserExtra/
+!SchoolRating/

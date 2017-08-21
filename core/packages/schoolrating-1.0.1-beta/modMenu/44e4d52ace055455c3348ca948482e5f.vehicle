@@ -1,0 +1,17 @@
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => true,
+  'namespace' => 'schoolrating',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'd54c4ab59369c2d9dc7befcfee28bee5',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '44e4d52ace055455c3348ca948482e5f',
+  'native_key' => 'schoolrating',
+  'object' => '{"text":"schoolrating","parent":"components","action":"home","description":"schoolrating_menu_desc","icon":"","menuindex":0,"params":"","handler":"","permissions":"","namespace":"schoolrating"}',
+);
