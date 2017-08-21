@@ -11,6 +11,7 @@
 
 # ignore cache and config
 core/cache/*
+core/packages/
 core/config/config.inc.php
 config.core.php
 manager/config.core.php

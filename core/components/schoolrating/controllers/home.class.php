@@ -54,13 +54,22 @@ class SchoolRatingHomeManagerController extends modExtraManagerController
      */
     public function loadCustomCssJs()
     {
+        /* CSS */
         $this->addCss($this->SchoolRating->config['cssUrl'] . 'mgr/main.css');
         $this->addCss($this->SchoolRating->config['cssUrl'] . 'mgr/bootstrap.buttons.css');
+
+        /* JS */
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/schoolrating.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/misc/utils.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/misc/combo.js');
-        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/items.grid.js');
-        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/items.windows.js');
+
+        //  Grids
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/coefficients.grid.js');
+
+        //  Windows
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/coefficients.windows.js');
+
+        //  Panels
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/sections/home.js');
 

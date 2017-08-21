@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingItemCreateProcessor extends modObjectCreateProcessor
+class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
 {
-    public $objectType = 'SchoolRatingItem';
-    public $classKey = 'SchoolRatingItem';
+    public $objectType = 'srActivityCoefficient';
+    public $classKey = 'srActivityCoefficient';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
 
@@ -25,4 +25,4 @@ class SchoolRatingItemCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'SchoolRatingItemCreateProcessor';
+return 'SchoolRatingCoefficientCreateProcessor';

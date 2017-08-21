@@ -1,11 +1,11 @@
 <?php
 
-class SchoolRatingItemGetListProcessor extends modObjectGetListProcessor
+class SchoolRatingCoefficientGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'SchoolRatingItem';
-    public $classKey = 'SchoolRatingItem';
+    public $objectType = 'srActivityCoefficient';
+    public $classKey = 'srActivityCoefficient';
     public $defaultSortField = 'id';
-    public $defaultSortDirection = 'DESC';
+    public $defaultSortDirection = 'ASC';
     //public $permission = 'list';
 
 
@@ -58,14 +58,14 @@ class SchoolRatingItemGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = array(
             'cls' => '',
             'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('schoolrating_item_update'),
+            'title' => $this->modx->lexicon('schoolrating_coefficient_update'),
             //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
-            'action' => 'updateItem',
+            'action' => 'updateCoefficient',
             'button' => true,
             'menu' => true,
         );
 
-        if (!$array['active']) {
+        /*if (!$array['active']) {
             $array['actions'][] = array(
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',
@@ -85,15 +85,15 @@ class SchoolRatingItemGetListProcessor extends modObjectGetListProcessor
                 'button' => true,
                 'menu' => true,
             );
-        }
+        }*/
 
         // Remove
         $array['actions'][] = array(
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('schoolrating_item_remove'),
-            'multiple' => $this->modx->lexicon('schoolrating_items_remove'),
-            'action' => 'removeItem',
+            'title' => $this->modx->lexicon('schoolrating_coefficient_remove'),
+            'multiple' => $this->modx->lexicon('schoolrating_coefficient_remove'),
+            'action' => 'removeCoefficient',
             'button' => true,
             'menu' => true,
         );
@@ -103,4 +103,4 @@ class SchoolRatingItemGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'SchoolRatingItemGetListProcessor';
+return 'SchoolRatingCoefficientGetListProcessor';

@@ -20,13 +20,13 @@ SchoolRating.panel.Home = function (config) {
             border: true,
             hideMode: 'offsets',
             items: [{
-                title: _('schoolrating_items'),
+                title: _('schoolrating_coefficients'),
                 layout: 'anchor',
                 items: [{
                     html: _('schoolrating_intro_msg'),
                     cls: 'panel-desc',
                 }, {
-                    xtype: 'schoolrating-grid-items',
+                    xtype: 'schoolrating-grid-coefficients',
                     cls: 'main-wrapper',
                 }]
             }]

@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingItemUpdateProcessor extends modObjectUpdateProcessor
+class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
 {
-    public $objectType = 'SchoolRatingItem';
-    public $classKey = 'SchoolRatingItem';
+    public $objectType = 'srActivityCoefficient';
+    public $classKey = 'srActivityCoefficient';
     public $languageTopics = array('schoolrating');
     //public $permission = 'save';
 
@@ -45,4 +45,4 @@ class SchoolRatingItemUpdateProcessor extends modObjectUpdateProcessor
     }
 }
 
-return 'SchoolRatingItemUpdateProcessor';
+return 'SchoolRatingCoefficientUpdateProcessor';

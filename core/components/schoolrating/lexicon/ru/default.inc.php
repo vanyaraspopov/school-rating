@@ -1,8 +1,8 @@
 <?php
 include_once 'setting.inc.php';
 
-$_lang['schoolrating'] = 'SchoolRating';
-$_lang['schoolrating_menu_desc'] = 'Пример расширения для разработки.';
+$_lang['schoolrating'] = 'Школа Рейтинг';
+$_lang['schoolrating_menu_desc'] = 'Специально для проекта Школа Рейтинг';
 $_lang['schoolrating_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
 $_lang['schoolrating_items'] = 'Предметы';
@@ -32,3 +32,16 @@ $_lang['schoolrating_item_err_save'] = 'Ошибка при сохранении
 
 $_lang['schoolrating_grid_search'] = 'Поиск';
 $_lang['schoolrating_grid_actions'] = 'Действия';
+
+//  Коэффициенты
+$_lang['schoolrating_coefficients'] = 'Коэффициенты';
+$_lang['schoolrating_coefficient_id'] = 'ID';
+$_lang['schoolrating_coefficient_name'] = 'Название';
+$_lang['schoolrating_coefficient_value'] = 'Значение';
+
+$_lang['schoolrating_coefficient_create'] = 'Добавить коэффициент';
+$_lang['schoolrating_coefficient_update'] = 'Изменить коэффициент';
+$_lang['schoolrating_coefficient_remove'] = 'Удалить коэффициент';
+$_lang['schoolrating_coefficients_remove'] = 'Удалить коэффициенты';
+$_lang['schoolrating_coefficient_remove_confirm'] = 'Вы уверены, что хотите удалить этот коэффициент?';
+$_lang['schoolrating_coefficients_remove_confirm'] = 'Вы уверены, что хотите удалить эти коэффициенты?';

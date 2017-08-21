@@ -20,9 +20,9 @@ $xpdo_meta_map['srActivityCoefficient']= array (
     ),
     'value' => 
     array (
-      'dbtype' => 'int',
-      'precision' => '11',
-      'phptype' => 'integer',
+      'dbtype' => 'decimal',
+      'precision' => '10,2',
+      'phptype' => 'double',
       'null' => false,
       'default' => 0,
     ),
