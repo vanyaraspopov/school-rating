@@ -4,8 +4,6 @@
 
 # but not these
 !.gitignore
-!assets/
-!core/
 !/.htaccess
 !_SASS/
 !_JS/
@@ -19,12 +17,12 @@ manager/config.core.php
 connectors/config.core.php
 .DS_Store
 
-# ignore minifyX
-minifyx/
-
 # ignore composer components
 vendor/
 
 # do not ignore components in development
+!assets/
 !UserExtra/
 !SchoolRating/
+!/core/composer.lock
+!/core/composer.json

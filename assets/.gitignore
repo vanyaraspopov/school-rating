@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+# ignore everything in this directory
+/*
+
+# but not these
+!.gitignore
