@@ -8,20 +8,8 @@
 !_SASS/
 !_JS/
 
-# ignore cache and config
-core/cache/*
-core/packages/
-core/config/config.inc.php
-config.core.php
-manager/config.core.php
-connectors/config.core.php
-.DS_Store
-
-# ignore composer components
-vendor/
-
 # do not ignore components in development
-!assets/
+!/assets/
 !UserExtra/
 !SchoolRating/
 !/core/composer.lock
