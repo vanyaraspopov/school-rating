@@ -20,6 +20,16 @@ SchoolRating.panel.Home = function (config) {
             border: true,
             hideMode: 'offsets',
             items: [{
+                title: _('schoolrating_sections'),
+                layout: 'anchor',
+                items: [{
+                    html: _('schoolrating_sections_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'schoolrating-grid-sections',
+                    cls: 'main-wrapper',
+                }]
+            }, {
                 title: _('schoolrating_coefficients'),
                 layout: 'anchor',
                 items: [{

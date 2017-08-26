@@ -47,3 +47,18 @@ $_lang['schoolrating_coefficient_remove'] = 'Удалить коэффициен
 $_lang['schoolrating_coefficients_remove'] = 'Удалить коэффициенты';
 $_lang['schoolrating_coefficient_remove_confirm'] = 'Вы уверены, что хотите удалить этот коэффициент?';
 $_lang['schoolrating_coefficients_remove_confirm'] = 'Вы уверены, что хотите удалить эти коэффициенты?';
+
+//  Направления
+$_lang['schoolrating_sections_intro_msg'] = 'Здесь можно настроить направления мероприятий.';
+
+$_lang['schoolrating_sections'] = 'Направления';
+$_lang['schoolrating_section_id'] = 'ID';
+$_lang['schoolrating_section_name'] = 'Название';
+$_lang['schoolrating_section_usergroup_id'] = 'Группа модераторов';
+
+$_lang['schoolrating_section_create'] = 'Добавить направление';
+$_lang['schoolrating_section_update'] = 'Изменить направление';
+$_lang['schoolrating_section_remove'] = 'Удалить направление';
+$_lang['schoolrating_sections_remove'] = 'Удалить направления';
+$_lang['schoolrating_section_remove_confirm'] = 'Вы уверены, что хотите удалить это направление?';
+$_lang['schoolrating_sections_remove_confirm'] = 'Вы уверены, что хотите удалить эти направления?';
