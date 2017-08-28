@@ -50,7 +50,7 @@
               <span></span>
             </div>
             <div class="cabinet cabinet_out">
-              <a href="#" class="enter">Вход</a>
+              <a href="#" class="enter" data-toggle="modal" data-target="#loginModal">Вход</a>
               <a href="#" class="reg">Регистрация</a>
             </div>
           </div>
@@ -158,7 +158,7 @@
                 <div class="text">
                   <img src="../images/reg_text.png" alt="">
                   <img src="../images/text.png" alt="">
-                  <a href="#" class="btn btn_dark">Зарегестрироваться</a>
+                  <a href="#" class="btn btn_dark">Зарегистрироваться</a>
                 </div>
               </div>
             </div>
@@ -335,7 +335,7 @@
               </ul>
             </nav>
           </div><div class="cabinet cabinet_out">
-              <a href="#" class="enter">Вход</a>
+              <a href="#" class="enter" data-toggle="modal" data-target="#loginModal">Вход</a>
               <a href="#" class="reg">Регистрация</a>
             </div>
           <div class="col-md-2 col-sm-3 col-xs-12">
@@ -363,8 +363,48 @@
         </div>
       </div>
     </footer>
+    <div class="modal fade modal_custom" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h2>Вход на сайт</h2>
+          </div>
+          <div class="modal-body">
+            <div class="form_wrap">
+              <form action="" class="form-horizontal">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label for="reg_name" class="col-sm-3 text-right">Логин</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="reg_name" placeholder="Логин">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label for="reg_password" class="col-sm-3 text-right">Пароль</label>
+                      <div class="col-sm-8">
+                        <input type="password" class="form-control" id="reg_password" placeholder="Пароль">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="text-center">
+                      <input type="submit" class="btn blue_btn btn-lg1" value="Войти">
+                    </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
@@ -374,3 +414,4 @@
     <script src="../js/custom-file-input.js"></script>
     <script src="../js/custom.js"></script>
   </body>
+</html>
