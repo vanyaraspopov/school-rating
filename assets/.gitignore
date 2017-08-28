@@ -4,3 +4,8 @@
 
 # but not these
 !.gitignore
+!css/
+!fonts/
+!html/
+!images/
+!js/

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Школьный портал</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/jquery.formstyler.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css"/>
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../css/component.css" />
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-xs-5">
+            <a href="#" class="logo">
+              <p>Школьный портал</p>
+              <p><small>Люберецкого района</small></p>
+            </a>
+          </div>
+          <div class="col-md-6 col-xs-1 stat_sm">
+            <nav>
+              <ul class="list-inline">
+                <li><a href="#">Мероприятия</a></li>
+                <li><a href="#">Рейтинг</a></li>
+                <li><a href="#">О проекте</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Фотоархив</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-3 col-xs-6 text-right">
+            <div class="trigger_menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="cabinet cabinet_in">
+              <a href="#" class="person"><span class="name">Иннокентий Котельников</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="options_block">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-xs-12">
+              <div class="options">
+                <ul class="list-inline">
+                  <li class="grade_li"><a href="#">Мои оценки</a></li>
+                  <li class="event_li"><a href="#">Мои мероприятия</a></li>
+                  <li class="profile_li"><a href="#">Мой профиль</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-5 col-xs-12">
+              <div id="custom-search-input" class="pull-right">
+                <div class="input-group col-md-12">
+                  <input type="text" class="form-control" placeholder="Найти на сайте..." />
+                  <span class="input-group-btn">
+                    <a href="#" class="btn btn-info btn-lg">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="registration_block p20">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <ul class="list-inline reg_top text-center">
+                <li><a href="#">Регистрация (до 14 лет)</a></li>
+                <li><a href="#" class="active">Регистрация (14+)</a></li>
+              </ul>
+              <div class="reg_form reg1 form_wrap">
+                <form class="form-horizontal">
+                  <div class="line">
+                    <p class="attention">Данная страница предназначена для регистрации родителя или законного представителя ученика</p>
+                  </div>
+                  <div class="line">
+                    <p class="title">Данные учетной записи</p>
+                     <div class="row">
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_mail2" class="col-sm-3 ">Эл. почта</label>
+                          <div class="col-sm-8">
+                            <input type="email" class="form-control" id="reg_mail2" placeholder="name@pochta.com">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_phone2" class="col-sm-3 ">Моб. телефон</label>
+                          <div class="col-sm-8">
+                            <input type="tel" class="form-control" id="reg_phone2" placeholder="+7 900 000-00-00">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_password2" class="col-sm-3 ">Пароль</label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="reg_password2" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_password3" class="col-sm-3 ">Пароль еще раз</label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="reg_password3" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="line">
+                    <p class="title">Данные родителя или законного представителя</p>
+                     <div class="row">
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_name01" class="col-sm-3 ">Имя</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_name01" placeholder="Иван">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_surname01" class="col-sm-3">Фамилия</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_surname01" placeholder="Иванов">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_patr01" class="col-sm-3">Отчество</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_patr01" placeholder="Иванович">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="line">
+                    <p class="title">Данные ученика</p>
+                     <div class="row">
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_name2" class="col-sm-3 ">Имя</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_name2" placeholder="Иван">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_surname2" class="col-sm-3">Фамилия</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_surname2" placeholder="Иванов">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_patr2" class="col-sm-3">Отчество</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_patr2" placeholder="Иванович">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_adr2" class="col-sm-3">Адрес</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_adr2" placeholder="г. Москва, ул. Улица, дом 001">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_school2" class="col-sm-3">Уч. заведение</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_school2" placeholder='НОУ СОШ "Новая Гуманитарная Школа"'>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_grade2" class="col-sm-3">Класс</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_grade2" placeholder="Класс">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="line checkbox_wrap">
+                    <input type="checkbox" id="agree">
+                    <label for="agree">Я согласен с условиями <a href="#">пользовательского соглашения</a></label>
+                  </div>
+                  <div class="line checkbox_wrap">
+                    <input type="checkbox" id="agree1">
+                    <label for="agree1">Я согласен на рассылку новостей</label>
+                  </div>
+                  <input type="submit" class="btn blue_btn btn-lg1" value="Завершить регистрацию">
+                </form>
+              </div>
+              <div class="reg_form reg2 form_wrap" style="display: none">
+                <form class="form-horizontal">
+                  <div class="line">
+                    <p class="title">Данные учетной записи</p>
+                     <div class="row">
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_mail" class="col-sm-3 ">Эл. почта</label>
+                          <div class="col-sm-8">
+                            <input type="email" class="form-control" id="reg_mail" placeholder="name@pochta.com">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_phone" class="col-sm-3 ">Моб. телефон</label>
+                          <div class="col-sm-8">
+                            <input type="tel" class="form-control" id="reg_phone" placeholder="+7 900 000-00-00">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_password" class="col-sm-3 ">Пароль</label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="reg_password" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_password1" class="col-sm-3 ">Пароль еще раз</label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="reg_password1" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="line">
+                    <p class="title">Данные ученика</p>
+                     <div class="row">
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_name" class="col-sm-3 ">Имя</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_name" placeholder="Иван">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_surname" class="col-sm-3">Фамилия</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_surname" placeholder="Иванов">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_patr" class="col-sm-3">Отчество</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_patr" placeholder="Иванович">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_adr" class="col-sm-3">Адрес</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_adr" placeholder="г. Москва, ул. Улица, дом 001">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_school" class="col-sm-3">Уч. заведение</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_school" placeholder='НОУ СОШ "Новая Гуманитарная Школа"'>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="reg_grade" class="col-sm-3">Класс</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="reg_grade" placeholder="Класс">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="line checkbox_wrap">
+                    <input type="checkbox" id="agree01">
+                    <label for="agree01">Я согласен с условиями <a href="#">пользовательского соглашения</a></label>
+                  </div>
+                  <div class="line checkbox_wrap">
+                    <input type="checkbox" id="agree02">
+                    <label for="agree02">Я согласен на рассылку новостей</label>
+                  </div>
+                  <input type="submit" class="btn blue_btn btn-lg1" value="Завершить регистрацию">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <a href="#" class="logo">
+              <p>Школьный портал</p>
+              <p><small>Люберецкого района</small></p>
+            </a>
+            <p class="cright">© 2017 Администрация Люберецкого района. Все правав защищены. </p>
+            <p class="rules">Любое распространение информации, размещёной на сайте lubschool.ru, возможно только с письменного разрешения администрации.</p>
+          </div>
+          <div class="col-md-2 col-sm-3 hidden-xs">
+            <nav>
+              <ul class="list-unstyled">
+                <li><a href="#">Мероприятия</a></li>
+                <li><a href="#">Рейтинг</a></li>
+                <li><a href="#">О проекте</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Фотоархив</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">Помощь</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <ul class="footer_menu list-unstyled">
+              <li><a href="#">Помощь</a></li>
+              <li><a href="#">Для школ</a></li>
+              <li><a href="#">Для родителей</a></li>
+              <li><a href="#">Организаторы&nbsp;проекта</a></li>
+              <li><a href="#">Нормативные&nbsp;документы</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-12 ">
+            <ul class="list-inline social_list">
+              <li class="vk"><a href="#"></a></li>
+              <li class="inst"><a href="#"></a></li>
+              <li class="fb"><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <div class="footer_links text-right">
+              <a href="#" class="phone">+7 499 345-56-76</a>
+              <a href="mailto:info@lubschool.ru" class="mail">info@lubschool.ru</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.formstyler.js"></script>
+    <script type="text/javascript" src="../js/slick.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/custom-file-input.js"></script>
+    <script src="../js/custom.js"></script>
+  </body>
+
