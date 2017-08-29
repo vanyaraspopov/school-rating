@@ -58,7 +58,9 @@ class UserExtraUpdateFromGridProcessor extends modObjectUpdateProcessor {
             $this->profile->save();
             $this->object->addOne($this->profile,'Profile');
         }
-        $this->profile->fromArray($this->getProperties());
+        $data = $this->getProperties();
+        $data['extended'] = array_merge($this->profile->get('extended'), $data['extended']);
+        $this->profile->fromArray($data);
         return $this->profile;
     }
 }
