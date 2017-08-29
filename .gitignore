@@ -2,6 +2,9 @@
 # ignore everything in this directory
 /*
 
+# and these
+.DS_Store
+
 # but not these
 !.gitignore
 !/.htaccess

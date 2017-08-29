@@ -1439,7 +1439,8 @@ img.rounded_img{
 	}
 }
 .reg_top{
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+	min-height: 80px;
 	li{
 		a{
 			color: #999;
@@ -1456,7 +1457,7 @@ img.rounded_img{
 				border-color: #012837;
 			}
 		}
-		a.active{
+		&.active a{
 			font-size: 40px;
 			color: #012837;
 			border-bottom-color: transparent;
@@ -1676,6 +1677,34 @@ aside{
 .jq-checkbox.checked .jq-checkbox__div{
 	margin-left: 7px;
 }
+.focus-jfilestyle{
+	-webkit-border-radius: 4px;
+	        border-radius: 4px;
+	    background: @blue;
+	    padding: 0px 10px;
+	    color: #FFF;
+	    margin-right: 8px;
+	    -webkit-transition: 0.3s;
+	       -moz-transition: 0.3s;
+	        -ms-transition: 0.3s;
+	         -o-transition: 0.3s;
+	            transition: 0.3s;
+	    cursor: pointer;
+	    display: inline-block;
+	    height: 38px;
+	    
+	    &:hover{
+	    	background: @blue - #111;
+	    }
+}
+.jfilestyle input{
+	font-size: 12px;
+	background: transparent;
+	-webkit-box-shadow: none;
+	        box-shadow: none;
+	    border: none;
+	    opacity: 0.7;
+}
 @media (min-width: 1200px){
 	.container {
 	    width: 1200px;
@@ -1750,6 +1779,12 @@ aside{
 	}
 	.cabinet_in .person:after{
 		top: 0;
+	}
+	.reg_top li a{
+		font-size: 28px;
+	}
+	.reg_top li.active a{
+		font-size: 30px;
 	}
 }
 
@@ -1876,7 +1911,7 @@ aside{
 .reg_top li a{
 	font-size: 26px;
 }
-.reg_top li a.active{
+.reg_top li.active a{
 	font-size: 34px;
 }
 .feedback_form .attention{
@@ -1957,8 +1992,8 @@ footer{
 .reg_top li a {
     font-size: 22px;
 }
-.reg_top li a.active {
-    font-size: 28px;
+.reg_top li.active a {
+    font-size: 24px;
 }
 .attention{
 	padding-top: 5px;
@@ -1978,6 +2013,9 @@ footer{
 .news_single .list_checked {
     margin-left: 40px;
     }
+    .reg_top{
+	min-height: 0;
+}
 }
 
 
@@ -2159,6 +2197,7 @@ p.title1{
 		margin-bottom: 3px;
 	}
 }
+
 }
 
 @media screen and(max-width: 420px){
