@@ -130,7 +130,8 @@ header nav ul li a:hover {
 .cabinet_in {
     text-align: right
 }
-.cabinet_in .person {
+.cabinet_in .person,
+.cabinet_in .logout {
     color: #00aef0;
     border-bottom: 2px solid #026489;
     font-size: 16px;
@@ -144,7 +145,13 @@ header nav ul li a:hover {
     -o-transition: .3s;
     transition: .3s
 }
-.cabinet_in .person:after {
+.cabinet_in .person {
+    margin-right: 10px;
+}
+.cabinet_in .logout {
+    border-bottom: none;
+}
+.cabinet_in .logout:after {
     content: "";
     position: absolute;
     top: -2px;
@@ -155,12 +162,16 @@ header nav ul li a:hover {
     background-position: -58px -154px
 }
 .cabinet_in .person:hover,
-.cabinet_in .person:focus {
+.cabinet_in .person:focus,
+.cabinet_in .logout:hover,
+.cabinet_in .logout:focus {
     color: #ffbf06;
     border-color: transparent
 }
 .cabinet_in .person:hover:after,
-.cabinet_in .person:focus:after {
+.cabinet_in .person:focus:after,
+.cabinet_in .logout:hover:after,
+.cabinet_in .logout:focus:after {
     background-position: 0 -268px
 }
 .cabinet_out {
@@ -1719,10 +1730,11 @@ aside .news_card {
         -o-background-size: 445px;
         background-size: 445px
     }
-    .cabinet_in .person {
+    .cabinet_in .person,
+    .cabinet_in .logout {
         margin-top: 1px
     }
-    .cabinet_in .person:after {
+    .cabinet_in .logout:after {
         top: 0
     }
     .reg_top li a {
