@@ -62,3 +62,20 @@ $_lang['schoolrating_section_remove'] = 'Удалить направление';
 $_lang['schoolrating_sections_remove'] = 'Удалить направления';
 $_lang['schoolrating_section_remove_confirm'] = 'Вы уверены, что хотите удалить это направление?';
 $_lang['schoolrating_sections_remove_confirm'] = 'Вы уверены, что хотите удалить эти направления?';
+
+//  Рейтинг
+$_lang['schoolrating_rating_intro_msg'] = 'Здесь можно начислять баллы пользователям.';
+
+$_lang['schoolrating_rating'] = 'Баллы';
+$_lang['schoolrating_rating_id'] = 'ID';
+$_lang['schoolrating_rating_user_id'] = 'ID пользователя';
+$_lang['schoolrating_rating_date'] = 'Дата начисления';
+$_lang['schoolrating_rating_rating'] = 'Баллы';
+$_lang['schoolrating_rating_comment'] = 'Комментарий';
+
+$_lang['schoolrating_rating_create'] = 'Начислить баллы';
+$_lang['schoolrating_rating_update'] = 'Изменить запись';
+$_lang['schoolrating_rating_remove'] = 'Удалить запись';
+$_lang['schoolrating_ratings_remove'] = 'Удалить записи';
+$_lang['schoolrating_rating_remove_confirm'] = 'Вы уверены, что хотите удалить эту запись? Это приведёт к списанию баллов.';
+$_lang['schoolrating_ratings_remove_confirm'] = 'Вы уверены, что хотите удалить эти записи? Это приведёт к списанию баллов.';

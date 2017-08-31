@@ -39,6 +39,16 @@ SchoolRating.panel.Home = function (config) {
                     xtype: 'schoolrating-grid-coefficients',
                     cls: 'main-wrapper',
                 }]
+            }, {
+                title: _('schoolrating_rating'),
+                layout: 'anchor',
+                items: [{
+                    html: _('schoolrating_rating_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'schoolrating-grid-rating',
+                    cls: 'main-wrapper',
+                }]
             }]
         }]
     });

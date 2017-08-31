@@ -66,4 +66,13 @@
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
     </object>
 
+    <object class="srUserRating" table="schoolrating_userextra_rating" extends="xPDOSimpleObject">
+        <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false" />
+        <field key="comment" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
+        <field key="date" dbtype="date" phptype="date" null="false"/>
+        <field key="rating" dbtype="int" precision="11" phptype="integer" true="false" default="0"/>
+
+        <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
+    </object>
+
 </model>

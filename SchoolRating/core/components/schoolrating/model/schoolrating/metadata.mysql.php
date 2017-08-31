@@ -7,5 +7,6 @@ $xpdo_meta_map = array (
     1 => 'srActivityCoefficient',
     2 => 'srActivity',
     3 => 'srActivityParticipant',
+    4 => 'srUserRating',
   ),
 );
