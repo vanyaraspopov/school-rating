@@ -17,6 +17,7 @@
     <object class="srActivityCoefficient" table="schoolrating_activity_coefficients" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
         <field key="value" dbtype="decimal" precision="10,2" phptype="double" null="false" default="0"/>
+        <field key="css_class" dbtype="varchar" precision="50" phptype="string" null="false" default=""/>
 
         <index alias="name" name="name" primary="false" unique="true" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>

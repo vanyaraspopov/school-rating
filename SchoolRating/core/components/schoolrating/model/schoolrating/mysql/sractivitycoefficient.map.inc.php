@@ -8,6 +8,7 @@ $xpdo_meta_map['srActivityCoefficient']= array (
   array (
     'name' => NULL,
     'value' => 0,
+    'css_class' => '',
   ),
   'fieldMeta' => 
   array (
@@ -25,6 +26,14 @@ $xpdo_meta_map['srActivityCoefficient']= array (
       'phptype' => 'double',
       'null' => false,
       'default' => 0,
+    ),
+    'css_class' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '50',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
   ),
   'indexes' => 

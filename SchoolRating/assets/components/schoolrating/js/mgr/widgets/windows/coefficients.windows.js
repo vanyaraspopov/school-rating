@@ -34,6 +34,14 @@ Ext.extend(SchoolRating.window.CreateCoefficient, MODx.Window, {
             name: 'value',
             id: config.id + '-value',
             anchor: '99%'
+        }, {
+            xtype: 'textfield',
+            fieldLabel: _('schoolrating_coefficient_css_class'),
+            description: _('schoolrating_coefficient_css_class_help'),
+            name: 'css_class',
+            id: config.id + '-css_class',
+            anchor: '99%',
+            allowBlank: true,
         }];
     },
 
@@ -85,6 +93,14 @@ Ext.extend(SchoolRating.window.UpdateCoefficient, MODx.Window, {
             id: config.id + '-value',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'textfield',
+            fieldLabel: _('schoolrating_coefficient_css_class'),
+            description: _('schoolrating_coefficient_css_class_help'),
+            name: 'css_class',
+            id: config.id + '-css_class',
+            anchor: '99%',
+            allowBlank: true,
         }];
     },
 

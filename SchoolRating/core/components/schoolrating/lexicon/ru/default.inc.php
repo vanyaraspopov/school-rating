@@ -40,6 +40,8 @@ $_lang['schoolrating_coefficients'] = 'Коэффициенты';
 $_lang['schoolrating_coefficient_id'] = 'ID';
 $_lang['schoolrating_coefficient_name'] = 'Название';
 $_lang['schoolrating_coefficient_value'] = 'Значение';
+$_lang['schoolrating_coefficient_css_class'] = 'CSS класс';
+$_lang['schoolrating_coefficient_css_class_help'] = 'CSS класс, используемый для отрисовки иконки.Не меняйте его значение, если не понимаете.';
 
 $_lang['schoolrating_coefficient_create'] = 'Добавить коэффициент';
 $_lang['schoolrating_coefficient_update'] = 'Изменить коэффициент';
