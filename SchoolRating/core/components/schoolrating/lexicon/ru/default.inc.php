@@ -81,3 +81,17 @@ $_lang['schoolrating_rating_remove'] = 'Удалить запись';
 $_lang['schoolrating_ratings_remove'] = 'Удалить записи';
 $_lang['schoolrating_rating_remove_confirm'] = 'Вы уверены, что хотите удалить эту запись? Это приведёт к списанию баллов.';
 $_lang['schoolrating_ratings_remove_confirm'] = 'Вы уверены, что хотите удалить эти записи? Это приведёт к списанию баллов.';
+
+//  Мероприятия
+$_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просмотреть мероприятия.';
+
+$_lang['schoolrating_activities'] = 'Мероприятия';
+$_lang['schoolrating_activitiy_id'] = 'ID';
+$_lang['schoolrating_activitiy_name'] = 'Название';
+
+$_lang['schoolrating_activitiy_create'] = 'Добавить мероприятие';
+$_lang['schoolrating_activitiy_update'] = 'Изменить мероприятие';
+$_lang['schoolrating_activitiy_remove'] = 'Удалить мероприятие';
+$_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
+$_lang['schoolrating_activitiy_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
+$_lang['schoolrating_activities_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
