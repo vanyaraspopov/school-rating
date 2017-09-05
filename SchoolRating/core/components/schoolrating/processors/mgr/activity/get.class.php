@@ -2,8 +2,8 @@
 
 class srActivityGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'srActivity';
-    public $classKey = 'srActivity';
+    public $objectType = 'modResource';
+    public $classKey = 'modResource';
     public $languageTopics = array('schoolrating:default');
     //public $permission = 'view';
 

@@ -28,20 +28,6 @@ Ext.extend(SchoolRating.window.CreateActivity, MODx.Window, {
             id: config.id + '-name',
             anchor: '99%',
             allowBlank: false,
-        }, {
-            xtype: 'numberfield',
-            fieldLabel: _('schoolrating_activity_value'),
-            name: 'value',
-            id: config.id + '-value',
-            anchor: '99%'
-        }, {
-            xtype: 'textfield',
-            fieldLabel: _('schoolrating_activity_css_class'),
-            description: _('schoolrating_activity_css_class_help'),
-            name: 'css_class',
-            id: config.id + '-css_class',
-            anchor: '99%',
-            allowBlank: true,
         }];
     },
 

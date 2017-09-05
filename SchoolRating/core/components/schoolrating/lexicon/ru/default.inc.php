@@ -86,12 +86,13 @@ $_lang['schoolrating_ratings_remove_confirm'] = 'Вы уверены, что х�
 $_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просмотреть мероприятия.';
 
 $_lang['schoolrating_activities'] = 'Мероприятия';
-$_lang['schoolrating_activitiy_id'] = 'ID';
-$_lang['schoolrating_activitiy_name'] = 'Название';
+$_lang['schoolrating_activity_id'] = 'ID';
+$_lang['schoolrating_activity_name'] = 'Название';
 
-$_lang['schoolrating_activitiy_create'] = 'Добавить мероприятие';
-$_lang['schoolrating_activitiy_update'] = 'Изменить мероприятие';
-$_lang['schoolrating_activitiy_remove'] = 'Удалить мероприятие';
+$_lang['schoolrating_activity_create'] = 'Добавить мероприятие';
+$_lang['schoolrating_activity_create_help'] = 'Создание новых мероприятий осуществляется через дерево ресурсов.';
+$_lang['schoolrating_activity_update'] = 'Изменить мероприятие';
+$_lang['schoolrating_activity_remove'] = 'Удалить мероприятие';
 $_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
-$_lang['schoolrating_activitiy_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
-$_lang['schoolrating_activities_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
+$_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
+$_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';

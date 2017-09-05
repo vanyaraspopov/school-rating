@@ -10,7 +10,7 @@ SchoolRating.grid.Activities = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/coefficient/getlist'
+            action: 'mgr/activity/getlist'
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
@@ -140,7 +140,7 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'value', 'actions'];
+        return ['id', 'pagetitle', 'actions'];
     },
 
     getColumns: function () {
@@ -151,14 +151,9 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             width: 70
         }, {
             header: _('schoolrating_activity_name'),
-            dataIndex: 'name',
+            dataIndex: 'pagetitle',
             sortable: true,
             width: 200,
-        }, {
-            header: _('schoolrating_activity_value'),
-            dataIndex: 'value',
-            sortable: false,
-            width: 250,
         }, {
             header: _('schoolrating_grid_actions'),
             dataIndex: 'actions',
@@ -172,7 +167,12 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     getTopBar: function () {
         return [{
             text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_activity_create'),
-            handler: this.createActivity,
+            handler: function () {
+                MODx.msg.alert(
+                    _('schoolrating_activity_create'),
+                    _('schoolrating_activity_create_help')
+                );
+            },//this.createActivity,
             scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
