@@ -32,6 +32,8 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
+        $c->select($this->modx->getSelectColumns('modResource','modResource'));
+
         $eventsFuture = $this->modx->getOption('schoolrating_events_future');
         $eventsPast = $this->modx->getOption('schoolrating_events_past');
         $parents = [];
@@ -39,6 +41,13 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             $c->where([
                 'parent:IN' => [$eventsFuture, $eventsPast]
             ]);
+        }
+
+        $eventsTvSection = $this->modx->getOption('schoolrating_events_tv_section');
+        if ($eventsTvSection) {
+            $c->innerJoin('modTemplateVarResource', 'TemplateVarResources');
+            $c->select($this->modx->getSelectColumns('modTemplateVarResource','TemplateVarResources'));
+            $c->where(['TemplateVarResources.tmplvarid' => $eventsTvSection]);
         }
 
         $query = trim($this->getProperty('query'));
@@ -73,6 +82,9 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             'button' => true,
             'menu' => true,
         );
+
+        //  value of TV 'event-section'
+        $array['section'] = $object->get('value');
 
         return $array;
     }

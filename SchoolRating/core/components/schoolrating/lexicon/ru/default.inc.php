@@ -53,6 +53,7 @@ $_lang['schoolrating_coefficients_remove_confirm'] = 'Вы уверены, чт�
 //  Направления
 $_lang['schoolrating_sections_intro_msg'] = 'Здесь можно настроить направления мероприятий.';
 
+$_lang['schoolrating_section'] = 'Направление';
 $_lang['schoolrating_sections'] = 'Направления';
 $_lang['schoolrating_section_id'] = 'ID';
 $_lang['schoolrating_section_name'] = 'Название';

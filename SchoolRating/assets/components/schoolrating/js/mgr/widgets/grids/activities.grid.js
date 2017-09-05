@@ -140,7 +140,7 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'pagetitle', 'actions'];
+        return ['id', 'pagetitle', 'section', 'actions'];
     },
 
     getColumns: function () {
@@ -152,6 +152,11 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         }, {
             header: _('schoolrating_activity_name'),
             dataIndex: 'pagetitle',
+            sortable: true,
+            width: 200,
+        }, {
+            header: _('schoolrating_section'),
+            dataIndex: 'section',
             sortable: true,
             width: 200,
         }, {
