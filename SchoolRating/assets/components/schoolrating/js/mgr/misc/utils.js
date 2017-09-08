@@ -97,3 +97,11 @@ SchoolRating.utils.renderActions = function (value, props, row) {
         res.join('')
     );
 };
+
+SchoolRating.utils.renderDate = function (value, props, row) {
+    if (value) {
+        return Ext.util.Format.date(value, 'd.m.Y');
+    } else {
+        return '&ndash;';
+    }
+};

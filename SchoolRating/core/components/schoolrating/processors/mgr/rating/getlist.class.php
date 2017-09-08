@@ -33,8 +33,22 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
         $c->select($this->modx->getSelectColumns('srUserRating', 'srUserRating'));
+
         $c->leftJoin('modUserProfile', 'Profile', 'srUserRating.user_id = Profile.internalKey');
         $c->select($this->modx->getSelectColumns('modUserProfile', 'Profile', null, ['fullname', 'extended']));
+
+        $c->leftJoin('srActivitySection', 'Section', 'srUserRating.section_id = Section.id');
+        $c->select($this->modx->getSelectColumns('srActivitySection', 'Section', 'section_', ['name']));
+
+        //  Обработка формы поиска
+        $query = trim($this->getProperty('query'));
+        if ($query) {
+            $c->where([
+                'Profile.fullname:LIKE' => "%{$query}%",
+                'OR:Section.name:LIKE' => "%{$query}%",
+                'OR:srUserRating.comment:LIKE' => "%{$query}%",
+            ]);
+        }
 
         return $c;
     }
@@ -72,9 +86,9 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
-        $extended = json_decode( $object->get('extended'), true);
-        $userName = $extended['name'] . ' ' . $extended['surname'];
+        $userName = $object->get('fullname');
         $array['name'] = $userName ? $userName : $object->get('user_id');
+
         return $array;
     }
 

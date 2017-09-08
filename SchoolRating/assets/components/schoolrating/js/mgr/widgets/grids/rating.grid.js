@@ -140,7 +140,7 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'name', 'date', 'section', 'rating', 'comment', 'actions'];
+        return ['id', 'user_id', 'name', 'date', 'section_id', 'section_name', 'rating', 'comment', 'actions'];
     },
 
     getColumns: function () {
@@ -164,11 +164,19 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
         }, {
             header: _('schoolrating_rating_date'),
             dataIndex: 'date',
+            renderer: SchoolRating.utils.renderDate,
             sortable: false,
             width: 250,
         }, {
             header: _('schoolrating_section'),
-            dataIndex: 'section',
+            dataIndex: 'section_name',
+            renderer: function (value, props, row) {
+                if (value) {
+                    return value;
+                } else {
+                    return '&ndash;';
+                }
+            },
             sortable: false,
             width: 250,
         }, {
