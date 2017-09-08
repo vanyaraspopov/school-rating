@@ -35,8 +35,7 @@ class SchoolRatingCoefficientGetListProcessor extends modObjectGetListProcessor
         $query = trim($this->getProperty('query'));
         if ($query) {
             $c->where(array(
-                'name:LIKE' => "%{$query}%",
-                'OR:description:LIKE' => "%{$query}%",
+                'name:LIKE' => "%{$query}%"
             ));
         }
 

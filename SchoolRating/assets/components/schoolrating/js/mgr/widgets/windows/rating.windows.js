@@ -24,6 +24,12 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
         return [{
             xtype: 'modx-combo-user',
             fieldLabel: _('user'),
+            displayField: 'fullname',
+            fields: ['fullname','id'],
+            baseParams: {
+                action: 'security/user/getlist',
+                usergroup: SchoolRating.config.usergroupUsers
+            },
             name: 'user_id',
             hiddenName: 'user_id',
             id: config.id + '-user_id',
@@ -87,17 +93,37 @@ Ext.extend(SchoolRating.window.UpdateRating, MODx.Window, {
             name: 'id',
             id: config.id + '-id',
         }, {
-            xtype: 'textfield',
-            fieldLabel: _('schoolrating_rating_name'),
-            name: 'name',
-            id: config.id + '-name',
+            xtype: 'modx-combo-user',
+            fieldLabel: _('user'),
+            displayField: 'fullname',
+            baseParams: {
+                action: 'security/user/getlist',
+                usergroup: SchoolRating.config.usergroupUsers
+            },
+            fields: ['fullname','id'],
+            name: 'user_id',
+            hiddenName: 'user_id',
+            id: config.id + '-user_id',
+            anchor: '99%',
+            disabled: true
+        }, {
+            xtype: 'schoolrating-combo-section',
+            fieldLabel: _('schoolrating_section'),
+            name: 'section_id',
+            id: config.id + '-section_id',
+            anchor: '99%',
+        }, {
+            xtype: 'numberfield',
+            fieldLabel: _('schoolrating_rating_rating'),
+            name: 'rating',
+            id: config.id + '-rating',
             anchor: '99%',
             allowBlank: false,
         }, {
-            xtype: 'numberfield',
-            fieldLabel: _('schoolrating_rating_value'),
-            name: 'value',
-            id: config.id + '-value',
+            xtype: 'textarea',
+            fieldLabel: _('schoolrating_rating_comment'),
+            name: 'comment',
+            id: config.id + '-comment',
             anchor: '99%',
             allowBlank: false,
         }];

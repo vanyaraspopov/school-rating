@@ -22,6 +22,8 @@ class SchoolRating
         );
         $connectorUrl = $assetsUrl . 'connector.php';
 
+        $usergroupUsers = $this->modx->getOption('schoolrating_usergroup_users');
+
         $this->config = array_merge(array(
             'assetsUrl' => $assetsUrl,
             'cssUrl' => $assetsUrl . 'css/',
@@ -36,6 +38,8 @@ class SchoolRating
             'chunkSuffix' => '.chunk.tpl',
             'snippetsPath' => $corePath . 'elements/snippets/',
             'processorsPath' => $corePath . 'processors/',
+
+            'usergroupUsers' => $usergroupUsers,
         ), $config);
 
         $this->modx->addPackage('schoolrating', $this->config['modelPath']);

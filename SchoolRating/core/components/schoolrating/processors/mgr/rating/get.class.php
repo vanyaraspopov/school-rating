@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingCoefficientGetProcessor extends modObjectGetProcessor
+class srUserRatingGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'srActivityCoefficient';
-    public $classKey = 'srActivityCoefficient';
+    public $objectType = 'srUserRating';
+    public $classKey = 'srUserRating';
     public $languageTopics = array('schoolrating:default');
     //public $permission = 'view';
 
@@ -25,4 +25,4 @@ class SchoolRatingCoefficientGetProcessor extends modObjectGetProcessor
 
 }
 
-return 'SchoolRatingCoefficientGetProcessor';
+return 'srUserRatingGetProcessor';
