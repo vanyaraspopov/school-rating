@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
+class srUserRatingRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'srActivityCoefficient';
-    public $classKey = 'srActivityCoefficient';
+    public $objectType = 'srUserRating';
+    public $classKey = 'srUserRating';
     public $languageTopics = array('schoolrating');
     //public $permission = 'remove';
 
@@ -36,4 +36,4 @@ class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
 
 }
 
-return 'SchoolRatingCoefficientRemoveProcessor';
+return 'srUserRatingRemoveProcessor';

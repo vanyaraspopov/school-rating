@@ -97,3 +97,6 @@ $_lang['schoolrating_activity_remove'] = 'Удалить мероприятие'
 $_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
 $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
+
+//  Комбобокс
+$_lang['schoolrating_section_choice'] = 'Выберите направление';

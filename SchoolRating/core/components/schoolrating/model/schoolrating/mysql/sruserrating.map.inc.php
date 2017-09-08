@@ -7,6 +7,7 @@ $xpdo_meta_map['srUserRating']= array (
   'fields' => 
   array (
     'user_id' => NULL,
+    'section_id' => NULL,
     'comment' => '',
     'date' => NULL,
     'rating' => 0,
@@ -19,6 +20,13 @@ $xpdo_meta_map['srUserRating']= array (
       'precision' => '11',
       'phptype' => 'integer',
       'null' => false,
+    ),
+    'section_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '11',
+      'phptype' => 'integer',
+      'null' => true,
     ),
     'comment' => 
     array (
@@ -49,6 +57,14 @@ $xpdo_meta_map['srUserRating']= array (
     array (
       'class' => 'modUser',
       'local' => 'user_id',
+      'foreign' => 'id',
+      'owner' => 'foreign',
+      'cardinality' => 'one',
+    ),
+    'Section' => 
+    array (
+      'class' => 'srActivitySection',
+      'local' => 'section_id',
       'foreign' => 'id',
       'owner' => 'foreign',
       'cardinality' => 'one',

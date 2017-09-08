@@ -22,18 +22,33 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
 
     getFields: function (config) {
         return [{
-            xtype: 'textfield',
-            fieldLabel: _('schoolrating_rating_name'),
-            name: 'name',
-            id: config.id + '-name',
+            xtype: 'modx-combo-user',
+            fieldLabel: _('user'),
+            name: 'user_id',
+            hiddenName: 'user_id',
+            id: config.id + '-user_id',
             anchor: '99%',
             allowBlank: false,
         }, {
+            xtype: 'schoolrating-combo-section',
+            fieldLabel: _('schoolrating_section'),
+            name: 'section_id',
+            id: config.id + '-section_id',
+            anchor: '99%',
+        }, {
             xtype: 'numberfield',
-            fieldLabel: _('schoolrating_rating_value'),
-            name: 'value',
-            id: config.id + '-value',
-            anchor: '99%'
+            fieldLabel: _('schoolrating_rating_rating'),
+            name: 'rating',
+            id: config.id + '-rating',
+            anchor: '99%',
+            allowBlank: false,
+        }, {
+            xtype: 'textarea',
+            fieldLabel: _('schoolrating_rating_comment'),
+            name: 'comment',
+            id: config.id + '-comment',
+            anchor: '99%',
+            allowBlank: false,
         }];
     },
 

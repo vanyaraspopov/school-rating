@@ -32,6 +32,10 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
+        $c->select($this->modx->getSelectColumns('srUserRating', 'srUserRating'));
+        $c->leftJoin('modUserProfile', 'Profile', 'srUserRating.user_id = Profile.internalKey');
+        $c->select($this->modx->getSelectColumns('modUserProfile', 'Profile', null, ['fullname', 'extended']));
+
         return $c;
     }
 
@@ -52,32 +56,10 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
             'icon' => 'icon icon-edit',
             'title' => $this->modx->lexicon('schoolrating_rating_update'),
             //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
-            'action' => 'updateCoefficient',
+            'action' => 'updateRating',
             'button' => true,
             'menu' => true,
         );
-
-        /*if (!$array['active']) {
-            $array['actions'][] = array(
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('schoolrating_item_enable'),
-                'multiple' => $this->modx->lexicon('schoolrating_items_enable'),
-                'action' => 'enableItem',
-                'button' => true,
-                'menu' => true,
-            );
-        } else {
-            $array['actions'][] = array(
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('schoolrating_item_disable'),
-                'multiple' => $this->modx->lexicon('schoolrating_items_disable'),
-                'action' => 'disableItem',
-                'button' => true,
-                'menu' => true,
-            );
-        }*/
 
         // Remove
         $array['actions'][] = array(
@@ -85,11 +67,14 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
             'icon' => 'icon icon-trash-o action-red',
             'title' => $this->modx->lexicon('schoolrating_rating_remove'),
             'multiple' => $this->modx->lexicon('schoolrating_ratings_remove'),
-            'action' => 'removeCoefficient',
+            'action' => 'removeRating',
             'button' => true,
             'menu' => true,
         );
 
+        $extended = json_decode( $object->get('extended'), true);
+        $userName = $extended['name'] . ' ' . $extended['surname'];
+        $array['name'] = $userName ? $userName : $object->get('user_id');
         return $array;
     }
 

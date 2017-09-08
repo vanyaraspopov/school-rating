@@ -55,6 +55,14 @@ $xpdo_meta_map['srActivitySection']= array (
       'owner' => 'local',
       'cardinality' => 'many',
     ),
+    'UserRatings' => 
+    array (
+      'class' => 'srUserRating',
+      'local' => 'id',
+      'foreign' => 'section_id',
+      'owner' => 'local',
+      'cardinality' => 'many',
+    ),
   ),
   'aggregates' => 
   array (

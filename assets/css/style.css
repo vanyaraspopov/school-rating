@@ -99,7 +99,8 @@ body {
 	padding-top: 2px;
 	color: #e9e9e9;
 	background: url(../images/logo.png) no-repeat top left;
-	font-size: 15.4px
+	font-size: 15.4px;
+	height: 41px;
 }
 .logo p {
 	padding-left: 44px;
@@ -631,7 +632,14 @@ h2 {
 	left: 0
 }
 .event_card .bottom .local:before {
-	background-position: -48px -200px
+	width: 30px;
+	height: 31px;
+	top: -4px;
+	left: -5px;
+	background-position: -199px 3px;
+	-webkit-background-size: 225px;
+	-o-background-size: 225px;
+	background-size: 225px;
 }
 .event_card .bottom .fed:before {
 	background-position: -267px -64px

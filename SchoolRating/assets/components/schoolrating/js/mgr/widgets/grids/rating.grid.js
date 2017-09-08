@@ -140,7 +140,7 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'name', 'date', 'rating', 'comment', 'actions'];
+        return ['id', 'user_id', 'name', 'date', 'section', 'rating', 'comment', 'actions'];
     },
 
     getColumns: function () {
@@ -152,7 +152,7 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
             width: 70
         }, {
             header: _('schoolrating_rating_user_id'),
-            dataIndex: 'name',
+            dataIndex: 'user_id',
             sortable: true,
             hidden: true,
             width: 200,
@@ -164,6 +164,11 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
         }, {
             header: _('schoolrating_rating_date'),
             dataIndex: 'date',
+            sortable: false,
+            width: 250,
+        }, {
+            header: _('schoolrating_section'),
+            dataIndex: 'section',
             sortable: false,
             width: 250,
         }, {
