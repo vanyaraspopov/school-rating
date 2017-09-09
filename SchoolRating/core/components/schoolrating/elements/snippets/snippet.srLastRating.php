@@ -12,7 +12,7 @@ $userId = $modx->getOption('userId', $scriptProperties, $modx->user->get('id'));
 $tpl = $modx->getOption('tpl', $scriptProperties, 'sr-last-rating-tpl');
 $sortby = $modx->getOption('sortby', $scriptProperties, 'date');
 $sortdir = $modx->getOption('sortbir', $scriptProperties, 'DESC');
-$limit = $modx->getOption('limit', $scriptProperties, 5);
+$limit = $modx->getOption('limit', $scriptProperties, 0);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
 $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 
