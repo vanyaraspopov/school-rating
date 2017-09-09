@@ -140,15 +140,24 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'pagetitle', 'section', 'actions'];
+        return ['id', 'contentid', 'pagetitle', 'section', 'actions'];
     },
 
     getColumns: function () {
         return [{
-            header: _('schoolrating_activity_id'),
+            header: _('id'),
             dataIndex: 'id',
+            hidden: true,
             sortable: true,
             width: 70
+        }, {
+            header: _('schoolrating_activity_resource_id'),
+            dataIndex: 'contentid',
+            sortable: true,
+            width: 70,
+            renderer: function (value) {
+                return '<a href="?a=resource/update&id=' +value+ '" target="_blank">' +value+ '</a>';
+            }
         }, {
             header: _('schoolrating_activity_name'),
             dataIndex: 'pagetitle',

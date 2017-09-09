@@ -87,7 +87,7 @@ $_lang['schoolrating_ratings_remove_confirm'] = 'Вы уверены, что х�
 $_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просмотреть мероприятия.';
 
 $_lang['schoolrating_activities'] = 'Мероприятия';
-$_lang['schoolrating_activity_id'] = 'ID';
+$_lang['schoolrating_activity_resource_id'] = 'ID ресурса';
 $_lang['schoolrating_activity_name'] = 'Название';
 
 $_lang['schoolrating_activity_create'] = 'Добавить мероприятие';

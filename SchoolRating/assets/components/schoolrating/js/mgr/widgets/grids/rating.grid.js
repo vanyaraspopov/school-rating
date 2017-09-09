@@ -154,8 +154,8 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
             header: _('schoolrating_rating_user_id'),
             dataIndex: 'user_id',
             sortable: true,
-            hidden: true,
-            width: 200,
+            hidden: false,
+            width: 70,
         }, {
             header: _('username'),
             dataIndex: 'name',

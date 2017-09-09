@@ -147,12 +147,13 @@ Ext.extend(SchoolRating.grid.Coefficients, MODx.grid.Grid, {
         return [{
             header: _('schoolrating_coefficient_id'),
             dataIndex: 'id',
+            hidden: true,
             sortable: true,
             width: 70
         }, {
             header: _('schoolrating_coefficient_name'),
             dataIndex: 'name',
-            sortable: true,
+            sortable: false,
             width: 200,
         }, {
             header: _('schoolrating_coefficient_value'),
