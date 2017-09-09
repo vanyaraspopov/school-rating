@@ -5,10 +5,10 @@
 $snippets = array();
 
 $tmp = array(
-    /*'SchoolRating' => array(
-        'file' => 'schoolrating',
+    'srLastRating' => array(
+        'file' => 'srLastRating',
         'description' => '',
-    ),*/
+    ),
 );
 
 foreach ($tmp as $k => $v) {

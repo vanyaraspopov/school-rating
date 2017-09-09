@@ -5,11 +5,11 @@
 $chunks = array();
 
 $tmp = array(
-    /*'tpl.SchoolRating.item' => array(
-        'file' => 'item',
+    'sr-last-rating-tpl' => array(
+        'file' => 'sr-last-rating-tpl',
         'description' => '',
     ),
-    'tpl.SchoolRating.office' => array(
+    /*'tpl.SchoolRating.office' => array(
         'file' => 'office',
         'description' => '',
     ),*/

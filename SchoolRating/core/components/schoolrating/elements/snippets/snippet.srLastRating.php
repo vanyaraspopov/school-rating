@@ -8,23 +8,24 @@ if (!$SchoolRating = $modx->getService('schoolrating', 'SchoolRating', $modx->ge
     return 'Could not load SchoolRating class!';
 }
 
-// Do your snippet code here. This demo grabs 5 items from our custom table.
-$tpl = $modx->getOption('tpl', $scriptProperties, 'Item');
-$sortby = $modx->getOption('sortby', $scriptProperties, 'name');
-$sortdir = $modx->getOption('sortbir', $scriptProperties, 'ASC');
+$userId = $modx->getOption('userId', $scriptProperties, $modx->user->get('id'));
+$tpl = $modx->getOption('tpl', $scriptProperties, 'sr-last-rating-tpl');
+$sortby = $modx->getOption('sortby', $scriptProperties, 'date');
+$sortdir = $modx->getOption('sortbir', $scriptProperties, 'DESC');
 $limit = $modx->getOption('limit', $scriptProperties, 5);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
 $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 
 // Build query
-$c = $modx->newQuery('SchoolRatingItem');
+$c = $modx->newQuery('srUserRating');
+$c->where(['user_id' => $userId]);
 $c->sortby($sortby, $sortdir);
 $c->limit($limit);
-$items = $modx->getIterator('SchoolRatingItem', $c);
+$items = $modx->getIterator('srUserRating', $c);
 
 // Iterate through items
 $list = array();
-/** @var SchoolRatingItem $item */
+/** @var srUserRating $item */
 foreach ($items as $item) {
     $list[] = $modx->getChunk($tpl, $item->toArray());
 }

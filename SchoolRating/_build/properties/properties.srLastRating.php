@@ -5,11 +5,11 @@ $properties = array();
 $tmp = array(
     /*'tpl' => array(
         'type' => 'textfield',
-        'value' => 'tpl.SchoolRating.item',
+        'value' => 'sr-last-rating-tpl',
     ),
     'sortby' => array(
         'type' => 'textfield',
-        'value' => 'name',
+        'value' => 'date',
     ),
     'sortdir' => array(
         'type' => 'list',
