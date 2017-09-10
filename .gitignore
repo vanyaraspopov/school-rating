@@ -13,7 +13,9 @@
 
 # do not ignore components in development
 !/assets/
+!/core/
 !UserExtra/
 !SchoolRating/
+!/VerifyPhone/
 !/core/composer.lock
 !/core/composer.json
