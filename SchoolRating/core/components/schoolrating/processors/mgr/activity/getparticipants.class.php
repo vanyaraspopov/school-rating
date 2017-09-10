@@ -1,28 +1,39 @@
 <?php
 
-class srActivityParticipantGetProcessor extends modObjectGetProcessor
+class srActivityParticipantGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'srActivityParticipant';
     public $classKey = 'srActivityParticipant';
     public $languageTopics = array('schoolrating:default');
+    public $defaultSortField = 'id';
+    public $defaultSortDirection = 'ASC';
     //public $permission = 'view';
 
+    /**
+     * @param xPDOQuery $c
+     *
+     * @return xPDOQuery
+     */
+    public function prepareQueryBeforeCount(xPDOQuery $c)
+    {
+        return $c;
+    }
 
     /**
-     * We doing special check of permission
-     * because of our objects is not an instances of modAccessibleObject
+     * We do a special check of permissions
+     * because our objects is not an instances of modAccessibleObject
      *
-     * @return mixed
+     * @return boolean|string
      */
-    public function process()
+    public function beforeQuery()
     {
         if (!$this->checkPermissions()) {
-            return $this->failure($this->modx->lexicon('access_denied'));
+            return $this->modx->lexicon('access_denied');
         }
 
-        return parent::process();
+        return true;
     }
 
 }
 
-return 'srActivityParticipantGetProcessor';
+return 'srActivityParticipantGetListProcessor';

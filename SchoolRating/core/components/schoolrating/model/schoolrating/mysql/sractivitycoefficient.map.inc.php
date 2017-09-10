@@ -55,15 +55,4 @@ $xpdo_meta_map['srActivityCoefficient']= array (
       ),
     ),
   ),
-  'aggregates' => 
-  array (
-    'Activities' => 
-    array (
-      'class' => 'srActivity',
-      'local' => 'id',
-      'foreign' => 'coefficient_id',
-      'owner' => 'local',
-      'cardinality' => 'many',
-    ),
-  ),
 );

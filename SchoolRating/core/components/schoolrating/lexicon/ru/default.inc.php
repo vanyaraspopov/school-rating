@@ -99,7 +99,18 @@ $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что х
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
 
 //  Участники мероприятий
-$_lang['schoolrating_activity_participant_update'] = 'Посмотреть участников';
+$_lang['schoolrating_activities_participants'] = 'Участники';
+$_lang['schoolrating_activity_participant_id'] = 'ID';
+$_lang['schoolrating_activity_participant_user_id'] = 'ID пользователя';
+$_lang['schoolrating_activity_participant_resource_id'] = 'ID мероприятия';
+$_lang['schoolrating_activity_participant_allowed'] = 'Одобрено';
+
+$_lang['schoolrating_activity_participant_create'] = 'Добавить участника';
+$_lang['schoolrating_activities_participants_update'] = 'Посмотреть участников';
+$_lang['schoolrating_activity_participant_remove'] = 'Удалить участника';
+$_lang['schoolrating_activities_participants_remove'] = 'Удалить участников';
+$_lang['schoolrating_activity_participant_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
+$_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы уверены, что хотите удалить эти заявки?';
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';

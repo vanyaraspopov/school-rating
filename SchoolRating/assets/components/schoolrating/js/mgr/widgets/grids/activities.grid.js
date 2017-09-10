@@ -93,25 +93,19 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             return false;
         }
         var id = this.menu.record.id;
-
-        MODx.msg.alert(
-            _('schoolrating_activity_participant_update'),
-            'Здесь будет таблица участников мероприятия'
-        );
-
-        return;
+        var contentid = this.menu.record.contentid;
 
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/coefficient/get',
-                id: id
+                action: 'mgr/activity/get',
+                id: contentid
             },
             listeners: {
                 success: {
                     fn: function (r) {
                         var w = MODx.load({
-                            xtype: 'schoolrating-coefficient-window-update',
+                            xtype: 'schoolrating-activity-window-update',
                             id: Ext.id(),
                             record: r,
                             listeners: {

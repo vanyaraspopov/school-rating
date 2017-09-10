@@ -10,7 +10,6 @@
             <column key="name" length="" collation="A" null="false"/>
         </index>
 
-        <composite alias="Activities" class="srActivity" local="id" foreign="section_id" owner="local" cardinality="many" />
         <composite alias="UserRatings" class="srUserRating" local="id" foreign="section_id" owner="local" cardinality="many" />
         <aggregate alias="ModeratorsGroup" class="modUserGroup" local="usergroup_id" foreign="id" owner="foreign" cardinality="one" />
     </object>
@@ -24,47 +23,21 @@
             <column key="name" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Activities" class="srActivity" local="id" foreign="coefficient_id" owner="local" cardinality="many" />
-    </object>
-
-    <object class="srActivity" table="schoolrating_activities" extends="xPDOSimpleObject">
-        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
-        <field key="description" dbtype="varchar" precision="1000" phptype="string" null="true"/>
-        <field key="auditory_age" dbtype="int" precision="11" phptype="integer" null="true"/>
-        <field key="auditory_sex" dbtype="varchar" precision="20" phptype="string" null="true"/>
-        <field key="competencies" dbtype="varchar" precision="255" phptype="string" null="true"/>
-        <field key="address" dbtype="varchar" precision="255" phptype="string" null="true"/>
-        <field key="date" dbtype="date" phptype="date" null="true"/>
-        <field key="in_charge" dbtype="varchar" precision="100" phptype="string" null="true"/>
-        <field key="published" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0"/>
-        <field key="seats_limit" dbtype="int" precision="11" phptype="integer" null="false" default="0"/>
-
-        <field key="section_id" dbtype="int" precision="11" phptype="integer" null="false"/>
-        <field key="coefficient_id" dbtype="int" precision="11" phptype="integer" null="false"/>
-
-        <index alias="name" name="name" primary="false" unique="true" type="BTREE">
-            <column key="name" length="" collation="A" null="false"/>
-        </index>
-
-        <composite alias="Users" class="modUser" local="id" foreign="activity_id" owner="local" cardinality="many" />
-
-        <aggregate alias="Section" class="srActivitySection" local="section_id" foreign="id" owner="foreign" cardinality="one" />
-        <aggregate alias="Coefficient" class="srActivityCoefficient" local="coefficient_id" foreign="id" owner="foreign" cardinality="one" />
     </object>
 
     <object class="srActivityParticipant" table="schoolrating_activities_participants" extends="xPDOSimpleObject">
-        <field key="activity_id" dbtype="int" precision="11" phptype="integer" null="false"/>
+        <field key="resource_id" dbtype="int" precision="11" phptype="integer" null="false"/>
         <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false"/>
         <field key="allowed" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0"/>
 
         <index alias="activity" name="activity" primary="false" unique="false" type="BTREE">
-            <column key="activity_id" length="" collation="A" null="false"/>
+            <column key="resource_id" length="" collation="A" null="false"/>
         </index>
         <index alias="user" name="user" primary="false" unique="false" type="BTREE">
             <column key="user_id" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Activity" class="srActivity" local="activity_id" foreign="id" owner="foreign" cardinality="one"/>
+        <aggregate alias="Activity" class="modResource" local="resource_id" foreign="id" owner="foreign" cardinality="one"/>
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
     </object>
 

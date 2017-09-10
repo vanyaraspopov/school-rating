@@ -38,17 +38,17 @@ Ext.extend(SchoolRating.window.CreateActivity, MODx.Window, {
 Ext.reg('schoolrating-activity-window-create', SchoolRating.window.CreateActivity);
 
 
-SchoolRating.window.UpdateActivity = function (config) {
+SchoolRating.window.UpdateActivityParticipant = function (config) {
     config = config || {};
     if (!config.id) {
         config.id = 'schoolrating-activity-window-update';
     }
     Ext.applyIf(config, {
-        title: _('schoolrating_activity_update'),
-        width: 550,
+        title: _('schoolrating_activities_participants_update'),
+        width: 650,
         autoHeight: true,
         url: SchoolRating.config.connector_url,
-        action: 'mgr/activity/update',
+        action: '',
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -56,42 +56,20 @@ SchoolRating.window.UpdateActivity = function (config) {
             }, scope: this
         }]
     });
-    SchoolRating.window.UpdateActivity.superclass.constructor.call(this, config);
+    SchoolRating.window.UpdateActivityParticipant.superclass.constructor.call(this, config);
 };
-Ext.extend(SchoolRating.window.UpdateActivity, MODx.Window, {
+Ext.extend(SchoolRating.window.UpdateActivityParticipant, MODx.Window, {
 
     getFields: function (config) {
-        return [{
-            xtype: 'hidden',
-            name: 'id',
-            id: config.id + '-id',
-        }, {
-            xtype: 'textfield',
-            fieldLabel: _('schoolrating_activity_name'),
-            name: 'name',
-            id: config.id + '-name',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
-            xtype: 'numberfield',
-            fieldLabel: _('schoolrating_activity_value'),
-            name: 'value',
-            id: config.id + '-value',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
-            xtype: 'textfield',
-            fieldLabel: _('schoolrating_activity_css_class'),
-            description: _('schoolrating_activity_css_class_help'),
-            name: 'css_class',
-            id: config.id + '-css_class',
-            anchor: '99%',
-            allowBlank: true,
-        }];
+        return {
+            title: _('schoolrating_activities_participants'),
+            xtype: 'schoolrating-grid-activities-participants',
+            record: config.record.object
+        };
     },
 
     loadDropZones: function () {
     }
 
 });
-Ext.reg('schoolrating-activity-window-update', SchoolRating.window.UpdateActivity);
+Ext.reg('schoolrating-activity-window-update', SchoolRating.window.UpdateActivityParticipant);

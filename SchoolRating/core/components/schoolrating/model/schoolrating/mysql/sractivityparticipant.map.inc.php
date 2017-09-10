@@ -6,13 +6,13 @@ $xpdo_meta_map['srActivityParticipant']= array (
   'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
-    'activity_id' => NULL,
+    'resource_id' => NULL,
     'user_id' => NULL,
     'allowed' => 0,
   ),
   'fieldMeta' => 
   array (
-    'activity_id' => 
+    'resource_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '11',
@@ -45,7 +45,7 @@ $xpdo_meta_map['srActivityParticipant']= array (
       'type' => 'BTREE',
       'columns' => 
       array (
-        'activity_id' => 
+        'resource_id' => 
         array (
           'length' => '',
           'collation' => 'A',
@@ -74,8 +74,8 @@ $xpdo_meta_map['srActivityParticipant']= array (
   array (
     'Activity' => 
     array (
-      'class' => 'srActivity',
-      'local' => 'activity_id',
+      'class' => 'modResource',
+      'local' => 'resource_id',
       'foreign' => 'id',
       'owner' => 'foreign',
       'cardinality' => 'one',
