@@ -1,5 +1,8 @@
 <?php
 
+include_once (__DIR__ . '/providers/SmsProviderInterface.php');
+include_once (__DIR__ . '/providers/SmscProvider.php');
+
 class VerifyPhone
 {
     /* Длина генерируемого кода */
@@ -54,7 +57,7 @@ class VerifyPhone
 
     public function setSmscProvider()
     {
-        $config = require(__DIR__ . '/smsc.config.inc.php');
+        $config = require(__DIR__ . '/providers/smsc.config.inc.php');
         $provider = new SmscProvider();
         if ($provider instanceof SmsProviderInterface) {
             $this->provider =& $provider;
@@ -68,7 +71,7 @@ class VerifyPhone
     {
         if (!$this->provider) {
             $this->modx->log(modX::LOG_LEVEL_ERROR, 'Не установлен SMS-провайдер', null, __METHOD__);
-            return;
+            return false;
         }
         $code = $this->generateCode();
 
@@ -83,6 +86,9 @@ class VerifyPhone
         if ($vpPhone->save()) {
             $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
             $this->provider->sendSms($phoneNumber, $messageContent);
+            return true;
+        } else {
+            return false;
         }
     }
 

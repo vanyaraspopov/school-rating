@@ -1,6 +1,0 @@
-<?php
-
-$config = [
-    'login' => '',
-    'password' => ''
-];
