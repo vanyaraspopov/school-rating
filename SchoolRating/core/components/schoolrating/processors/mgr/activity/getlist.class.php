@@ -83,6 +83,17 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
+        //  Participants
+        $array['actions'][] = array(
+            'cls' => '',
+            'icon' => 'icon icon-users',
+            'title' => $this->modx->lexicon('schoolrating_activity_participant_update'),
+            //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
+            'action' => 'updateActivityParticipant',
+            'button' => true,
+            'menu' => true,
+        );
+
         //  value of TV 'event-section'
         $array['section'] = $object->get('value');
 

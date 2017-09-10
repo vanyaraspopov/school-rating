@@ -85,6 +85,52 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         window.open('?a=resource/update&id=' + contentid, '_blank');
     },
 
+    updateActivityParticipant: function (btn, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
+        MODx.msg.alert(
+            _('schoolrating_activity_participant_update'),
+            'Здесь будет таблица участников мероприятия'
+        );
+
+        return;
+
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'mgr/coefficient/get',
+                id: id
+            },
+            listeners: {
+                success: {
+                    fn: function (r) {
+                        var w = MODx.load({
+                            xtype: 'schoolrating-coefficient-window-update',
+                            id: Ext.id(),
+                            record: r,
+                            listeners: {
+                                success: {
+                                    fn: function () {
+                                        this.refresh();
+                                    }, scope: this
+                                }
+                            }
+                        });
+                        w.reset();
+                        w.setValues(r.object);
+                        w.show(e.target);
+                    }, scope: this
+                }
+            }
+        });
+    },
+
     removeActivity: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
