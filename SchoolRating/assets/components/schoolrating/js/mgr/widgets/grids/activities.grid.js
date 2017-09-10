@@ -80,35 +80,9 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             return false;
         }
         var id = this.menu.record.id;
+        var contentid = this.menu.record.contentid;
 
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/activity/get',
-                id: id
-            },
-            listeners: {
-                success: {
-                    fn: function (r) {
-                        var w = MODx.load({
-                            xtype: 'schoolrating-activity-window-update',
-                            id: Ext.id(),
-                            record: r,
-                            listeners: {
-                                success: {
-                                    fn: function () {
-                                        this.refresh();
-                                    }, scope: this
-                                }
-                            }
-                        });
-                        w.reset();
-                        w.setValues(r.object);
-                        w.show(e.target);
-                    }, scope: this
-                }
-            }
-        });
+        window.open('?a=resource/update&id=' + contentid, '_blank');
     },
 
     removeActivity: function () {
