@@ -19,6 +19,11 @@ class srUserRatingCreateProcessor extends modObjectCreateProcessor
         return parent::beforeSet();
     }
 
+    public function afterSave()
+    {
+        $this->object->recalculateUserRating();
+    }
+
 }
 
 return 'srUserRatingCreateProcessor';

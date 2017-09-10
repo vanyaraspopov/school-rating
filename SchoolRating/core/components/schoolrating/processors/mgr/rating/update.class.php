@@ -36,6 +36,11 @@ class srUserRatingUpdateProcessor extends modObjectUpdateProcessor
 
         return parent::beforeSet();
     }
+
+    public function afterSave()
+    {
+        $this->object->recalculateUserRating();
+    }
 }
 
 return 'srUserRatingUpdateProcessor';

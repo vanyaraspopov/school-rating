@@ -34,6 +34,11 @@ class srUserRatingRemoveProcessor extends modObjectProcessor
         return $this->success();
     }
 
+    public function afterSave()
+    {
+        $this->object->recalculateUserRating();
+    }
+
 }
 
 return 'srUserRatingRemoveProcessor';
