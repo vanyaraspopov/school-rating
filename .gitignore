@@ -4,6 +4,7 @@
 
 # and these
 .DS_Store
+/core/vendor/
 
 # but not these
 !.gitignore

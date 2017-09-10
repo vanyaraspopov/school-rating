@@ -2,8 +2,14 @@
 
 class VerifyPhone
 {
+    /* Длина генерируемого кода */
+    const VP_CODE_LENGTH = 6;
+
     /** @var modX $modx */
     public $modx;
+
+    /** @var SmsProviderInterface $provider */
+    public $provider;
 
 
     /**
@@ -46,4 +52,68 @@ class VerifyPhone
         $this->modx->lexicon->load('verifyphone:default');
     }
 
+    public function setSmscProvider()
+    {
+        $config = require(__DIR__ . '/smsc.config.inc.php');
+        $provider = new SmscProvider();
+        if ($provider instanceof SmsProviderInterface) {
+            $this->provider =& $provider;
+            $this->provider->initialize($config);
+        } else {
+            throw new Exception('SMS-провайдер должен реализовать интерфейс SmsProviderInterface');
+        }
+    }
+
+    public function sendVerificationCode($phoneNumber, $messageTpl)
+    {
+        if (!$this->provider) {
+            $this->modx->log(modX::LOG_LEVEL_ERROR, 'Не установлен SMS-провайдер', null, __METHOD__);
+            return;
+        }
+        $code = $this->generateCode();
+
+        $vpPhone = $this->modx->newObject(
+            'vpPhone',
+            [
+                'phone' => $this->cleanPhoneNumber($phoneNumber),
+                'code_hash' => md5($code)
+            ]
+        );
+
+        if ($vpPhone->save()) {
+            $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
+            $this->provider->sendSms($phoneNumber, $messageContent);
+        }
+    }
+
+    public function checkPhoneVerified($phoneNumber)
+    {
+        $vpPhone = $this->modx->getObject(
+            'vpPhone',
+            [
+                'phone' => $this->cleanPhoneNumber($phoneNumber)
+            ]
+        );
+        if ($vpPhone) {
+            return $vpPhone->get('verified');
+        } else {
+            return false;
+        }
+    }
+
+    private function generateCode()
+    {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < self::VP_CODE_LENGTH; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    private function cleanPhoneNumber($phoneNumber)
+    {
+        return $phoneNumber;
+    }
 }
