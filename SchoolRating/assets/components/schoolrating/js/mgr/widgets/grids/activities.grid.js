@@ -80,9 +80,8 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             return false;
         }
         var id = this.menu.record.id;
-        var contentid = this.menu.record.contentid;
 
-        window.open('?a=resource/update&id=' + contentid, '_blank');
+        window.open('?a=resource/update&id=' + id, '_blank');
     },
 
     updateActivityParticipant: function (btn, e, row) {
@@ -93,13 +92,12 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             return false;
         }
         var id = this.menu.record.id;
-        var contentid = this.menu.record.contentid;
 
         MODx.Ajax.request({
             url: this.config.url,
             params: {
                 action: 'mgr/activity/get',
-                id: contentid
+                id: id
             },
             listeners: {
                 success: {
