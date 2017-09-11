@@ -89,6 +89,7 @@ $_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просм�
 $_lang['schoolrating_activities'] = 'Мероприятия';
 $_lang['schoolrating_activity_resource_id'] = 'ID ресурса';
 $_lang['schoolrating_activity_name'] = 'Название';
+$_lang['schoolrating_activity_level'] = 'Уровень мероприятия';
 
 $_lang['schoolrating_activity_create'] = 'Добавить мероприятие';
 $_lang['schoolrating_activity_create_help'] = 'Создание новых мероприятий осуществляется через дерево ресурсов.';
