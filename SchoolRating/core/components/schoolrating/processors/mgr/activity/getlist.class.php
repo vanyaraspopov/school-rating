@@ -80,7 +80,7 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = array(
             'cls' => '',
             'icon' => 'icon icon-users',
-            'title' => $this->modx->lexicon('schoolrating_activity_participant_update'),
+            'title' => $this->modx->lexicon('schoolrating_activities_participants'),
             //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
             'action' => 'updateActivityParticipant',
             'button' => true,

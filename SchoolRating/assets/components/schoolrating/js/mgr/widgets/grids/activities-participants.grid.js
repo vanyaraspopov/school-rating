@@ -53,28 +53,6 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         this.addContextMenuItem(m);
     },
 
-    createActivityParticipant: function (btn, e) {
-        var question_id = this.getStore().baseParams.question_id;
-        MODx.Ajax.request(
-            {
-                url: SchoolRating.config.connector_url,
-                method: 'POST',
-                params: {
-                    action: 'mgr/activity/createparticipant',
-                    question_id: question_id
-                },
-                listeners: {
-                    success: {
-                        fn: function (r) {
-                            this.refresh();
-                        }, scope: this
-                    }
-                }
-            }
-        );
-        this.refresh();
-    },
-
     removeActivityParticipant: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
@@ -136,11 +114,7 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_activity_participant_create'),
-            handler: this.createActivityParticipant,
-            scope: this
-        }];
+        return [];
     },
 
     onClick: function (e) {

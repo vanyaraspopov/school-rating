@@ -162,7 +162,7 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             sortable: true,
             width: 70,
             renderer: function (value) {
-                return '<a href="?a=resource/update&id=' +value+ '" target="_blank">' +value+ '</a>';
+                return '<a href="?a=resource/update&id=' + value + '" target="_blank">' + value + '</a>';
             }
         }, {
             header: _('schoolrating_activity_name'),

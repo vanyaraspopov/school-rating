@@ -44,7 +44,7 @@ SchoolRating.window.UpdateActivityParticipant = function (config) {
         config.id = 'schoolrating-activity-window-update';
     }
     Ext.applyIf(config, {
-        title: _('schoolrating_activities_participants_update'),
+        title: _('schoolrating_activities_participants'),
         width: 650,
         autoHeight: true,
         url: SchoolRating.config.connector_url,

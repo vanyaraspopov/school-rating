@@ -113,5 +113,9 @@ $_lang['schoolrating_activities_participants_remove'] = 'Удалить учас
 $_lang['schoolrating_activity_participant_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
 $_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы уверены, что хотите удалить эти заявки?';
 
+$_lang['schoolrating_activity_participant_err_user_ns'] = 'Не задан пользователь';
+$_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано мероприятие';
+
+
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
