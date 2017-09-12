@@ -23,9 +23,16 @@ class srActivityParticipantCreateProcessor extends modObjectCreateProcessor
             $this->modx->error->addField('resource_id', $this->modx->lexicon('schoolrating_activity_participant_err_resource_ns'));
         }
 
+        if ($this->modx->getCount($this->classKey, [
+            'user_id' => $user_id,
+            'resource_id' => $resource_id
+        ])) {
+            $this->modx->error->addError($this->modx->lexicon('schoolrating_item_err_ae'));
+        }
+
         return parent::beforeSet();
     }
 
 }
 
-return 'srActivityParticipant';
+return 'srActivityParticipantCreateProcessor';

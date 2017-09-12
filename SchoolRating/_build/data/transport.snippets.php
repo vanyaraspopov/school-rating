@@ -7,7 +7,11 @@ $snippets = array();
 $tmp = array(
     'srLastRating' => array(
         'file' => 'srLastRating',
-        'description' => '',
+        'description' => 'Выводит последние оценки пользователя.',
+    ),
+    'srCreateParticipant' => array(
+        'file' => 'srCreateParticipant',
+        'description' => 'Добавляет участника мероприятию.',
     ),
 );
 
