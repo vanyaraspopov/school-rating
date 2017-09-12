@@ -70,15 +70,24 @@ class VerifyPhone
     public function sendVerificationCode($phoneNumber, $messageTpl)
     {
         if (!$this->provider) {
-            $this->modx->log(modX::LOG_LEVEL_ERROR, 'Не установлен SMS-провайдер', null, __METHOD__);
-            return false;
+            $message = 'Не установлен SMS-провайдер';
+            $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
+            return $message;
         }
+
+        $cleanNumber = $this->cleanPhoneNumber($phoneNumber);
+        if ($this->modx->getCount('vpPhone', ['phone' => $cleanNumber])) {
+            $message = 'Такой номер телефона уже есть: ' . $phoneNumber;
+            $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
+            return $message;
+        }
+
         $code = $this->generateCode();
 
         $vpPhone = $this->modx->newObject(
             'vpPhone',
             [
-                'phone' => $this->cleanPhoneNumber($phoneNumber),
+                'phone' => $cleanNumber,
                 'code_hash' => md5($code)
             ]
         );
@@ -86,10 +95,21 @@ class VerifyPhone
         if ($vpPhone->save()) {
             $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
             $this->provider->sendSms($phoneNumber, $messageContent);
-            return true;
+            return;
         } else {
-            return false;
+            return 'Ошибка записи нового телефона: ' . $phoneNumber;
         }
+    }
+
+    public function checkVerificationCode($phoneNumber, $code)
+    {
+        $vpPhone = $this->modx->getObject(
+            'vpPhone',
+            [
+                'phone' => $this->cleanPhoneNumber($phoneNumber)
+            ]
+        );
+        return $vpPhone->get('code_hash') === md5($code);
     }
 
     public function checkPhoneVerified($phoneNumber)
