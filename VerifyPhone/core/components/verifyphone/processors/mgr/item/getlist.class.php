@@ -64,7 +64,7 @@ class vpPhoneGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
-        if (!$array['active']) {
+        if (!$array['verified']) {
             $array['actions'][] = array(
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',

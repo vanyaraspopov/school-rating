@@ -91,7 +91,7 @@ class VerifyPhone
             'vpPhone',
             [
                 'phone' => $cleanNumber,
-                'code_hash' => md5($code)
+                'code' => ($code)
             ]
         );
 
@@ -117,7 +117,7 @@ class VerifyPhone
                 'phone' => self::cleanPhoneNumber($phoneNumber)
             ]
         );
-        if( $vpPhone->get('code_hash') === md5($code) ) {
+        if( $vpPhone->get('code') === ($code) ) {
             $vpPhone->set('verified', 1);
             if ( !$vpPhone->save() ) {
                 $this->modx->log(modX::LOG_LEVEL_ERROR, 'Ошибка сохранения объекта', null, __METHOD__);

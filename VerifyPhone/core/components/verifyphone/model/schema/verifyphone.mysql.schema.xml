@@ -4,7 +4,7 @@
 
     <object class="vpPhone" table="vp_phones" extends="xPDOSimpleObject">
         <field key="phone" dbtype="varchar" precision="20" phptype="string" null="false"/>
-        <field key="code_hash" dbtype="varchar" precision="32" phptype="string" null="false"/>
+        <field key="code" dbtype="varchar" precision="32" phptype="string" null="false"/>
         <field key="verified" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0"/>
 
         <index alias="phone" name="phone" primary="false" unique="true" type="BTREE">
