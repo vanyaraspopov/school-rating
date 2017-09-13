@@ -5,10 +5,18 @@
 $snippets = array();
 
 $tmp = array(
-    /*'VerifyPhone' => array(
-        'file' => 'verifyphone',
-        'description' => '',
-    ),*/
+    'vpSendCode' => array(
+        'file' => 'vpSendCode',
+        'description' => 'Отправляет код подтверждения',
+    ),
+    'vpCheckCode' => array(
+        'file' => 'vpCheckCode',
+        'description' => 'Проверяет код подтверждения',
+    ),
+    'vpCheckPhoneVerified' => array(
+        'file' => 'vpCheckPhoneVerified',
+        'description' => 'Проверяет подтверждён ли номер телефона',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

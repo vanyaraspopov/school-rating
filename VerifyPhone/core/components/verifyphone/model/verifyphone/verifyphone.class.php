@@ -1,7 +1,7 @@
 <?php
 
-include_once (__DIR__ . '/providers/SmsProviderInterface.php');
-include_once (__DIR__ . '/providers/SmscProvider.php');
+include_once(__DIR__ . '/providers/SmsProviderInterface.php');
+include_once(__DIR__ . '/providers/SmscProvider.php');
 
 class VerifyPhone
 {
@@ -57,35 +57,71 @@ class VerifyPhone
 
     public function setSmscProvider()
     {
-        $config = require(__DIR__ . '/providers/smsc.config.inc.php');
         $provider = new SmscProvider();
         if ($provider instanceof SmsProviderInterface) {
+            $config = require(__DIR__ . '/providers/smsc.config.inc.php');
+            $config = array_merge($config, [
+                'sender' => $this->modx->getOption('site_name'),
+            ]);
             $this->provider =& $provider;
             $this->provider->initialize($config);
         } else {
-            throw new Exception('SMS-провайдер должен реализовать интерфейс SmsProviderInterface');
+            throw new Exception('SMS-провайдер должен реализовывать интерфейс SmsProviderInterface');
         }
     }
 
     public function sendVerificationCode($phoneNumber, $messageTpl)
     {
         if (!$this->provider) {
-            $this->modx->log(modX::LOG_LEVEL_ERROR, 'Не установлен SMS-провайдер', null, __METHOD__);
-            return false;
+            $message = 'Не установлен SMS-провайдер';
+            $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
+            return $message;
         }
+
+        $cleanNumber = self::cleanPhoneNumber($phoneNumber);
+        if ($this->modx->getCount('vpPhone', ['phone' => $cleanNumber])) {
+            $message = 'Такой номер телефона уже есть: ' . $phoneNumber;
+            $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
+            return $message;
+        }
+
         $code = $this->generateCode();
 
         $vpPhone = $this->modx->newObject(
             'vpPhone',
             [
-                'phone' => $this->cleanPhoneNumber($phoneNumber),
-                'code_hash' => md5($code)
+                'phone' => $cleanNumber,
+                'code' => ($code)
             ]
         );
 
         if ($vpPhone->save()) {
             $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
-            $this->provider->sendSms($phoneNumber, $messageContent);
+            try {
+                $this->provider->sendSms($phoneNumber, $messageContent);
+            } catch (Exception $e) {
+                $vpPhone->delete();
+                return $e->getMessage();
+            }
+            return;
+        } else {
+            return 'Ошибка записи нового телефона: ' . $phoneNumber;
+        }
+    }
+
+    public function checkVerificationCode($phoneNumber, $code)
+    {
+        $vpPhone = $this->modx->getObject(
+            'vpPhone',
+            [
+                'phone' => self::cleanPhoneNumber($phoneNumber)
+            ]
+        );
+        if( $vpPhone->get('code') === ($code) ) {
+            $vpPhone->set('verified', 1);
+            if ( !$vpPhone->save() ) {
+                $this->modx->log(modX::LOG_LEVEL_ERROR, 'Ошибка сохранения объекта', null, __METHOD__);
+            }
             return true;
         } else {
             return false;
@@ -97,7 +133,7 @@ class VerifyPhone
         $vpPhone = $this->modx->getObject(
             'vpPhone',
             [
-                'phone' => $this->cleanPhoneNumber($phoneNumber)
+                'phone' => self::cleanPhoneNumber($phoneNumber)
             ]
         );
         if ($vpPhone) {
@@ -118,7 +154,7 @@ class VerifyPhone
         return $randomString;
     }
 
-    private function cleanPhoneNumber($phoneNumber)
+    public static function cleanPhoneNumber($phoneNumber)
     {
         return $phoneNumber;
     }
