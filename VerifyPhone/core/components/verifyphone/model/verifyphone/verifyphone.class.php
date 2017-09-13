@@ -60,9 +60,9 @@ class VerifyPhone
         $provider = new SmscProvider();
         if ($provider instanceof SmsProviderInterface) {
             $config = require(__DIR__ . '/providers/smsc.config.inc.php');
-            $config = array_merge($config, [
+            $config = array_merge([
                 'sender' => $this->modx->getOption('site_name'),
-            ]);
+            ], $config);
             $this->provider =& $provider;
             $this->provider->initialize($config);
         } else {
@@ -79,21 +79,23 @@ class VerifyPhone
         }
 
         $cleanNumber = self::cleanPhoneNumber($phoneNumber);
-        if ($this->modx->getCount('vpPhone', ['phone' => $cleanNumber])) {
-            $message = 'Такой номер телефона уже есть: ' . $phoneNumber;
-            $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
-            return $message;
-        }
-
         $code = $this->generateCode();
 
-        $vpPhone = $this->modx->newObject(
+        $vpPhone = $this->modx->getObject(
             'vpPhone',
             [
-                'phone' => $cleanNumber,
-                'code' => ($code)
+                'phone' => $cleanNumber
             ]
         );
+        if (!$vpPhone) {
+            $vpPhone = $this->modx->newObject(
+                'vpPhone',
+                [
+                    'phone' => $cleanNumber,
+                ]
+            );
+        }
+        $vpPhone->set('code', $code);
 
         if ($vpPhone->save()) {
             $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
@@ -156,6 +158,9 @@ class VerifyPhone
 
     public static function cleanPhoneNumber($phoneNumber)
     {
-        return $phoneNumber;
+        $numbers = [];
+        preg_match_all('/\d/', $phoneNumber, $numbers);
+
+        return implode('', $numbers[0]);
     }
 }
