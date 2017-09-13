@@ -1,7 +1,7 @@
 <?php
 
-include_once (__DIR__ . '/providers/SmsProviderInterface.php');
-include_once (__DIR__ . '/providers/SmscProvider.php');
+include_once(__DIR__ . '/providers/SmsProviderInterface.php');
+include_once(__DIR__ . '/providers/SmscProvider.php');
 
 class VerifyPhone
 {
@@ -57,13 +57,16 @@ class VerifyPhone
 
     public function setSmscProvider()
     {
-        $config = require(__DIR__ . '/providers/smsc.config.inc.php');
         $provider = new SmscProvider();
         if ($provider instanceof SmsProviderInterface) {
+            $config = require(__DIR__ . '/providers/smsc.config.inc.php');
+            $config = array_merge($config, [
+                'sender' => $this->modx->getOption('site_name'),
+            ]);
             $this->provider =& $provider;
             $this->provider->initialize($config);
         } else {
-            throw new Exception('SMS-провайдер должен реализовать интерфейс SmsProviderInterface');
+            throw new Exception('SMS-провайдер должен реализовывать интерфейс SmsProviderInterface');
         }
     }
 
@@ -94,7 +97,12 @@ class VerifyPhone
 
         if ($vpPhone->save()) {
             $messageContent = $this->modx->getChunk($messageTpl, ['code' => $code]);
-            $this->provider->sendSms($phoneNumber, $messageContent);
+            try {
+                $this->provider->sendSms($phoneNumber, $messageContent);
+            } catch (Exception $e) {
+                $vpPhone->delete();
+                return $e->getMessage();
+            }
             return;
         } else {
             return 'Ошибка записи нового телефона: ' . $phoneNumber;
@@ -109,7 +117,15 @@ class VerifyPhone
                 'phone' => $this->cleanPhoneNumber($phoneNumber)
             ]
         );
-        return $vpPhone->get('code_hash') === md5($code);
+        if( $vpPhone->get('code_hash') === md5($code) ) {
+            $vpPhone->set('verified', 1);
+            if ( !$vpPhone->save() ) {
+                $this->modx->log(modX::LOG_LEVEL_ERROR, 'Ошибка сохранения объекта', null, __METHOD__);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function checkPhoneVerified($phoneNumber)

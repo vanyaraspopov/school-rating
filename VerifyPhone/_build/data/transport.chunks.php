@@ -5,14 +5,10 @@
 $chunks = array();
 
 $tmp = array(
-    /*'tpl.VerifyPhone.item' => array(
-        'file' => 'item',
+    'vp-message-tpl' => array(
+        'file' => 'vp-message-tpl',
         'description' => '',
     ),
-    'tpl.VerifyPhone.office' => array(
-        'file' => 'office',
-        'description' => '',
-    ),*/
 );
 
 // Save chunks for setup options
