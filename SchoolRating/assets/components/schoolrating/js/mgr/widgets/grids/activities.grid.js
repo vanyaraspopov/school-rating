@@ -80,9 +80,47 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             return false;
         }
         var id = this.menu.record.id;
-        var contentid = this.menu.record.contentid;
 
-        window.open('?a=resource/update&id=' + contentid, '_blank');
+        window.open('?a=resource/update&id=' + id, '_blank');
+    },
+
+    updateActivityParticipant: function (btn, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'mgr/activity/get',
+                id: id
+            },
+            listeners: {
+                success: {
+                    fn: function (r) {
+                        var w = MODx.load({
+                            xtype: 'schoolrating-activity-window-update',
+                            id: Ext.id(),
+                            record: r,
+                            listeners: {
+                                success: {
+                                    fn: function () {
+                                        this.refresh();
+                                    }, scope: this
+                                }
+                            }
+                        });
+                        w.reset();
+                        w.setValues(r.object);
+                        w.show(e.target);
+                    }, scope: this
+                }
+            }
+        });
     },
 
     removeActivity: function () {
@@ -114,23 +152,17 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'contentid', 'pagetitle', 'section', 'actions'];
+        return ['id', 'pagetitle', 'section', 'level', 'actions'];
     },
 
     getColumns: function () {
         return [{
-            header: _('id'),
-            dataIndex: 'id',
-            hidden: true,
-            sortable: true,
-            width: 70
-        }, {
             header: _('schoolrating_activity_resource_id'),
-            dataIndex: 'contentid',
+            dataIndex: 'id',
             sortable: true,
             width: 70,
             renderer: function (value) {
-                return '<a href="?a=resource/update&id=' +value+ '" target="_blank">' +value+ '</a>';
+                return '<a href="?a=resource/update&id=' + value + '" target="_blank">' + value + '</a>';
             }
         }, {
             header: _('schoolrating_activity_name'),
@@ -141,7 +173,12 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             header: _('schoolrating_section'),
             dataIndex: 'section',
             sortable: true,
-            width: 200,
+            width: 150,
+        }, {
+            header: _('schoolrating_activity_level'),
+            dataIndex: 'level',
+            sortable: true,
+            width: 150,
         }, {
             header: _('schoolrating_grid_actions'),
             dataIndex: 'actions',

@@ -32,7 +32,7 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
-        $c->select($this->modx->getSelectColumns('modResource','modResource'));
+        $c->select($this->modx->getSelectColumns('modResource', 'modResource'));
 
         $eventsFuture = $this->modx->getOption('schoolrating_events_future');
         $eventsPast = $this->modx->getOption('schoolrating_events_past');
@@ -41,13 +41,6 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             $c->where([
                 'parent:IN' => [$eventsFuture, $eventsPast]
             ]);
-        }
-
-        $eventsTvSection = $this->modx->getOption('schoolrating_events_tv_section');
-        if ($eventsTvSection) {
-            $c->innerJoin('modTemplateVarResource', 'TemplateVarResources');
-            $c->select($this->modx->getSelectColumns('modTemplateVarResource','TemplateVarResources'));
-            $c->where(['TemplateVarResources.tmplvarid' => $eventsTvSection]);
         }
 
         $query = trim($this->getProperty('query'));
@@ -83,8 +76,30 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
-        //  value of TV 'event-section'
-        $array['section'] = $object->get('value');
+        //  Participants
+        $array['actions'][] = array(
+            'cls' => '',
+            'icon' => 'icon icon-users',
+            'title' => $this->modx->lexicon('schoolrating_activities_participants'),
+            //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
+            'action' => 'updateActivityParticipant',
+            'button' => true,
+            'menu' => true,
+        );
+
+        /* @var modResource $object */
+
+        $eventsTvSection = $this->modx->getOption('schoolrating_events_tv_section');
+        if ($eventsTvSection) {
+            $array['section'] = $object->getTVValue($eventsTvSection);
+        }
+
+        $eventsTvLevel = $this->modx->getOption('schoolrating_events_tv_level');
+        if ($eventsTvLevel) {
+            //  В TV 'event-level' в поле value лежит значение 'css_class' соответствующего коэффициента (уровня)
+            $level = $this->modx->getObject('srActivityCoefficient', ['css_class' => $object->getTVValue($eventsTvLevel)]);
+            $array['level'] = $level->get('name');
+        }
 
         return $array;
     }

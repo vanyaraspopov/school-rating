@@ -89,6 +89,7 @@ $_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просм�
 $_lang['schoolrating_activities'] = 'Мероприятия';
 $_lang['schoolrating_activity_resource_id'] = 'ID ресурса';
 $_lang['schoolrating_activity_name'] = 'Название';
+$_lang['schoolrating_activity_level'] = 'Уровень мероприятия';
 
 $_lang['schoolrating_activity_create'] = 'Добавить мероприятие';
 $_lang['schoolrating_activity_create_help'] = 'Создание новых мероприятий осуществляется через дерево ресурсов.';
@@ -97,6 +98,24 @@ $_lang['schoolrating_activity_remove'] = 'Удалить мероприятие'
 $_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
 $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
+
+//  Участники мероприятий
+$_lang['schoolrating_activities_participants'] = 'Участники';
+$_lang['schoolrating_activity_participant_id'] = 'ID';
+$_lang['schoolrating_activity_participant_user_id'] = 'ID пользователя';
+$_lang['schoolrating_activity_participant_resource_id'] = 'ID мероприятия';
+$_lang['schoolrating_activity_participant_allowed'] = 'Одобрено';
+
+$_lang['schoolrating_activity_participant_create'] = 'Добавить участника';
+$_lang['schoolrating_activities_participants_update'] = 'Посмотреть участников';
+$_lang['schoolrating_activity_participant_remove'] = 'Удалить участника';
+$_lang['schoolrating_activities_participants_remove'] = 'Удалить участников';
+$_lang['schoolrating_activity_participant_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
+$_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы уверены, что хотите удалить эти заявки?';
+
+$_lang['schoolrating_activity_participant_err_user_ns'] = 'Не задан пользователь';
+$_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано мероприятие';
+
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
