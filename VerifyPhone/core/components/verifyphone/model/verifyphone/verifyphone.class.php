@@ -78,7 +78,7 @@ class VerifyPhone
             return $message;
         }
 
-        $cleanNumber = $this->cleanPhoneNumber($phoneNumber);
+        $cleanNumber = self::cleanPhoneNumber($phoneNumber);
         if ($this->modx->getCount('vpPhone', ['phone' => $cleanNumber])) {
             $message = 'Такой номер телефона уже есть: ' . $phoneNumber;
             $this->modx->log(modX::LOG_LEVEL_ERROR, $message, null, __METHOD__);
@@ -114,7 +114,7 @@ class VerifyPhone
         $vpPhone = $this->modx->getObject(
             'vpPhone',
             [
-                'phone' => $this->cleanPhoneNumber($phoneNumber)
+                'phone' => self::cleanPhoneNumber($phoneNumber)
             ]
         );
         if( $vpPhone->get('code_hash') === md5($code) ) {
@@ -133,7 +133,7 @@ class VerifyPhone
         $vpPhone = $this->modx->getObject(
             'vpPhone',
             [
-                'phone' => $this->cleanPhoneNumber($phoneNumber)
+                'phone' => self::cleanPhoneNumber($phoneNumber)
             ]
         );
         if ($vpPhone) {
@@ -154,7 +154,7 @@ class VerifyPhone
         return $randomString;
     }
 
-    private function cleanPhoneNumber($phoneNumber)
+    public static function cleanPhoneNumber($phoneNumber)
     {
         return $phoneNumber;
     }
