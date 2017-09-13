@@ -1,4 +1,4 @@
-VerifyPhone.window.CreateItem = function (config) {
+VerifyPhone.window.CreatePhone = function (config) {
     config = config || {};
     if (!config.id) {
         config.id = 'verifyphone-item-window-create';
@@ -16,9 +16,9 @@ VerifyPhone.window.CreateItem = function (config) {
             }, scope: this
         }]
     });
-    VerifyPhone.window.CreateItem.superclass.constructor.call(this, config);
+    VerifyPhone.window.CreatePhone.superclass.constructor.call(this, config);
 };
-Ext.extend(VerifyPhone.window.CreateItem, MODx.Window, {
+Ext.extend(VerifyPhone.window.CreatePhone, MODx.Window, {
 
     getFields: function (config) {
         return [{
@@ -48,10 +48,10 @@ Ext.extend(VerifyPhone.window.CreateItem, MODx.Window, {
     }
 
 });
-Ext.reg('verifyphone-item-window-create', VerifyPhone.window.CreateItem);
+Ext.reg('verifyphone-item-window-create', VerifyPhone.window.CreatePhone);
 
 
-VerifyPhone.window.UpdateItem = function (config) {
+VerifyPhone.window.UpdatePhone = function (config) {
     config = config || {};
     if (!config.id) {
         config.id = 'verifyphone-item-window-update';
@@ -69,9 +69,9 @@ VerifyPhone.window.UpdateItem = function (config) {
             }, scope: this
         }]
     });
-    VerifyPhone.window.UpdateItem.superclass.constructor.call(this, config);
+    VerifyPhone.window.UpdatePhone.superclass.constructor.call(this, config);
 };
-Ext.extend(VerifyPhone.window.UpdateItem, MODx.Window, {
+Ext.extend(VerifyPhone.window.UpdatePhone, MODx.Window, {
 
     getFields: function (config) {
         return [{
@@ -104,4 +104,4 @@ Ext.extend(VerifyPhone.window.UpdateItem, MODx.Window, {
     }
 
 });
-Ext.reg('verifyphone-item-window-update', VerifyPhone.window.UpdateItem);
+Ext.reg('verifyphone-item-window-update', VerifyPhone.window.UpdatePhone);
