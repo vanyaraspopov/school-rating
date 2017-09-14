@@ -31,6 +31,13 @@ class srActivityParticipantGetListProcessor extends modObjectGetListProcessor
             ));
         }
 
+        $resource_id = $this->getProperty('resource_id');
+        if ($resource_id) {
+            $c->where(array(
+                'resource_id' => $resource_id,
+            ));
+        }
+
         return $c;
     }
 
