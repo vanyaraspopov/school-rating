@@ -113,6 +113,8 @@ $_lang['schoolrating_activity_participant_remove'] = 'Удалить участ�
 $_lang['schoolrating_activities_participants_remove'] = 'Удалить участников';
 $_lang['schoolrating_activity_participant_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
 $_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы уверены, что хотите удалить эти заявки?';
+$_lang['schoolrating_activities_participants_selected_allow'] = 'Одобрить';
+$_lang['schoolrating_activities_participants_selected_disallow'] = 'Отклонить';
 
 $_lang['schoolrating_activity_participant_err_user_ns'] = 'Не задан пользователь';
 $_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано мероприятие';

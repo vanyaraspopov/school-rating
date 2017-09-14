@@ -3,12 +3,13 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
     if (!config.id) {
         config.id = 'schoolrating-grid-activities-participants';
     }
+    this.sm = new Ext.grid.CheckboxSelectionModel();
     Ext.applyIf(config, {
         url: SchoolRating.config.connector_url,
         fields: this.getFields(config),
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
-        sm: new Ext.grid.CheckboxSelectionModel(),
+        sm: this.sm,
         baseParams: {
             action: 'mgr/participant/getlist',
             resource_id: config.record.id
@@ -86,7 +87,7 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getColumns: function () {
-        return [{
+        return [this.sm, {
             header: _('schoolrating_activity_participant_id'),
             dataIndex: 'id',
             sortable: true,
@@ -114,7 +115,18 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return ['->', {
+        return [{
+            text: _('bulk_actions')
+            ,menu: [{
+                text: _('schoolrating_activities_participants_selected_allow')
+                ,handler: this.allowSelected
+                ,scope: this
+            },{
+                text: _('schoolrating_activities_participants_selected_disallow')
+                ,handler: this.disallowSelected
+                ,scope: this
+            }]
+        }, '->', {
             xtype: 'schoolrating-field-search',
             width: 250,
             listeners: {
