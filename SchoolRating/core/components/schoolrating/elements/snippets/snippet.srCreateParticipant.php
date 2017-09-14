@@ -13,7 +13,7 @@ $resourceId = $modx->getOption('resourceId', $scriptProperties);
 
 /* @var modProcessorResponse $response */
 $response = $modx->runProcessor(
-    'mgr/activity/createparticipant',
+    'mgr/participant/create',
     [
         'user_id' => $userId,
         'resource_id' => $resourceId
