@@ -164,6 +164,45 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         return this.processEvent('click', e);
     },
 
+    allowSelected: function() {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+        MODx.Ajax.request({
+            url: this.config.url
+            ,params: {
+                action: 'mgr/participant/allowMultiple'
+                ,ids: cs
+            }
+            ,listeners: {
+                'success': {fn:function(r) {
+                    this.getSelectionModel().clearSelections(true);
+                    this.refresh();
+                },scope:this}
+            }
+        });
+        return true;
+    },
+    disallowSelected: function() {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+        MODx.Ajax.request({
+            url: this.config.url
+            ,params: {
+                action: 'mgr/participant/disallowMultiple'
+                ,ids: cs
+            }
+            ,listeners: {
+                'success': {fn:function(r) {
+                    this.getSelectionModel().clearSelections(true);
+                    this.refresh();
+                },scope:this}
+            }
+        });
+        return true;
+    },
+
     _getSelectedIds: function () {
         var ids = [];
         var selected = this.getSelectionModel().getSelections();
