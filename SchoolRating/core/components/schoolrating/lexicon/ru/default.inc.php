@@ -103,7 +103,19 @@ $_lang['schoolrating_activity_remove'] = 'Удалить мероприятие'
 $_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
 $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
+
 $_lang['schoolrating_activity_import_export'] = 'Импорт / Экспорт';
+$_lang['schoolrating_snapshot'] = 'Снимок мероприятия';
+$_lang['schoolrating_snapshots'] = 'Снимки мероприятий';
+$_lang['schoolrating_snapshot_id'] = 'ID';
+$_lang['schoolrating_snapshot_date'] = 'Дата';
+$_lang['schoolrating_snapshot_filepath'] = 'Путь к файлу';
+
+$_lang['schoolrating_snapshot_upload'] = 'Загрузить снимок';
+$_lang['schoolrating_snapshot_remove'] = 'Удалить снимок';
+$_lang['schoolrating_snapshots_remove'] = 'Удалить снимок';
+$_lang['schoolrating_snapshot_remove_confirm'] = 'Вы уверены, что хотите удалить этот снимок?';
+$_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти снимки?';
 
 //  Участники мероприятий
 $_lang['schoolrating_activities_participants'] = 'Участники';

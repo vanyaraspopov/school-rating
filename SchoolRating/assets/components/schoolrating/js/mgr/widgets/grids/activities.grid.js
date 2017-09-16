@@ -170,6 +170,23 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         return true;
     },
 
+    showSnapshots: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-snapshots-window',
+            id: Ext.id(),
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
     getFields: function () {
         return ['id', 'pagetitle', 'section', 'level', 'parent', 'published', 'actions'];
     },
@@ -219,12 +236,7 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     getTopBar: function () {
         return [{
             text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
-            handler: function () {
-                MODx.msg.alert(
-                    _('schoolrating_activity_import_export'),
-                    _('schoolrating_activity_create_help')
-                );
-            },//this.createActivity,
+            handler: this.showSnapshots,
             scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',

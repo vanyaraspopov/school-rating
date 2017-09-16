@@ -1,10 +1,10 @@
-SchoolRating.window.UpdateActivityParticipant = function (config) {
+SchoolRating.window.Snapshots = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'schoolrating-activity-window-update';
+        config.id = 'schoolrating-snapshots-window';
     }
     Ext.applyIf(config, {
-        title: _('schoolrating_activities_participants'),
+        title: _('schoolrating_snapshots'),
         width: 700,
         autoHeight: true,
         url: SchoolRating.config.connector_url,
@@ -21,15 +21,14 @@ SchoolRating.window.UpdateActivityParticipant = function (config) {
             }, scope: this
         }]
     });
-    SchoolRating.window.UpdateActivityParticipant.superclass.constructor.call(this, config);
+    SchoolRating.window.Snapshots.superclass.constructor.call(this, config);
 };
-Ext.extend(SchoolRating.window.UpdateActivityParticipant, MODx.Window, {
+Ext.extend(SchoolRating.window.Snapshots, MODx.Window, {
 
     getFields: function (config) {
         return {
-            title: _('schoolrating_activities_participants'),
-            xtype: 'schoolrating-grid-activities-participants',
-            record: config.record.object
+            title: _('schoolrating_snapshots'),
+            xtype: 'schoolrating-grid-snapshots'
         };
     },
 
@@ -37,4 +36,4 @@ Ext.extend(SchoolRating.window.UpdateActivityParticipant, MODx.Window, {
     }
 
 });
-Ext.reg('schoolrating-activity-window-update', SchoolRating.window.UpdateActivityParticipant);
+Ext.reg('schoolrating-snapshots-window', SchoolRating.window.Snapshots);
