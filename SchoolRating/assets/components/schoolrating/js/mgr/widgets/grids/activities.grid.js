@@ -218,10 +218,10 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_activity_create'),
+            text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
             handler: function () {
                 MODx.msg.alert(
-                    _('schoolrating_activity_create'),
+                    _('schoolrating_activity_import_export'),
                     _('schoolrating_activity_create_help')
                 );
             },//this.createActivity,

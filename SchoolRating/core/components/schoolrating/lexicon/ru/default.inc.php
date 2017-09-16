@@ -103,6 +103,7 @@ $_lang['schoolrating_activity_remove'] = 'Удалить мероприятие'
 $_lang['schoolrating_activities_remove'] = 'Удалить мероприятия';
 $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
+$_lang['schoolrating_activity_import_export'] = 'Импорт / Экспорт';
 
 //  Участники мероприятий
 $_lang['schoolrating_activities_participants'] = 'Участники';

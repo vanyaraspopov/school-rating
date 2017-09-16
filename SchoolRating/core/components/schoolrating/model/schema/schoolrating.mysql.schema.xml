@@ -52,4 +52,9 @@
         <aggregate alias="Section" class="srActivitySection" local="section_id" foreign="id" owner="foreign" cardinality="one"/>
     </object>
 
+    <object class="srActivitiesSnapshot" table="schoolrating_activities_snapshots" extends="xPDOSimpleObject">
+        <field key="date" dbtype="date" phptype="date" null="false"/>
+        <field key="filepath" dbtype="varchar" precision="400" phptype="string" true="false"/>
+    </object>
+
 </model>
