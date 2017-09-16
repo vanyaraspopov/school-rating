@@ -111,7 +111,12 @@ $_lang['schoolrating_snapshot_id'] = 'ID';
 $_lang['schoolrating_snapshot_date'] = 'Дата';
 $_lang['schoolrating_snapshot_filepath'] = 'Путь к файлу';
 
+$_lang['schoolrating_snapshot_confirm'] = 'Применить снимок';
 $_lang['schoolrating_snapshot_upload'] = 'Загрузить снимок';
+$_lang['schoolrating_snapshot_download'] = 'Скачать снимок';
+
+$_lang['schoolrating_snapshot_create'] = 'Создать снимок';
+$_lang['schoolrating_snapshot_create_help'] = 'Будет создан снимок имеющихся на данный момент мероприятий';
 $_lang['schoolrating_snapshot_remove'] = 'Удалить снимок';
 $_lang['schoolrating_snapshots_remove'] = 'Удалить снимок';
 $_lang['schoolrating_snapshot_remove_confirm'] = 'Вы уверены, что хотите удалить этот снимок?';

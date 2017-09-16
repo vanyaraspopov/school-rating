@@ -80,7 +80,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'date', 'filepath'];
+        return ['id', 'date', 'filepath', 'actions'];
     },
 
     getColumns: function () {
@@ -99,12 +99,28 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             dataIndex: 'filepath',
             sortable: true,
             width: 300,
+        }, {
+            header: _('schoolrating_grid_actions'),
+            dataIndex: 'actions',
+            renderer: SchoolRating.utils.renderActions,
+            sortable: false,
+            width: 100,
+            id: 'actions'
         }];
     },
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_snapshot_upload'),
+            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_snapshot_create'),
+            handler: function () {
+                MODx.msg.alert(
+                    _('schoolrating_snapshot_create'),
+                    _('schoolrating_snapshot_create_help')
+                );
+            },
+            scope: this
+        }, {
+            text: '<i class="icon icon-upload"></i>&nbsp;' + _('schoolrating_snapshot_upload'),
             handler: function () {
                 MODx.msg.alert(
                     _('schoolrating_snapshot_upload'),
@@ -112,22 +128,6 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
                 );
             },
             scope: this
-        }, '->', {
-            xtype: 'schoolrating-field-search',
-            width: 250,
-            listeners: {
-                search: {
-                    fn: function (field) {
-                        this._doSearch(field);
-                    }, scope: this
-                },
-                clear: {
-                    fn: function (field) {
-                        field.setValue('');
-                        this._clearSearch();
-                    }, scope: this
-                },
-            }
         }];
     },
 
