@@ -92,6 +92,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         }, {
             header: _('schoolrating_snapshot_date'),
             dataIndex: 'date',
+            renderer: SchoolRating.utils.renderDate,
             sortable: true,
             width: 200,
         }, {
@@ -112,12 +113,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
     getTopBar: function () {
         return [{
             text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_snapshot_create'),
-            handler: function () {
-                MODx.msg.alert(
-                    _('schoolrating_snapshot_create'),
-                    _('schoolrating_snapshot_create_help')
-                );
-            },
+            handler: this.createSnapshot,
             scope: this
         }, {
             text: '<i class="icon icon-upload"></i>&nbsp;' + _('schoolrating_snapshot_upload'),
@@ -148,6 +144,25 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             }
         }
         return this.processEvent('click', e);
+    },
+
+    createSnapshot: function () {
+        MODx.msg.confirm({
+            title: _('schoolrating_snapshot_create'),
+            text: _('schoolrating_snapshot_create_help'),
+            url: this.config.url,
+            params: {
+                action: 'mgr/snapshot/create',
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        return true;
     },
 
     _getSelectedIds: function () {
