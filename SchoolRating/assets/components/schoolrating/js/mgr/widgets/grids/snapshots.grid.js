@@ -51,34 +51,6 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         this.addContextMenuItem(m);
     },
 
-    removeActivityParticipant: function () {
-        var ids = this._getSelectedIds();
-        if (!ids.length) {
-            return false;
-        }
-        MODx.msg.confirm({
-            title: ids.length > 1
-                ? _('schoolrating_snapshots_remove')
-                : _('schoolrating_snapshot_remove'),
-            text: ids.length > 1
-                ? _('schoolrating_snapshots_remove_confirm')
-                : _('schoolrating_snapshot_remove_confirm'),
-            url: this.config.url,
-            params: {
-                action: 'mgr/snapshot/remove',
-                ids: Ext.util.JSON.encode(ids),
-            },
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        });
-        return true;
-    },
-
     getFields: function () {
         return ['id', 'date', 'filepath', 'actions'];
     },
@@ -153,6 +125,34 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             url: this.config.url,
             params: {
                 action: 'mgr/snapshot/create',
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        return true;
+    },
+
+    removeSnapshot: function () {
+        var ids = this._getSelectedIds();
+        if (!ids.length) {
+            return false;
+        }
+        MODx.msg.confirm({
+            title: ids.length > 1
+                ? _('schoolrating_snapshots_remove')
+                : _('schoolrating_snapshot_remove'),
+            text: ids.length > 1
+                ? _('schoolrating_snapshots_remove_confirm')
+                : _('schoolrating_snapshot_remove_confirm'),
+            url: this.config.url,
+            params: {
+                action: 'mgr/snapshot/remove',
+                ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
                 success: {

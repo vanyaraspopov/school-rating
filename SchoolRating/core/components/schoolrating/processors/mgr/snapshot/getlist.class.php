@@ -56,6 +56,17 @@ class srActivitiesSnapshotGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
+        // Remove
+        $array['actions'][] = array(
+            'cls' => '',
+            'icon' => 'icon icon-trash-o action-red',
+            'title' => $this->modx->lexicon('schoolrating_snapshot_remove'),
+            'multiple' => $this->modx->lexicon('schoolrating_snapshots_remove'),
+            'action' => 'removeSnapshot',
+            'button' => true,
+            'menu' => true,
+        );
+
         return $array;
     }
 }
