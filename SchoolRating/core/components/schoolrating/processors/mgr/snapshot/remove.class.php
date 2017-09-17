@@ -28,10 +28,16 @@ class srActivitiesSnapshotRemoveProcessor extends modObjectProcessor
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            $object->remove();
+            if ($object->remove() ) {
+                $this->deleteSnapshotDocument($object->get('filepath'));
+            }
         }
 
         return $this->success();
+    }
+
+    private function deleteSnapshotDocument($filename) {
+        unlink($filename);
     }
 
 }
