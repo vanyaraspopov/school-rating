@@ -51,7 +51,7 @@ class srActivitiesSnapshotGetListProcessor extends modObjectGetListProcessor
             'icon' => 'icon icon-download',
             'title' => $this->modx->lexicon('schoolrating_snapshot_download'),
             //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
-            'action' => '',
+            'action' => 'downloadSnapshot',
             'button' => true,
             'menu' => true,
         );

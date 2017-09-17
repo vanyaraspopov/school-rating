@@ -137,6 +137,32 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         return true;
     },
 
+    downloadSnapshot: function (btn, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+        var filepath = this.menu.record.filepath;
+
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'mgr/snapshot/download',
+                file: filepath
+            },
+            listeners: {
+                'success':{fn:function(r) {
+                    if (!Ext.isEmpty(r.object.url)) {
+                        location.href = MODx.config.connector_url+'?action=browser/file/download&download=1&file='+filepath+'&HTTP_MODAUTH='+MODx.siteId+'&source='+this.config.source || 1+'&wctx='+MODx.ctx;
+                    }
+                },scope:this}
+            }
+        });
+    },
+
     removeSnapshot: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
