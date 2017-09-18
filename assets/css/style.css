@@ -631,6 +631,7 @@ h2 {
 	top: 0;
 	left: 0
 }
+.event_info .time_info .local:before,
 .event_card .bottom .local:before {
 	width: 30px;
 	height: 31px;
@@ -641,11 +642,20 @@ h2 {
 	-o-background-size: 225px;
 	background-size: 225px;
 }
+.event_info .time_info .fed:before,
 .event_card .bottom .fed:before {
 	background-position: -267px -64px
 }
+.event_info .time_info .reg:before,
 .event_card .bottom .reg:before {
 	background-position: -152px -116px
+}
+.event_info .time_info .local:before {
+	top: 0;
+}
+.event_info .time_info .fed:before,
+.event_info .time_info .reg:before {
+	top: 4px;
 }
 .events_block, .bg_pattern {
 	background: url(../images/bg_pattern.png) repeat;
@@ -1024,7 +1034,8 @@ img.rounded_img {
 .event_info .time_info p {
 	font-size: 14px;
 	color: #999;
-	position: relative
+	position: relative;
+	padding: 5px 0;
 }
 .event_info .time_info p:before {
 	content: "";
@@ -1040,6 +1051,7 @@ img.rounded_img {
 	padding-left: 45px
 }
 .event_info .time_info .date:before {
+	top: 5px;
 	width: 27px;
 	background-position: -148px -154px
 }
@@ -1049,7 +1061,12 @@ img.rounded_img {
 	margin-right: 55px
 }
 .event_info .time_info .time:before {
+	top: 5px;
 	background-position: -195px -154px
+}
+.event_info .time_info .level {
+	float: left;
+	padding-left: 45px
 }
 .event_info .info_text {
 	color: #5E5E5E;
