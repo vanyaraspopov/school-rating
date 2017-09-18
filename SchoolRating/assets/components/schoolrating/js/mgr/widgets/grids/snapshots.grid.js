@@ -89,12 +89,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             scope: this
         }, {
             text: '<i class="icon icon-upload"></i>&nbsp;' + _('schoolrating_snapshot_upload'),
-            handler: function () {
-                MODx.msg.alert(
-                    _('schoolrating_snapshot_upload'),
-                    'Здесь будет загрузка файла xls'
-                );
-            },
+            handler: this.uploadSnapshot,
             scope: this
         }];
     },
@@ -135,6 +130,23 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             }
         });
         return true;
+    },
+
+    uploadSnapshot: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-snapshots-window-upload',
+            id: Ext.id(),
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
     },
 
     downloadSnapshot: function (btn, e, row) {
