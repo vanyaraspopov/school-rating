@@ -2,8 +2,6 @@
 
 class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
 {
-    const DOCUMENTS_DIR = 'userdata/snapshots/';
-
     public $objectType = 'srActivitiesSnapshot';
     public $classKey = 'srActivitiesSnapshot';
     public $languageTopics = array('schoolrating');
@@ -18,8 +16,8 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
         $mySqlDateFormat = 'Y-m-d H:i:s';
         $time = time();
         $date = date($mySqlDateFormat, $time);
-        $filename = MODX_BASE_PATH . self::DOCUMENTS_DIR . $time . '.xlsx';
-        $filepath = MODX_BASE_URL . self::DOCUMENTS_DIR . $time . '.xlsx';
+        $filename = MODX_BASE_PATH . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
+        $filepath = MODX_BASE_URL . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
 
         $this->setProperty('date', $date);
         $this->setProperty('filepath', $filepath);

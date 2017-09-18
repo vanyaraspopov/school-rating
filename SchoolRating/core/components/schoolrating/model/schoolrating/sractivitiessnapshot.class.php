@@ -2,6 +2,8 @@
 
 class srActivitiesSnapshot extends xPDOSimpleObject
 {
+    const DOCUMENTS_DIR = 'userdata/snapshots/';
+
     public static function fields()
     {
         return
