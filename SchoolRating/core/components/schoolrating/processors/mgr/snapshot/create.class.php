@@ -58,14 +58,27 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
         }
         /* @var modResource[] $activities */
         $activities = $this->modx->getCollection('modResource', $c);
-        $exportData = [];
+        $exportData = [
+            //  Заголовки колонок
+            array_merge(
+                srActivitiesSnapshot::fields(),
+                srActivitiesSnapshot::TVs()
+            )
+        ];
         foreach ($activities as $activity) {
-            $exportDataRow = [
-                'id' => $activity->get('id'),
-                'pagetitle' => $activity->get('pagetitle'),
-                'publishedon' => $activity->get('publishedon'),
-            ];
-            $exportData[] = $exportDataRow;
+            //  Поля ресурса
+            $fieldLabels = srActivitiesSnapshot::fields();
+            $fields = [];
+            foreach ($fieldLabels as $field => $label) {
+                $fields[] = $activity->get($field);
+            }
+            //  Значения TV
+            $tvLabels = srActivitiesSnapshot::TVs();
+            $TVs = [];
+            foreach ($tvLabels as $tv => $label) {
+                $TVs[] = $activity->getTVValue($tv);
+            }
+            $exportData[] = array_merge($fields, $TVs);
         }
         return $exportData;
     }
