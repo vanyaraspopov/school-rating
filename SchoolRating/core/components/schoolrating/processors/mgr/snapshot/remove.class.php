@@ -37,7 +37,7 @@ class srActivitiesSnapshotRemoveProcessor extends modObjectProcessor
     }
 
     private function deleteSnapshotDocument($filename) {
-        unlink(MODX_CORE_PATH . $filename);
+        unlink(MODX_BASE_PATH . $filename);
     }
 
 }

@@ -132,7 +132,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         return true;
     },
 
-    uploadSnapshot: function (btn, e) {
+    uploadSnapshot: function (btn, e, row) {
         var w = MODx.load({
             xtype: 'schoolrating-snapshots-window-upload',
             id: Ext.id(),
@@ -147,6 +147,35 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         w.reset();
         w.setValues({active: true});
         w.show(e.target);
+    },
+
+    applySnapshot: function (btn, e) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
+
+        MODx.msg.confirm({
+            title: _('schoolrating_snapshot_apply'),
+            text: _('schoolrating_snapshot_apply_confirm'),
+            url: this.config.url,
+            params: {
+                action: 'mgr/snapshot/apply',
+                id: id,
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        return true;
     },
 
     downloadSnapshot: function (btn, e, row) {

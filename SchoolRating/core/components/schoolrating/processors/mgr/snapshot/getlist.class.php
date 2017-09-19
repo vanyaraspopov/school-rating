@@ -38,9 +38,9 @@ class srActivitiesSnapshotGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = array(
             'cls' => '',
             'icon' => 'icon icon-check',
-            'title' => $this->modx->lexicon('schoolrating_snapshot_confirm'),
+            'title' => $this->modx->lexicon('schoolrating_snapshot_apply'),
             //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
-            'action' => '',
+            'action' => 'applySnapshot',
             'button' => true,
             'menu' => true,
         );

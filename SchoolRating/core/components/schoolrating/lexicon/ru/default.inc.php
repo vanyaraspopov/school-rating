@@ -111,7 +111,8 @@ $_lang['schoolrating_snapshot_id'] = 'ID';
 $_lang['schoolrating_snapshot_date'] = 'Дата';
 $_lang['schoolrating_snapshot_filepath'] = 'Путь к файлу';
 
-$_lang['schoolrating_snapshot_confirm'] = 'Применить снимок';
+$_lang['schoolrating_snapshot_apply'] = 'Применить снимок';
+$_lang['schoolrating_snapshot_apply_confirm'] = 'Вы уверены, что хотите применить снимок? Данные ресурсов будут перезаписаны в соответствии с файлом excel.';
 $_lang['schoolrating_snapshot_upload'] = 'Загрузить снимок';
 $_lang['schoolrating_snapshot_upload_button'] = 'Выбрать файл...';
 $_lang['schoolrating_snapshot_upload_desc'] = 'Следует загрузить файл .xlsx, оформленный по определённому формату';

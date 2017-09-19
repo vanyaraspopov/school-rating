@@ -8,13 +8,15 @@ class srActivitiesSnapshot extends xPDOSimpleObject
     {
         return
             [
-                'id' => 'ID',
-                'parent' => 'ID родителя',
+                'id' => 'ID',               //  Нежелательно убирать или перемещать
+                'parent' => 'ID родителя',  //  Нежелательно убирать или перемещать
+                'template' => 'ID шаблона',  //  Нежелательно убирать или перемещать
                 'pagetitle' => 'Заголовок',
                 'longtitle' => 'Расширенный заголовок',
                 'description' => 'Описание',
                 'introtext' => 'Аннотация',
                 'content' => 'Содержание',
+                'published' => 'Опубликован',
             ];
     }
 
