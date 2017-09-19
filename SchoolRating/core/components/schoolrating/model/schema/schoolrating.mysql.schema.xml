@@ -46,7 +46,7 @@
         <field key="section_id" dbtype="int" precision="11" phptype="integer" null="true" />
         <field key="comment" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
         <field key="date" dbtype="date" phptype="date" null="false"/>
-        <field key="rating" dbtype="int" precision="11" phptype="integer" true="false" default="0"/>
+        <field key="rating" dbtype="int" precision="11" phptype="integer" null="false" default="0"/>
 
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
         <aggregate alias="Section" class="srActivitySection" local="section_id" foreign="id" owner="foreign" cardinality="one"/>
@@ -54,7 +54,8 @@
 
     <object class="srActivitiesSnapshot" table="schoolrating_activities_snapshots" extends="xPDOSimpleObject">
         <field key="date" dbtype="date" phptype="date" null="false"/>
-        <field key="filepath" dbtype="varchar" precision="400" phptype="string" true="false"/>
+        <field key="comment" dbtype="varchar" precision="1000" phptype="string" null="false"/>
+        <field key="filepath" dbtype="varchar" precision="400" phptype="string" null="false"/>
     </object>
 
 </model>

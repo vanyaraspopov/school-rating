@@ -13,14 +13,19 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
      */
     public function beforeSet()
     {
-        $mySqlDateFormat = 'Y-m-d H:i:s';
-        $time = time();
-        $date = date($mySqlDateFormat, $time);
+        $comment = trim($this->getProperty('comment'));
+        if (empty($comment)) {
+            $this->modx->error->addField('comment', $this->modx->lexicon('schoolrating_item_err_name'));
+        } else {
+            $mySqlDateFormat = 'Y-m-d H:i:s';
+            $time = time();
+            $date = date($mySqlDateFormat, $time);
 
-        $filepath = $this->uploadFile();
+            $filepath = $this->uploadFile();
 
-        $this->setProperty('date', $date);
-        $this->setProperty('filepath', $filepath);
+            $this->setProperty('date', $date);
+            $this->setProperty('filepath', $filepath);
+        }
 
         return parent::beforeSet();
     }

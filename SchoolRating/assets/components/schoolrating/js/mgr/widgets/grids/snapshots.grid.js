@@ -52,7 +52,7 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'date', 'filepath', 'actions'];
+        return ['id', 'date', 'filepath', 'comment', 'actions'];
     },
 
     getColumns: function () {
@@ -71,7 +71,14 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
             header: _('schoolrating_snapshot_filepath'),
             dataIndex: 'filepath',
             sortable: true,
+            hidden: true,
             width: 300,
+        }, {
+            header: _('schoolrating_snapshot_comment'),
+            dataIndex: 'comment',
+            sortable: true,
+            width: 300,
+            editor: { xtype: 'textarea' }
         }, {
             header: _('schoolrating_grid_actions'),
             dataIndex: 'actions',
@@ -113,14 +120,10 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
         return this.processEvent('click', e);
     },
 
-    createSnapshot: function () {
-        MODx.msg.confirm({
-            title: _('schoolrating_snapshot_create'),
-            text: _('schoolrating_snapshot_create_help'),
-            url: this.config.url,
-            params: {
-                action: 'mgr/snapshot/create',
-            },
+    createSnapshot: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-snapshots-window-create',
+            id: Ext.id(),
             listeners: {
                 success: {
                     fn: function () {
@@ -129,7 +132,9 @@ Ext.extend(SchoolRating.grid.Snapshots, MODx.grid.Grid, {
                 }
             }
         });
-        return true;
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
     },
 
     uploadSnapshot: function (btn, e, row) {

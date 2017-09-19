@@ -13,17 +13,22 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
      */
     public function beforeSet()
     {
-        $mySqlDateFormat = 'Y-m-d H:i:s';
-        $time = time();
-        $date = date($mySqlDateFormat, $time);
-        $filename = MODX_BASE_PATH . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
-        $filepath = MODX_BASE_URL . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
+        $comment = trim($this->getProperty('comment'));
+        if (empty($comment)) {
+            $this->modx->error->addField('comment', $this->modx->lexicon('schoolrating_item_err_name'));
+        } else {
+            $mySqlDateFormat = 'Y-m-d H:i:s';
+            $time = time();
+            $date = date($mySqlDateFormat, $time);
+            $filename = MODX_BASE_PATH . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
+            $filepath = MODX_BASE_URL . srActivitiesSnapshot::DOCUMENTS_DIR . $time . '.xlsx';
 
-        $this->setProperty('date', $date);
-        $this->setProperty('filepath', $filepath);
+            $this->setProperty('date', $date);
+            $this->setProperty('filepath', $filepath);
 
-        $activitiesData = $this->getActivitiesData();
-        $this->createExcelDocument($filename, $activitiesData);
+            $activitiesData = $this->getActivitiesData();
+            $this->createExcelDocument($filename, $activitiesData);
+        }
 
         return parent::beforeSet();
     }

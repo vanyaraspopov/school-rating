@@ -40,6 +40,51 @@ Ext.extend(SchoolRating.window.Snapshots, MODx.Window, {
 });
 Ext.reg('schoolrating-snapshots-window', SchoolRating.window.Snapshots);
 
+SchoolRating.window.CreateSnapshot = function (config) {
+    config = config || {};
+    if (!config.id) {
+        config.id = 'schoolrating-snapshots-window-create';
+    }
+    Ext.applyIf(config, {
+        title: _('schoolrating_snapshot_create'),
+        width: 500,
+        autoHeight: true,
+        saveBtnText: _('create'),
+        url: SchoolRating.config.connector_url,
+        action: 'mgr/snapshot/create',
+        fileUpload: true,
+        fields: this.getFields(config),
+        keys: [{
+            key: Ext.EventObject.ENTER, shift: true, fn: function () {
+                this.submit()
+            }, scope: this
+        }]
+    });
+    SchoolRating.window.CreateSnapshot.superclass.constructor.call(this, config);
+};
+Ext.extend(SchoolRating.window.CreateSnapshot, MODx.Window, {
+
+    getFields: function (config) {
+        return [{
+            html: _('schoolrating_snapshot_create_help'),
+            cls: 'panel-desc'
+        }, {
+            xtype: 'textarea',
+            fieldLabel: _('schoolrating_snapshot_comment'),
+            name: 'comment',
+            id: config.id + '-comment',
+            anchor: '99%',
+            allowBlank: false,
+            html: _('schoolrating_snapshot_comment_default') + ' ' + SchoolRating.utils.renderDate(new Date())
+        }];
+    },
+
+    loadDropZones: function () {
+    }
+
+});
+Ext.reg('schoolrating-snapshots-window-create', SchoolRating.window.CreateSnapshot);
+
 SchoolRating.window.UploadSnapshot = function (config) {
     config = config || {};
     if (!config.id) {
@@ -48,7 +93,7 @@ SchoolRating.window.UploadSnapshot = function (config) {
     Ext.applyIf(config, {
         title: _('schoolrating_snapshot_upload'),
         width: 500,
-        height: 200,
+        autoHeight: true,
         saveBtnText: _('upload'),
         url: SchoolRating.config.connector_url,
         action: 'mgr/snapshot/upload',
@@ -67,6 +112,7 @@ Ext.extend(SchoolRating.window.UploadSnapshot, MODx.Window, {
     getFields: function (config) {
         return [{
             xtype: 'fileuploadfield',
+            fieldLabel: _('schoolrating_snapshot_file'),
             buttonText: 'Файл...',
             name: 'file',
             id: config.id + '-file',
@@ -77,6 +123,13 @@ Ext.extend(SchoolRating.window.UploadSnapshot, MODx.Window, {
             forId: config.id + '-file',
             text: _('schoolrating_snapshot_upload_desc'),
             cls: 'desc-under'
+        }, {
+            xtype: 'textarea',
+            fieldLabel: _('schoolrating_snapshot_comment'),
+            name: 'comment',
+            id: config.id + '-comment',
+            anchor: '99%',
+            allowBlank: false
         }];
     },
 
