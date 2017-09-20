@@ -6,7 +6,9 @@ SchoolRating.window.Snapshots = function (config) {
     Ext.applyIf(config, {
         title: _('schoolrating_snapshots'),
         width: 700,
-        autoHeight: true,
+        resizable: false,
+        collapsible: false,
+        maximized: true,
         url: SchoolRating.config.connector_url,
         action: '',
         buttons: [{

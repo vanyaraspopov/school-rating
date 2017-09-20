@@ -150,6 +150,34 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
         w.show(e.target);
     },
 
+    viewRating: function (grid, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
+        var w = MODx.load({
+            xtype: 'schoolrating-rating-window',
+            id: Ext.id(),
+            params: {
+                user_id: id
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
     onClick: function (e) {
         var elem = e.getTarget();
         if (elem.nodeName == 'BUTTON') {

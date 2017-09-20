@@ -40,6 +40,13 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
         $c->leftJoin('srActivitySection', 'Section', 'srUserRating.section_id = Section.id');
         $c->select($this->modx->getSelectColumns('srActivitySection', 'Section', 'section_', ['name']));
 
+        $user_id = $this->getProperty('user_id');
+        if ($user_id) {
+            $c->where(array(
+                'user_id' => $user_id,
+            ));
+        }
+
         //  Обработка формы поиска
         $query = trim($this->getProperty('query'));
         if ($query) {
