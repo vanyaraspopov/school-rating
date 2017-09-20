@@ -70,6 +70,7 @@ class SchoolRatingHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/coefficients.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/sections.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/rating.grid.js');
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/users.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/activities.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/activities-participants.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/snapshots.grid.js');

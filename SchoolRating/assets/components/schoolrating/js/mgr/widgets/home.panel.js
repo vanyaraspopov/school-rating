@@ -56,7 +56,7 @@ SchoolRating.panel.Home = function (config) {
                     html: _('schoolrating_rating_intro_msg'),
                     cls: 'panel-desc',
                 }, {
-                    xtype: 'schoolrating-grid-rating',
+                    xtype: 'schoolrating-grid-users',
                     cls: 'main-wrapper',
                 }]
             }]

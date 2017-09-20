@@ -28,17 +28,13 @@ class srUserRatingRemoveProcessor extends modObjectProcessor
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            $object->remove();
+            if($object->remove()){
+                $object->recalculateUserRating();
+            }
         }
 
         return $this->success();
     }
-
-    public function afterSave()
-    {
-        $this->object->recalculateUserRating();
-    }
-
 }
 
 return 'srUserRatingRemoveProcessor';

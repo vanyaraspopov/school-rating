@@ -8,7 +8,10 @@ SchoolRating.window.CreateRating = function (config) {
         width: 550,
         autoHeight: true,
         url: SchoolRating.config.connector_url,
-        action: 'mgr/rating/create',
+        baseParams: {
+            action: 'mgr/rating/createmultiple',
+            user_ids: config.params.user_ids
+        },
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -22,20 +25,6 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
 
     getFields: function (config) {
         return [{
-            xtype: 'modx-combo-user',
-            fieldLabel: _('user'),
-            displayField: 'fullname',
-            fields: ['fullname','id'],
-            baseParams: {
-                action: 'security/user/getlist',
-                usergroup: SchoolRating.config.usergroupUsers
-            },
-            name: 'user_id',
-            hiddenName: 'user_id',
-            id: config.id + '-user_id',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
             xtype: 'schoolrating-combo-section',
             fieldLabel: _('schoolrating_section'),
             name: 'section_id',
