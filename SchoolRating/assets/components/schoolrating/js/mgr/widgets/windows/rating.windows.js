@@ -12,9 +12,15 @@ SchoolRating.window.Rating = function (config) {
         url: SchoolRating.config.connector_url,
         action: '',
         buttons: [{
-            text: _('close')
-            , scope: this
-            , handler: function () {
+            text: config.cancelBtnText || _('cancel')
+            ,scope: this
+            ,handler: function() { config.closeAction !== 'close' ? this.hide() : this.close(); }
+        },{
+            text: config.saveBtnText || _('save')
+            ,cls: 'primary-button'
+            ,scope: this
+            ,handler: function() {
+                this.fireEvent('success');
                 config.closeAction !== 'close' ? this.hide() : this.close();
             }
         }],
