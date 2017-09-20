@@ -55,23 +55,6 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
         this.addContextMenuItem(menu);
     },
 
-    createRating: function (btn, e) {
-        var w = MODx.load({
-            xtype: 'schoolrating-rating-window-create',
-            id: Ext.id(),
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        });
-        w.reset();
-        w.setValues({active: true});
-        w.show(e.target);
-    },
-
     updateRating: function (btn, e, row) {
         if (typeof(row) != 'undefined') {
             this.menu.record = row.data;
@@ -200,11 +183,7 @@ Ext.extend(SchoolRating.grid.Rating, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_rating_create'),
-            handler: this.createRating,
-            scope: this
-        }, '->', {
+        return ['->', {
             xtype: 'schoolrating-field-search',
             width: 250,
             listeners: {
