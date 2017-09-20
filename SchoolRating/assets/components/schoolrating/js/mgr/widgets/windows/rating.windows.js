@@ -49,6 +49,12 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
             anchor: '99%',
             allowBlank: false,
         }, {
+            xtype: 'schoolrating-combo-coefficient',
+            fieldLabel: _('schoolrating_coefficient'),
+            name: 'coefficient',
+            id: config.id + '-coefficient',
+            anchor: '99%',
+        }, {
             xtype: 'textarea',
             fieldLabel: _('schoolrating_rating_comment'),
             name: 'comment',
@@ -119,6 +125,12 @@ Ext.extend(SchoolRating.window.UpdateRating, MODx.Window, {
             id: config.id + '-rating',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'schoolrating-combo-coefficient',
+            fieldLabel: _('schoolrating_coefficient'),
+            name: 'coefficient',
+            id: config.id + '-coefficient',
+            anchor: '99%',
         }, {
             xtype: 'textarea',
             fieldLabel: _('schoolrating_rating_comment'),

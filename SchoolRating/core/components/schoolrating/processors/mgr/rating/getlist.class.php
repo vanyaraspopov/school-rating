@@ -5,7 +5,7 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
     public $objectType = 'srUserRating';
     public $classKey = 'srUserRating';
     public $defaultSortField = 'id';
-    public $defaultSortDirection = 'ASC';
+    public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
 
 

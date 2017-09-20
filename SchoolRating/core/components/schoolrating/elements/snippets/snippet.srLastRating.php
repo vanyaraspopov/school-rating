@@ -10,7 +10,7 @@ if (!$SchoolRating = $modx->getService('schoolrating', 'SchoolRating', $modx->ge
 
 $userId = $modx->getOption('userId', $scriptProperties, $modx->user->get('id'));
 $tpl = $modx->getOption('tpl', $scriptProperties, 'sr-last-rating-tpl');
-$sortby = $modx->getOption('sortby', $scriptProperties, 'date');
+$sortby = $modx->getOption('sortby', $scriptProperties, 'id');
 $sortdir = $modx->getOption('sortbir', $scriptProperties, 'DESC');
 $limit = $modx->getOption('limit', $scriptProperties, 0);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");

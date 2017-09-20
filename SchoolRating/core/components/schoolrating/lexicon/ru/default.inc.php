@@ -150,3 +150,4 @@ $_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
+$_lang['schoolrating_coefficient_choice'] = 'Выберите коэффициент, по умолчанию - 1';
