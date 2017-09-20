@@ -3,14 +3,15 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
     if (!config.id) {
         config.id = 'schoolrating-grid-activities-participants';
     }
+    this.sm = new Ext.grid.CheckboxSelectionModel();
     Ext.applyIf(config, {
         url: SchoolRating.config.connector_url,
         fields: this.getFields(config),
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
-        sm: new Ext.grid.CheckboxSelectionModel(),
+        sm: this.sm,
         baseParams: {
-            action: 'mgr/activity/getparticipants',
+            action: 'mgr/participant/getlist',
             resource_id: config.record.id
         },
         listeners: {
@@ -30,7 +31,7 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
         remoteSort: true,
         autoHeight: true,
         autosave: true,
-        save_action: 'mgr/activity/updateparticipantsfromgrid'
+        save_action: 'mgr/participant/updatefromgrid'
     });
     SchoolRating.grid.ActivitiesParticipants.superclass.constructor.call(this, config);
 
@@ -67,7 +68,7 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
                 : _('schoolrating_activity_participant_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'mgr/activity/removeparticipant',
+                action: 'mgr/participant/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -82,27 +83,27 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'activity_id', 'allowed'];
+        return ['id', 'user_id', 'resource_id', 'fullname', 'pagetitle', 'allowed'];
     },
 
     getColumns: function () {
-        return [{
+        return [this.sm, {
             header: _('schoolrating_activity_participant_id'),
             dataIndex: 'id',
             sortable: true,
+            hidden: true,
             width: 70
         }, {
-            header: _('schoolrating_activity_participant_user_id'),
-            dataIndex: 'user_id',
+            header: _('schoolrating_activity'),
+            dataIndex: 'pagetitle',
             sortable: true,
-            editor: { xtype: 'textfield' },
+            hidden: true,
             width: 200,
         }, {
-            header: _('schoolrating_activity_participant_resource_id'),
-            dataIndex: 'resource_id',
+            header: _('username'),
+            dataIndex: 'fullname',
             sortable: true,
-            editor: { xtype: 'textfield' },
-            width: 200,
+            width: 300,
         }, {
             header: _('schoolrating_activity_participant_allowed'),
             dataIndex: 'allowed',
@@ -114,7 +115,34 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return [];
+        return [{
+            text: _('bulk_actions')
+            ,menu: [{
+                text: _('schoolrating_activities_participants_selected_allow')
+                ,handler: this.allowSelected
+                ,scope: this
+            },{
+                text: _('schoolrating_activities_participants_selected_disallow')
+                ,handler: this.disallowSelected
+                ,scope: this
+            }]
+        }, '->', {
+            xtype: 'schoolrating-field-search',
+            width: 250,
+            listeners: {
+                search: {
+                    fn: function (field) {
+                        this._doSearch(field);
+                    }, scope: this
+                },
+                clear: {
+                    fn: function (field) {
+                        field.setValue('');
+                        this._clearSearch();
+                    }, scope: this
+                },
+            }
+        }];
     },
 
     onClick: function (e) {
@@ -134,6 +162,45 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
             }
         }
         return this.processEvent('click', e);
+    },
+
+    allowSelected: function() {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+        MODx.Ajax.request({
+            url: this.config.url
+            ,params: {
+                action: 'mgr/participant/allowMultiple'
+                ,ids: cs
+            }
+            ,listeners: {
+                'success': {fn:function(r) {
+                    this.getSelectionModel().clearSelections(true);
+                    this.refresh();
+                },scope:this}
+            }
+        });
+        return true;
+    },
+    disallowSelected: function() {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+        MODx.Ajax.request({
+            url: this.config.url
+            ,params: {
+                action: 'mgr/participant/disallowMultiple'
+                ,ids: cs
+            }
+            ,listeners: {
+                'success': {fn:function(r) {
+                    this.getSelectionModel().clearSelections(true);
+                    this.refresh();
+                },scope:this}
+            }
+        });
+        return true;
     },
 
     _getSelectedIds: function () {

@@ -3,12 +3,30 @@ SchoolRating.grid.Activities = function (config) {
     if (!config.id) {
         config.id = 'schoolrating-grid-activities';
     }
+
+    this.cm = new Ext.grid.ColumnModel({
+        columns: this.getColumns(config)
+    });
+
+    this.view = new Ext.grid.GroupingView({
+        emptyText: config.emptyText || _('ext_emptymsg')
+        ,forceFit: true
+        ,autoFill: true
+        ,showPreview: true
+        ,enableRowBody: true
+        ,scrollOffset: 0
+    });
+
     Ext.applyIf(config, {
+        cm: this.cm,
+        view: this.view,
         url: SchoolRating.config.connector_url,
         fields: this.getFields(config),
-        columns: this.getColumns(config),
+        //columns: this.getColumns(config),
         tbar: this.getTopBar(config),
-        sm: new Ext.grid.CheckboxSelectionModel(),
+        grouping: true,
+        groupBy: 'parent',
+        sortBy: 'id',
         baseParams: {
             action: 'mgr/activity/getlist'
         },
@@ -25,15 +43,16 @@ SchoolRating.grid.Activities = function (config) {
             showPreview: true,
             scrollOffset: 0,
             getRowClass: function (rec) {
-                /*return !rec.data.active
+                return !rec.data.published
                  ? 'schoolrating-grid-row-disabled'
-                 : '';*/
+                 : '';
             }
         },
         paging: true,
-        remoteSort: true,
+        remoteSort: false,
         autoHeight: true,
     });
+
     SchoolRating.grid.Activities.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
@@ -151,8 +170,25 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         return true;
     },
 
+    showSnapshots: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-snapshots-window',
+            id: Ext.id(),
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
     getFields: function () {
-        return ['id', 'pagetitle', 'section', 'level', 'actions'];
+        return ['id', 'pagetitle', 'section', 'level', 'parent', 'published', 'actions'];
     },
 
     getColumns: function () {
@@ -180,6 +216,14 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
             sortable: true,
             width: 150,
         }, {
+            header: _('schoolrating_activity_parent'),
+            dataIndex: 'parent',
+            hidden: true,
+            sortable: true,
+            editable: false,
+            renderer: SchoolRating.utils.renderEventsGroup,
+            groupRenderer: SchoolRating.utils.renderEventsGroup
+        }, {
             header: _('schoolrating_grid_actions'),
             dataIndex: 'actions',
             renderer: SchoolRating.utils.renderActions,
@@ -191,13 +235,8 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_activity_create'),
-            handler: function () {
-                MODx.msg.alert(
-                    _('schoolrating_activity_create'),
-                    _('schoolrating_activity_create_help')
-                );
-            },//this.createActivity,
+            text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
+            handler: this.showSnapshots,
             scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',

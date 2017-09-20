@@ -96,9 +96,7 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
 
         $eventsTvLevel = $this->modx->getOption('schoolrating_events_tv_level');
         if ($eventsTvLevel) {
-            //  В TV 'event-level' в поле value лежит значение 'css_class' соответствующего коэффициента (уровня)
-            $level = $this->modx->getObject('srActivityCoefficient', ['css_class' => $object->getTVValue($eventsTvLevel)]);
-            $array['level'] = $level->get('name');
+            $array['level'] = $object->getTVValue($eventsTvLevel);
         }
 
         return $array;

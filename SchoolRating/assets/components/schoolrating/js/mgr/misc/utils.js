@@ -105,3 +105,12 @@ SchoolRating.utils.renderDate = function (value, props, row) {
         return '&ndash;';
     }
 };
+
+SchoolRating.utils.renderEventsGroup = function (value, props, row) {
+    switch (value + '') {
+        case SchoolRating.config.eventsFuture:
+            return _('schoolrating_activities_future');
+        case SchoolRating.config.eventsPast:
+            return _('schoolrating_activities_past');
+    }
+};

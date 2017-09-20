@@ -23,6 +23,8 @@ class SchoolRating
         $connectorUrl = $assetsUrl . 'connector.php';
 
         $usergroupUsers = $this->modx->getOption('schoolrating_usergroup_users');
+        $eventsFuture = $this->modx->getOption('schoolrating_events_future');
+        $eventsPast = $this->modx->getOption('schoolrating_events_past');
 
         $this->config = array_merge(array(
             'assetsUrl' => $assetsUrl,
@@ -40,6 +42,8 @@ class SchoolRating
             'processorsPath' => $corePath . 'processors/',
 
             'usergroupUsers' => $usergroupUsers,
+            'eventsFuture' => $eventsFuture,
+            'eventsPast' => $eventsPast,
         ), $config);
 
         $this->modx->addPackage('schoolrating', $this->config['modelPath']);
