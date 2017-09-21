@@ -3,8 +3,11 @@
 
 $events = array();
 $tmp = array(
+    //  srActivityParticipant
     'srOnParticipantCreate',
     'srOnParticipantRemove',
+    'srOnParticipationAllow',
+    'srOnParticipationDisallow'
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */
