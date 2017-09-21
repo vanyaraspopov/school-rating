@@ -5,6 +5,7 @@ class srActivityParticipantRemoveProcessor extends modObjectProcessor
     public $objectType = 'srActivityParticipant';
     public $classKey = 'srActivityParticipant';
     public $languageTopics = array('schoolrating');
+    public $afterRemoveEvent = 'srOnParticipantRemove';
     //public $permission = 'remove';
 
 
@@ -23,17 +24,31 @@ class srActivityParticipantRemoveProcessor extends modObjectProcessor
         }
 
         foreach ($ids as $id) {
-            /** @var srActivityParticipant $object */
-            if (!$object = $this->modx->getObject($this->classKey, $id)) {
+            /** @var srActivityParticipant $this->object */
+            if (!$this->object = $this->modx->getObject($this->classKey, $id)) {
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            $object->remove();
+            $this->object->remove();
+            $this->fireAfterRemoveEvent();
         }
 
         return $this->success();
     }
 
+    /**
+     * If specified, fire the after remove event
+     * @return void
+     */
+    public function fireAfterRemoveEvent() {
+        if (!empty($this->afterRemoveEvent)) {
+            $this->modx->invokeEvent($this->afterRemoveEvent,array(
+                $this->primaryKeyField => $this->object->get($this->primaryKeyField),
+                $this->objectType => &$this->object,
+                'object' => &$this->object,
+            ));
+        }
+    }
 }
 
 return 'srActivityParticipantRemoveProcessor';

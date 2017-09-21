@@ -15,8 +15,15 @@ $participant = $modx->getObject('srActivityParticipant', [
     'user_id' => $userId,
     'resource_id' => $resourceId
 ]);
-if ($participant) {
-    return $participant->remove();
-} else {
-    return false;
-}
+
+$response = $modx->runProcessor(
+    'mgr/participant/remove',
+    [
+        'ids' => json_encode([$participant->get('id')]),
+    ],
+    [
+        'processors_path' => $SchoolRating->config['processorsPath']
+    ]
+);
+
+return $response->isError();
