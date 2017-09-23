@@ -1,12 +1,11 @@
 <?php
 
-class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
-{
-    public $objectType = 'srActivityCoefficient';
-    public $classKey = 'srActivityCoefficient';
+class srActivityWinnerUpdateFromGridProcessor extends modObjectUpdateProcessor {
+    public $classKey = 'srActivityWinner';
+    public $objectType = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
-    //public $permission = 'save';
-
+    /** @var string $afterSaveEvent The name of the event to fire after saving */
+    public $afterSaveEvent = '';
 
     /**
      * We doing special check of permission
@@ -23,6 +22,15 @@ class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
         return true;
     }
 
+    public function initialize() {
+        $data = $this->getProperty('data');
+        if (empty($data)) return $this->modx->lexicon('invalid_data');
+        $properties = $this->modx->fromJSON($data);
+        $this->setProperties($properties);
+        $this->unsetProperty('data');
+
+        return parent::initialize();
+    }
 
     /**
      * @return bool
@@ -30,19 +38,11 @@ class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
     public function beforeSet()
     {
         $id = (int)$this->getProperty('id');
-        $name = trim($this->getProperty('name'));
         if (empty($id)) {
             return $this->modx->lexicon('schoolrating_item_err_ns');
-        }
-
-        if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('schoolrating_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, array('name' => $name, 'id:!=' => $id))) {
-            $this->modx->error->addField('name', $this->modx->lexicon('schoolrating_item_err_ae'));
         }
 
         return parent::beforeSet();
     }
 }
-
-return 'SchoolRatingCoefficientUpdateProcessor';
+return 'srActivityWinnerUpdateFromGridProcessor';

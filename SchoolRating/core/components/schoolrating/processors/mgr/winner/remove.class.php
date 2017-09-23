@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
+class srActivityWinnerRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'srActivityCoefficient';
-    public $classKey = 'srActivityCoefficient';
+    public $objectType = 'srActivityWinner';
+    public $classKey = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
     //public $permission = 'remove';
 
@@ -23,7 +23,7 @@ class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
         }
 
         foreach ($ids as $id) {
-            /** @var SchoolRatingItem $object */
+            /** @var srActivityWinner $object */
             if (!$object = $this->modx->getObject($this->classKey, $id)) {
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
@@ -36,4 +36,4 @@ class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
 
 }
 
-return 'SchoolRatingCoefficientRemoveProcessor';
+return 'srActivityWinnerRemoveProcessor';

@@ -165,6 +165,7 @@ $_lang['schoolrating_winners_remove_confirm'] = 'Вы уверены, что х�
 
 $_lang['schoolrating_winner_err_user_ns'] = 'Не задан пользователь';
 $_lang['schoolrating_winner_err_resource_ns'] = 'Не задано мероприятие';
+$_lang['schoolrating_winner_err_place_ns'] = 'Не задано занятое место';
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';

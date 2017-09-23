@@ -85,8 +85,8 @@ Ext.extend(SchoolRating.window.CreateWinner, MODx.Window, {
         }, {
             xtype: 'numberfield',
             fieldLabel: _('schoolrating_winner_place'),
-            name: 'value',
-            id: config.id + '-value',
+            name: 'place',
+            id: config.id + '-place',
             anchor: '99%',
             allowBlank: false
         }];

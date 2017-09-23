@@ -26,6 +26,8 @@ SchoolRating.grid.Winners = function (config) {
         remoteSort: true,
         pageSize: 5,
         autoHeight: true,
+        autosave: true,
+        save_action: 'mgr/winner/updatefromgrid'
     });
     SchoolRating.grid.Winners.superclass.constructor.call(this, config);
 
@@ -67,45 +69,6 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
         w.setValues({active: true});
         w.show(e.target);
     },
-
-    /*updateWinner: function (btn, e, row) {
-        if (typeof(row) != 'undefined') {
-            this.menu.record = row.data;
-        }
-        else if (!this.menu.record) {
-            return false;
-        }
-        var id = this.menu.record.id;
-
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/winner/get',
-                id: id
-            },
-            listeners: {
-                success: {
-                    fn: function (r) {
-                        var w = MODx.load({
-                            xtype: 'schoolrating-winner-window-update',
-                            id: Ext.id(),
-                            record: r,
-                            listeners: {
-                                success: {
-                                    fn: function () {
-                                        this.refresh();
-                                    }, scope: this
-                                }
-                            }
-                        });
-                        w.reset();
-                        w.setValues(r.object);
-                        w.show(e.target);
-                    }, scope: this
-                }
-            }
-        });
-    },*/
 
     removeWinner: function () {
         var ids = this._getSelectedIds();
@@ -160,6 +123,7 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
             header: _('schoolrating_winner_place'),
             dataIndex: 'place',
             sortable: false,
+            editor: { xtype: 'numberfield' },
             width: 250,
         }, {
             header: _('schoolrating_grid_actions'),

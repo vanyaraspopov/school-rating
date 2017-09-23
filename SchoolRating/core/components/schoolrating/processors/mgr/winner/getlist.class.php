@@ -4,8 +4,8 @@ class srActivityWinnerGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'srActivityWinner';
     public $classKey = 'srActivityWinner';
-    public $defaultSortField = 'id';
-    public $defaultSortDirection = 'DESC';
+    public $defaultSortField = 'place';
+    public $defaultSortDirection = 'ASC';
     //public $permission = 'list';
 
 
@@ -68,17 +68,6 @@ class srActivityWinnerGetListProcessor extends modObjectGetListProcessor
     {
         $array = $object->toArray();
         $array['actions'] = array();
-
-        // Edit
-        $array['actions'][] = array(
-            'cls' => '',
-            'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('schoolrating_winner_update'),
-            //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
-            'action' => 'updateWinner',
-            'button' => true,
-            'menu' => true,
-        );
 
         // Remove
         $array['actions'][] = array(

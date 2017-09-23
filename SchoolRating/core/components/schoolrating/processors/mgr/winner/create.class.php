@@ -23,6 +23,11 @@ class srActivityWinnerCreateProcessor extends modObjectCreateProcessor
             $this->modx->error->addField('resource_id', $this->modx->lexicon('schoolrating_winner_err_resource_ns'));
         }
 
+        $place = trim($this->getProperty('place'));
+        if (empty($place)) {
+            $this->modx->error->addField('place', $this->modx->lexicon('schoolrating_winner_err_place_ns'));
+        }
+
         return parent::beforeSet();
     }
 
