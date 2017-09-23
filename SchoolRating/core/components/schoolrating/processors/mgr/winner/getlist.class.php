@@ -44,7 +44,6 @@ class srActivityWinnerGetListProcessor extends modObjectGetListProcessor
         if ($query) {
             $c->where(array(
                 'Profile.fullname:LIKE' => "%{$query}%",
-                'Resource.pagetitle:LIKE' => "%{$query}%",
             ));
         }
 
