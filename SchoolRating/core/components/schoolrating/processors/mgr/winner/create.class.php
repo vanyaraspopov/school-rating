@@ -28,6 +28,9 @@ class srActivityWinnerCreateProcessor extends modObjectCreateProcessor
             $this->modx->error->addField('place', $this->modx->lexicon('schoolrating_winner_err_place_ns'));
         }
 
+        $mySqlDateFormat = 'Y-m-d H:i:s';
+        $this->setProperty('date', date($mySqlDateFormat));
+
         return parent::beforeSet();
     }
 

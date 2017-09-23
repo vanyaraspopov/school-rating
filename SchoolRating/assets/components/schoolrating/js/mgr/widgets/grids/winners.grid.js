@@ -99,7 +99,7 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'fullname', 'resource_id', 'pagetitle', 'place', 'actions'];
+        return ['id', 'user_id', 'fullname', 'resource_id', 'pagetitle', 'place', 'date', 'actions'];
     },
 
     getColumns: function () {
@@ -119,6 +119,12 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
             dataIndex: 'fullname',
             sortable: false,
             width: 200,
+        }, {
+            header: _('schoolrating_winner_date'),
+            dataIndex: 'date',
+            renderer: SchoolRating.utils.renderDate,
+            sortable: false,
+            width: 250,
         }, {
             header: _('schoolrating_winner_place'),
             dataIndex: 'place',

@@ -154,6 +154,7 @@ $_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано
 $_lang['schoolrating_winners'] = 'Победители';
 $_lang['schoolrating_winner_user_id'] = 'ID пользователя';
 $_lang['schoolrating_winner_resource_id'] = 'ID мероприятия';
+$_lang['schoolrating_winner_date'] = 'Дата';
 $_lang['schoolrating_winner_place'] = 'Место';
 
 $_lang['schoolrating_winner_create'] = 'Добавить победителя';

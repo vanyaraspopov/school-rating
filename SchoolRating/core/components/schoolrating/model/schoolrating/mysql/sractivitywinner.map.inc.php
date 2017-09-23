@@ -8,6 +8,7 @@ $xpdo_meta_map['srActivityWinner']= array (
   array (
     'resource_id' => NULL,
     'user_id' => NULL,
+    'date' => NULL,
     'place' => NULL,
   ),
   'fieldMeta' => 
@@ -24,6 +25,12 @@ $xpdo_meta_map['srActivityWinner']= array (
       'dbtype' => 'int',
       'precision' => '11',
       'phptype' => 'integer',
+      'null' => false,
+    ),
+    'date' => 
+    array (
+      'dbtype' => 'date',
+      'phptype' => 'date',
       'null' => false,
     ),
     'place' => 
