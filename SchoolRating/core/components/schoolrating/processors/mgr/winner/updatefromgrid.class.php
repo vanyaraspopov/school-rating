@@ -1,12 +1,11 @@
 <?php
 
-class srUserRatingUpdateProcessor extends modObjectUpdateProcessor
-{
-    public $objectType = 'srUserRating';
-    public $classKey = 'srUserRating';
+class srActivityWinnerUpdateFromGridProcessor extends modObjectUpdateProcessor {
+    public $classKey = 'srActivityWinner';
+    public $objectType = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
-    //public $permission = 'save';
-
+    /** @var string $afterSaveEvent The name of the event to fire after saving */
+    public $afterSaveEvent = '';
 
     /**
      * We doing special check of permission
@@ -23,6 +22,15 @@ class srUserRatingUpdateProcessor extends modObjectUpdateProcessor
         return true;
     }
 
+    public function initialize() {
+        $data = $this->getProperty('data');
+        if (empty($data)) return $this->modx->lexicon('invalid_data');
+        $properties = $this->modx->fromJSON($data);
+        $this->setProperties($properties);
+        $this->unsetProperty('data');
+
+        return parent::initialize();
+    }
 
     /**
      * @return bool
@@ -34,19 +42,7 @@ class srUserRatingUpdateProcessor extends modObjectUpdateProcessor
             return $this->modx->lexicon('schoolrating_item_err_ns');
         }
 
-        $coefficient = $this->getProperty('coefficient');
-        if ($coefficient) {
-            $rating = $this->getProperty('rating');
-            $this->setProperty('rating', number_format($rating * $coefficient, 2, '.', ''));
-        }
-
         return parent::beforeSet();
     }
-
-    public function afterSave()
-    {
-        $this->object->recalculateUserRating();
-    }
 }
-
-return 'srUserRatingUpdateProcessor';
+return 'srActivityWinnerUpdateFromGridProcessor';

@@ -47,7 +47,7 @@ $xpdo_meta_map['srUserRating']= array (
       'dbtype' => 'int',
       'precision' => '11',
       'phptype' => 'integer',
-      'true' => 'false',
+      'null' => false,
       'default' => 0,
     ),
   ),

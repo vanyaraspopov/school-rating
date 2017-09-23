@@ -1,9 +1,9 @@
 <?php
 
-class srUserRatingRemoveProcessor extends modObjectProcessor
+class srActivityWinnerRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'srUserRating';
-    public $classKey = 'srUserRating';
+    public $objectType = 'srActivityWinner';
+    public $classKey = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
     //public $permission = 'remove';
 
@@ -23,18 +23,17 @@ class srUserRatingRemoveProcessor extends modObjectProcessor
         }
 
         foreach ($ids as $id) {
-            /** @var SchoolRatingItem $object */
+            /** @var srActivityWinner $object */
             if (!$object = $this->modx->getObject($this->classKey, $id)) {
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            if($object->remove()){
-                $object->recalculateUserRating();
-            }
+            $object->remove();
         }
 
         return $this->success();
     }
+
 }
 
-return 'srUserRatingRemoveProcessor';
+return 'srActivityWinnerRemoveProcessor';

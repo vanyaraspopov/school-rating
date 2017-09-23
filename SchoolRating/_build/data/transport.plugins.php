@@ -4,15 +4,14 @@
 
 $plugins = array();
 
-$tmp = array(/*
-    'SchoolRating' => array(
-        'file' => 'schoolrating',
-        'description' => '',
+$tmp = array(
+    'srOnParticipantCreate' => array(
+        'file' => 'srOnParticipantCreate',
+        'description' => 'Срабатывает при создании новой заявки на участие в мероприятии',
         'events' => array(
-            'OnManagerPageInit' => array()
+            'srOnParticipantCreate' => array()
         )
     )
-    */
 );
 
 foreach ($tmp as $k => $v) {

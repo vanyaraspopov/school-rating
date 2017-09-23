@@ -1,3 +1,58 @@
+SchoolRating.window.Rating = function (config) {
+    config = config || {};
+    if (!config.id) {
+        config.id = 'schoolrating-rating-window';
+    }
+    Ext.applyIf(config, {
+        title: _('schoolrating_rating'),
+        width: 700,
+        resizable: false,
+        collapsible: false,
+        maximized: true,
+        url: SchoolRating.config.connector_url,
+        action: '',
+        buttons: [{
+            text: config.cancelBtnText || _('cancel')
+            ,scope: this
+            ,handler: function() { config.closeAction !== 'close' ? this.hide() : this.close(); }
+        },{
+            text: config.saveBtnText || _('save')
+            ,cls: 'primary-button'
+            ,scope: this
+            ,handler: function() {
+                this.fireEvent('success');
+                config.closeAction !== 'close' ? this.hide() : this.close();
+            }
+        }],
+        fields: this.getFields(config),
+        keys: [{
+            key: Ext.EventObject.ENTER, shift: true, fn: function () {
+                this.submit()
+            }, scope: this
+        }]
+    });
+    SchoolRating.window.Rating.superclass.constructor.call(this, config);
+};
+Ext.extend(SchoolRating.window.Rating, MODx.Window, {
+
+    getFields: function (config) {
+        return {
+            title: _('schoolrating_snapshots'),
+            xtype: 'schoolrating-grid-rating',
+            baseParams: {
+                action: 'mgr/rating/getlist',
+                user_id: config.params.user_id
+            }
+        };
+    },
+
+    loadDropZones: function () {
+    }
+
+});
+Ext.reg('schoolrating-rating-window', SchoolRating.window.Rating);
+
+
 SchoolRating.window.CreateRating = function (config) {
     config = config || {};
     if (!config.id) {
@@ -8,7 +63,10 @@ SchoolRating.window.CreateRating = function (config) {
         width: 550,
         autoHeight: true,
         url: SchoolRating.config.connector_url,
-        action: 'mgr/rating/create',
+        baseParams: {
+            action: 'mgr/rating/createmultiple',
+            user_ids: config.params.user_ids
+        },
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -22,20 +80,6 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
 
     getFields: function (config) {
         return [{
-            xtype: 'modx-combo-user',
-            fieldLabel: _('user'),
-            displayField: 'fullname',
-            fields: ['fullname','id'],
-            baseParams: {
-                action: 'security/user/getlist',
-                usergroup: SchoolRating.config.usergroupUsers
-            },
-            name: 'user_id',
-            hiddenName: 'user_id',
-            id: config.id + '-user_id',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
             xtype: 'schoolrating-combo-section',
             fieldLabel: _('schoolrating_section'),
             name: 'section_id',
@@ -48,6 +92,12 @@ Ext.extend(SchoolRating.window.CreateRating, MODx.Window, {
             id: config.id + '-rating',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'schoolrating-combo-coefficient',
+            fieldLabel: _('schoolrating_coefficient'),
+            name: 'coefficient',
+            id: config.id + '-coefficient',
+            anchor: '99%',
         }, {
             xtype: 'textarea',
             fieldLabel: _('schoolrating_rating_comment'),
@@ -119,6 +169,12 @@ Ext.extend(SchoolRating.window.UpdateRating, MODx.Window, {
             id: config.id + '-rating',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'schoolrating-combo-coefficient',
+            fieldLabel: _('schoolrating_coefficient'),
+            name: 'coefficient',
+            id: config.id + '-coefficient',
+            anchor: '99%',
         }, {
             xtype: 'textarea',
             fieldLabel: _('schoolrating_rating_comment'),

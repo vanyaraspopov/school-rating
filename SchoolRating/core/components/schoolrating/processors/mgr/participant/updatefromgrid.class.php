@@ -4,6 +4,8 @@ class srActivityParticipantUpdateFromGridProcessor extends modObjectUpdateProces
     public $classKey = 'srActivityParticipant';
     public $objectType = 'srActivityParticipant';
     public $languageTopics = array('schoolrating');
+    /** @var string $afterSaveEvent The name of the event to fire after saving */
+    public $afterSaveEvent = '';
 
     /**
      * We doing special check of permission
@@ -38,6 +40,13 @@ class srActivityParticipantUpdateFromGridProcessor extends modObjectUpdateProces
         $id = (int)$this->getProperty('id');
         if (empty($id)) {
             return $this->modx->lexicon('schoolrating_item_err_ns');
+        }
+
+        $allowed = (bool)$this->getProperty('allowed');
+        if ($allowed) {
+            $this->afterSaveEvent = 'srOnParticipationAllow';
+        } else {
+            $this->afterSaveEvent = 'srOnParticipationDisallow';
         }
 
         return parent::beforeSet();

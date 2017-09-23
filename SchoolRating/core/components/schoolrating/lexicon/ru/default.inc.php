@@ -69,7 +69,7 @@ $_lang['schoolrating_sections_remove_confirm'] = 'Вы уверены, что х
 //  Рейтинг
 $_lang['schoolrating_rating_intro_msg'] = 'Здесь можно начислять баллы пользователям.';
 
-$_lang['schoolrating_rating'] = 'Баллы';
+$_lang['schoolrating_rating'] = 'Рейтинг';
 $_lang['schoolrating_rating_id'] = 'ID';
 $_lang['schoolrating_rating_user_id'] = 'ID пользователя';
 $_lang['schoolrating_rating_date'] = 'Дата начисления';
@@ -77,6 +77,8 @@ $_lang['schoolrating_rating_rating'] = 'Баллы';
 $_lang['schoolrating_rating_comment'] = 'Комментарий';
 
 $_lang['schoolrating_rating_create'] = 'Начислить баллы';
+$_lang['schoolrating_rating_create_err_nc'] = 'Выберите хотя бы одного пользователя.';
+$_lang['schoolrating_rating_view'] = 'Просмотреть баллы';
 $_lang['schoolrating_rating_update'] = 'Изменить запись';
 $_lang['schoolrating_rating_remove'] = 'Удалить запись';
 $_lang['schoolrating_ratings_remove'] = 'Удалить записи';
@@ -104,6 +106,7 @@ $_lang['schoolrating_activities_remove'] = 'Удалить мероприяти�
 $_lang['schoolrating_activity_remove_confirm'] = 'Вы уверены, что хотите удалить это мероприятие?';
 $_lang['schoolrating_activites_remove_confirm'] = 'Вы уверены, что хотите удалить эти мероприятия?';
 
+//  Снимки мероприятий
 $_lang['schoolrating_activity_import_export'] = 'Импорт / Экспорт';
 $_lang['schoolrating_snapshot'] = 'Снимок мероприятия';
 $_lang['schoolrating_snapshots'] = 'Снимки мероприятий';
@@ -139,7 +142,7 @@ $_lang['schoolrating_activity_participant_create'] = 'Добавить учас�
 $_lang['schoolrating_activities_participants_update'] = 'Посмотреть участников';
 $_lang['schoolrating_activity_participant_remove'] = 'Удалить участника';
 $_lang['schoolrating_activities_participants_remove'] = 'Удалить участников';
-$_lang['schoolrating_activity_participant_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
+$_lang['schoolrating_activity_participant_remove_confirm'] = 'Вы уверены, что хотите удалить заявку пользователя на участие';
 $_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы уверены, что хотите удалить эти заявки?';
 $_lang['schoolrating_activities_participants_selected_allow'] = 'Одобрить';
 $_lang['schoolrating_activities_participants_selected_disallow'] = 'Отклонить';
@@ -147,6 +150,23 @@ $_lang['schoolrating_activities_participants_selected_disallow'] = 'Отклон
 $_lang['schoolrating_activity_participant_err_user_ns'] = 'Не задан пользователь';
 $_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано мероприятие';
 
+//  Победители мероприятий
+$_lang['schoolrating_winners'] = 'Победители';
+$_lang['schoolrating_winner_user_id'] = 'ID пользователя';
+$_lang['schoolrating_winner_resource_id'] = 'ID мероприятия';
+$_lang['schoolrating_winner_place'] = 'Место';
+
+$_lang['schoolrating_winner_create'] = 'Добавить победителя';
+$_lang['schoolrating_winner_edit'] = 'Редактировать';
+$_lang['schoolrating_winner_remove'] = 'Удалить победителя';
+$_lang['schoolrating_winners_remove'] = 'Удалить победителей';
+$_lang['schoolrating_winner_remove_confirm'] = 'Вы уверены, что хотите удалить эту запись?';
+$_lang['schoolrating_winners_remove_confirm'] = 'Вы уверены, что хотите удалить эти записи?';
+
+$_lang['schoolrating_winner_err_user_ns'] = 'Не задан пользователь';
+$_lang['schoolrating_winner_err_resource_ns'] = 'Не задано мероприятие';
+$_lang['schoolrating_winner_err_place_ns'] = 'Не задано занятое место';
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
+$_lang['schoolrating_coefficient_choice'] = 'Выберите коэффициент, по умолчанию - 1';

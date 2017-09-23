@@ -16,6 +16,12 @@ class srUserRatingCreateProcessor extends modObjectCreateProcessor
         $mySqlDateFormat = 'Y-m-d H:i:s';
         $this->setProperty('date', date($mySqlDateFormat));
 
+        $coefficient = $this->getProperty('coefficient');
+        if ($coefficient) {
+            $rating = $this->getProperty('rating');
+            $this->setProperty('rating', number_format($rating * $coefficient, 2, '.', ''));
+        }
+
         return parent::beforeSet();
     }
 

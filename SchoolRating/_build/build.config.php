@@ -37,7 +37,7 @@ define('BUILD_CHUNK_UPDATE', true);
 
 define('BUILD_SNIPPET_UPDATE', true);
 define('BUILD_PLUGIN_UPDATE', true);
-//define('BUILD_EVENT_UPDATE', true);
+define('BUILD_EVENT_UPDATE', true);
 //define('BUILD_POLICY_UPDATE', true);
 //define('BUILD_POLICY_TEMPLATE_UPDATE', true);
 //define('BUILD_PERMISSION_UPDATE', true);

@@ -74,23 +74,6 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         this.addContextMenuItem(menu);
     },
 
-    createActivity: function (btn, e) {
-        var w = MODx.load({
-            xtype: 'schoolrating-activity-window-create',
-            id: Ext.id(),
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        });
-        w.reset();
-        w.setValues({active: true});
-        w.show(e.target);
-    },
-
     updateActivity: function (btn, e, row) {
         if (typeof(row) != 'undefined') {
             this.menu.record = row.data;
@@ -185,6 +168,45 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         w.reset();
         w.setValues({active: true});
         w.show(e.target);
+    },
+
+    updateWinners: function (btn, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'mgr/activity/get',
+                id: id
+            },
+            listeners: {
+                success: {
+                    fn: function (r) {
+                        var w = MODx.load({
+                            xtype: 'schoolrating-winners-window',
+                            id: Ext.id(),
+                            record: r,
+                            listeners: {
+                                success: {
+                                    fn: function () {
+                                        this.refresh();
+                                    }, scope: this
+                                }
+                            }
+                        });
+                        w.reset();
+                        w.setValues(r.object);
+                        w.show(e.target);
+                    }, scope: this
+                }
+            }
+        });
     },
 
     getFields: function () {

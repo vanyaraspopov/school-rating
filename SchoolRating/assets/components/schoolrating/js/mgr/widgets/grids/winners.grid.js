@@ -1,24 +1,19 @@
-SchoolRating.grid.ActivitiesParticipants = function (config) {
+SchoolRating.grid.Winners = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'schoolrating-grid-activities-participants';
+        config.id = 'schoolrating-grid-winners';
     }
-    this.sm = new Ext.grid.CheckboxSelectionModel();
     Ext.applyIf(config, {
         url: SchoolRating.config.connector_url,
         fields: this.getFields(config),
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
-        sm: this.sm,
-        baseParams: {
-            action: 'mgr/participant/getlist',
-            resource_id: config.record.id
-        },
+        sm: new Ext.grid.CheckboxSelectionModel(),
         listeners: {
-            /*rowDblClick: function (grid, rowIndex, e) {
-             var row = grid.store.getAt(rowIndex);
-             this.updateActivityParticipant(grid, e, row);
-             },*/
+            rowDblClick: function (grid, rowIndex, e) {
+                var row = grid.store.getAt(rowIndex);
+                this.updateWinner(grid, e, row);
+            }
         },
         viewConfig: {
             forceFit: true,
@@ -29,12 +24,12 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
         },
         paging: true,
         remoteSort: true,
+        pageSize: 5,
         autoHeight: true,
-        pageSize: 10,
         autosave: true,
-        save_action: 'mgr/participant/updatefromgrid'
+        save_action: 'mgr/winner/updatefromgrid'
     });
-    SchoolRating.grid.ActivitiesParticipants.superclass.constructor.call(this, config);
+    SchoolRating.grid.Winners.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
     this.store.on('load', function () {
@@ -43,33 +38,53 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
         }
     }, this);
 };
-Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
+Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
     windows: {},
 
     getMenu: function (grid, rowIndex) {
-        var m = [];
-        m.push({
-            text: _('schoolrating_activity_participant_remove')
-            , handler: this.removeActivityParticipant
-        });
-        this.addContextMenuItem(m);
+        var ids = this._getSelectedIds();
+
+        var row = grid.getStore().getAt(rowIndex);
+        var menu = SchoolRating.utils.getMenu(row.data['actions'], this, ids);
+
+        this.addContextMenuItem(menu);
     },
 
-    removeActivityParticipant: function () {
+    createWinner: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-winners-window-create',
+            id: Ext.id(),
+            params: {
+                resource_id: this.config.baseParams.resource_id
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
+    removeWinner: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
             return false;
         }
         MODx.msg.confirm({
             title: ids.length > 1
-                ? _('schoolrating_activity_participant_remove')
-                : _('schoolrating_activity_participant_remove'),
+                ? _('schoolrating_winners_remove')
+                : _('schoolrating_winner_remove'),
             text: ids.length > 1
-                ? _('schoolrating_activity_participant_remove_confirm')
-                : _('schoolrating_activity_participant_remove_confirm'),
+                ? _('schoolrating_winners_remove_confirm')
+                : _('schoolrating_winner_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'mgr/participant/remove',
+                action: 'mgr/winner/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -84,49 +99,47 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'resource_id', 'fullname', 'pagetitle', 'allowed'];
+        return ['id', 'user_id', 'fullname', 'resource_id', 'pagetitle', 'place', 'actions'];
     },
 
     getColumns: function () {
-        return [this.sm, {
-            header: _('schoolrating_activity_participant_id'),
+        return [{
+            header: _('id'),
             dataIndex: 'id',
-            sortable: true,
             hidden: true,
+            sortable: true,
             width: 70
         }, {
             header: _('schoolrating_activity'),
             dataIndex: 'pagetitle',
-            sortable: true,
-            hidden: true,
-            width: 200,
+            sortable: false,
+            width: 250,
         }, {
             header: _('username'),
             dataIndex: 'fullname',
-            sortable: true,
-            width: 300,
+            sortable: false,
+            width: 200,
         }, {
-            header: _('schoolrating_activity_participant_allowed'),
-            dataIndex: 'allowed',
-            sortable: true,
-            editor: { xtype: 'combo-boolean' },
-            renderer: this.renderBoolean,
+            header: _('schoolrating_winner_place'),
+            dataIndex: 'place',
+            sortable: false,
+            editor: { xtype: 'numberfield' },
+            width: 250,
+        }, {
+            header: _('schoolrating_grid_actions'),
+            dataIndex: 'actions',
+            renderer: SchoolRating.utils.renderActions,
+            sortable: false,
             width: 100,
+            id: 'actions'
         }];
     },
 
     getTopBar: function () {
         return [{
-            text: _('bulk_actions')
-            ,menu: [{
-                text: _('schoolrating_activities_participants_selected_allow')
-                ,handler: this.allowSelected
-                ,scope: this
-            },{
-                text: _('schoolrating_activities_participants_selected_disallow')
-                ,handler: this.disallowSelected
-                ,scope: this
-            }]
+            text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_winner_create'),
+            handler: this.createWinner,
+            scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
             width: 250,
@@ -165,45 +178,6 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         return this.processEvent('click', e);
     },
 
-    allowSelected: function() {
-        var cs = this.getSelectedAsList();
-        if (cs === false) return false;
-
-        MODx.Ajax.request({
-            url: this.config.url
-            ,params: {
-                action: 'mgr/participant/allowMultiple'
-                ,ids: cs
-            }
-            ,listeners: {
-                'success': {fn:function(r) {
-                    this.getSelectionModel().clearSelections(true);
-                    this.refresh();
-                },scope:this}
-            }
-        });
-        return true;
-    },
-    disallowSelected: function() {
-        var cs = this.getSelectedAsList();
-        if (cs === false) return false;
-
-        MODx.Ajax.request({
-            url: this.config.url
-            ,params: {
-                action: 'mgr/participant/disallowMultiple'
-                ,ids: cs
-            }
-            ,listeners: {
-                'success': {fn:function(r) {
-                    this.getSelectionModel().clearSelections(true);
-                    this.refresh();
-                },scope:this}
-            }
-        });
-        return true;
-    },
-
     _getSelectedIds: function () {
         var ids = [];
         var selected = this.getSelectionModel().getSelections();
@@ -227,11 +201,5 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         this.getStore().baseParams.query = '';
         this.getBottomToolbar().changePage(1);
     },
-
-    renderBoolean: function(val,cell,row) {
-        return val == '' || val == 0
-            ? '<span style="color:red">' + _('no') + '<span>'
-            : '<span style="color:green">' + _('yes') + '<span>';
-    }
 });
-Ext.reg('schoolrating-grid-activities-participants', SchoolRating.grid.ActivitiesParticipants);
+Ext.reg('schoolrating-grid-winners', SchoolRating.grid.Winners);

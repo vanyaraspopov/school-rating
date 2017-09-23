@@ -5,6 +5,7 @@ class srActivityParticipantCreateProcessor extends modObjectCreateProcessor
     public $objectType = 'srActivityParticipant';
     public $classKey = 'srActivityParticipant';
     public $languageTopics = array('schoolrating');
+    public $afterSaveEvent = 'srOnParticipantCreate';
     //public $permission = 'create';
 
 

@@ -13,6 +13,10 @@ $tmp = array(
         'file' => 'srCreateParticipant',
         'description' => 'Добавляет участника мероприятию.',
     ),
+    'srRemoveParticipant' => array(
+        'file' => 'srRemoveParticipant',
+        'description' => 'Удаляет заявку на участие в мероприятии.',
+    ),
 );
 
 foreach ($tmp as $k => $v) {
