@@ -70,9 +70,10 @@ class SchoolRatingHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/coefficients.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/sections.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/rating.grid.js');
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/users.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/activities.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/activities-participants.grid.js');
-        //$this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/winners.grid.js');
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/winners.grid.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/grids/snapshots.grid.js');
 
         //  Windows
@@ -80,7 +81,7 @@ class SchoolRatingHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/sections.windows.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/rating.windows.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/activities.windows.js');
-        //$this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/winners.windows.js');
+        $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/winners.windows.js');
         $this->addJavascript($this->SchoolRating->config['jsUrl'] . 'mgr/widgets/windows/snapshots.windows.js');
 
         //  Panels

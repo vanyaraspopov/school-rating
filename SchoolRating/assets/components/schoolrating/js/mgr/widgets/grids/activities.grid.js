@@ -74,23 +74,6 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         this.addContextMenuItem(menu);
     },
 
-    createActivity: function (btn, e) {
-        var w = MODx.load({
-            xtype: 'schoolrating-activity-window-create',
-            id: Ext.id(),
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        });
-        w.reset();
-        w.setValues({active: true});
-        w.show(e.target);
-    },
-
     updateActivity: function (btn, e, row) {
         if (typeof(row) != 'undefined') {
             this.menu.record = row.data;
@@ -187,6 +170,23 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         w.show(e.target);
     },
 
+    showWinners: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-winners-window',
+            id: Ext.id(),
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
     getFields: function () {
         return ['id', 'pagetitle', 'section', 'level', 'parent', 'published', 'actions'];
     },
@@ -237,6 +237,10 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
         return [{
             text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
             handler: this.showSnapshots,
+            scope: this
+        }, {
+            text: '<i class="icon icon-user"></i>&nbsp;' + _('schoolrating_winners'),
+            handler: this.showWinners,
             scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
