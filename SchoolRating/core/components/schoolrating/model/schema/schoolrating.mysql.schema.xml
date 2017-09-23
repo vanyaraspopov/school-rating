@@ -41,6 +41,22 @@
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
     </object>
 
+    <object class="srActivityWinner" table="schoolrating_activities_winners" extends="xPDOSimpleObject">
+        <field key="resource_id" dbtype="int" precision="11" phptype="integer" null="false"/>
+        <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false"/>
+        <field key="place" dbtype="int" precision="11" phptype="integer" null="false"/>
+
+        <index alias="activity" name="activity" primary="false" unique="false" type="BTREE">
+            <column key="resource_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="user" name="user" primary="false" unique="false" type="BTREE">
+            <column key="user_id" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Activity" class="modResource" local="resource_id" foreign="id" owner="foreign" cardinality="one"/>
+        <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
+    </object>
+
     <object class="srUserRating" table="schoolrating_userextra_rating" extends="xPDOSimpleObject">
         <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false" />
         <field key="section_id" dbtype="int" precision="11" phptype="integer" null="true" />
