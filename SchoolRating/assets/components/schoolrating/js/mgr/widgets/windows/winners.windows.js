@@ -6,9 +6,7 @@ SchoolRating.window.Winners = function (config) {
     Ext.applyIf(config, {
         title: _('schoolrating_winners'),
         width: 700,
-        resizable: false,
-        collapsible: false,
-        maximized: true,
+        autoHeight: true,
         url: SchoolRating.config.connector_url,
         action: '',
         buttons: [{
@@ -32,7 +30,11 @@ Ext.extend(SchoolRating.window.Winners, MODx.Window, {
     getFields: function (config) {
         return {
             title: _('schoolrating_winners'),
-            xtype: 'schoolrating-grid-winners'
+            xtype: 'schoolrating-grid-winners',
+            baseParams: {
+                action: 'mgr/winner/getlist',
+                resource_id: config.record.object.id
+            }
         };
     },
 

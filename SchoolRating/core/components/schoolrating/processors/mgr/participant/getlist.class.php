@@ -27,7 +27,7 @@ class srActivityParticipantGetListProcessor extends modObjectGetListProcessor
         $query = trim($this->getProperty('query'));
         if ($query) {
             $c->where(array(
-                'OR:Profile.fullname:LIKE' => "%{$query}%",
+                'Profile.fullname:LIKE' => "%{$query}%",
             ));
         }
 

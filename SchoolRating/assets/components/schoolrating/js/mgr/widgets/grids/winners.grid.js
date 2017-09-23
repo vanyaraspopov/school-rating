@@ -9,9 +9,6 @@ SchoolRating.grid.Winners = function (config) {
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
-        baseParams: {
-            action: 'mgr/winner/getlist'
-        },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
                 var row = grid.store.getAt(rowIndex);
@@ -24,14 +21,10 @@ SchoolRating.grid.Winners = function (config) {
             autoFill: true,
             showPreview: true,
             scrollOffset: 0,
-            getRowClass: function (rec) {
-                /*return !rec.data.active
-                 ? 'schoolrating-grid-row-disabled'
-                 : '';*/
-            }
         },
         paging: true,
         remoteSort: true,
+        pageSize: 5,
         autoHeight: true,
     });
     SchoolRating.grid.Winners.superclass.constructor.call(this, config);
@@ -140,7 +133,7 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'user_id', 'resource_id', 'actions'];
+        return ['id', 'user_id', 'fullname', 'resource_id', 'pagetitle', 'place', 'actions'];
     },
 
     getColumns: function () {
@@ -151,13 +144,18 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
             sortable: true,
             width: 70
         }, {
-            header: _('schoolrating_winner_user_id'),
-            dataIndex: 'user_id',
+            header: _('schoolrating_activity'),
+            dataIndex: 'pagetitle',
+            sortable: false,
+            width: 250,
+        }, {
+            header: _('username'),
+            dataIndex: 'fullname',
             sortable: false,
             width: 200,
         }, {
-            header: _('schoolrating_winner_resource_id'),
-            dataIndex: 'resource_id',
+            header: _('schoolrating_winner_place'),
+            dataIndex: 'place',
             sortable: false,
             width: 250,
         }, {

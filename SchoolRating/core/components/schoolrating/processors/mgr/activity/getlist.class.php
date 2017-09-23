@@ -87,6 +87,17 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         );
 
+        //  Winners
+        $array['actions'][] = array(
+            'cls' => '',
+            'icon' => 'icon icon-user action-yellow',
+            'title' => $this->modx->lexicon('schoolrating_winners'),
+            //'multiple' => $this->modx->lexicon('schoolrating_items_update'),
+            'action' => 'updateWinners',
+            'button' => true,
+            'menu' => true,
+        );
+
         /* @var modResource $object */
 
         $eventsTvSection = $this->modx->getOption('schoolrating_events_tv_section');

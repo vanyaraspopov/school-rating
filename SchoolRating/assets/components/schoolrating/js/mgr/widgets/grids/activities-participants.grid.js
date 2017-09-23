@@ -30,6 +30,7 @@ SchoolRating.grid.ActivitiesParticipants = function (config) {
         paging: true,
         remoteSort: true,
         autoHeight: true,
+        pageSize: 10,
         autosave: true,
         save_action: 'mgr/participant/updatefromgrid'
     });
