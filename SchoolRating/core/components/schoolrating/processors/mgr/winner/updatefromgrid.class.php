@@ -29,6 +29,9 @@ class srActivityWinnerUpdateFromGridProcessor extends modObjectUpdateProcessor {
         $this->setProperties($properties);
         $this->unsetProperty('data');
 
+        $mySqlDateFormat = 'Y-m-d H:i:s';
+        $this->setProperty('date', date($mySqlDateFormat));
+
         return parent::initialize();
     }
 

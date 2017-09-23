@@ -44,6 +44,7 @@
     <object class="srActivityWinner" table="schoolrating_activities_winners" extends="xPDOSimpleObject">
         <field key="resource_id" dbtype="int" precision="11" phptype="integer" null="false"/>
         <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false"/>
+        <field key="date" dbtype="date" phptype="date" null="false"/>
         <field key="place" dbtype="int" precision="11" phptype="integer" null="false"/>
 
         <index alias="activity" name="activity" primary="false" unique="false" type="BTREE">
