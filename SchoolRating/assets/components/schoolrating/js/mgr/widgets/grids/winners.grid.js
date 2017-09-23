@@ -48,10 +48,13 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
         this.addContextMenuItem(menu);
     },
 
-    /*createWinner: function (btn, e) {
+    createWinner: function (btn, e) {
         var w = MODx.load({
-            xtype: 'schoolrating-winner-window-create',
+            xtype: 'schoolrating-winners-window-create',
             id: Ext.id(),
+            params: {
+                resource_id: this.config.baseParams.resource_id
+            },
             listeners: {
                 success: {
                     fn: function () {
@@ -65,7 +68,7 @@ Ext.extend(SchoolRating.grid.Winners, MODx.grid.Grid, {
         w.show(e.target);
     },
 
-    updateWinner: function (btn, e, row) {
+    /*updateWinner: function (btn, e, row) {
         if (typeof(row) != 'undefined') {
             this.menu.record = row.data;
         }

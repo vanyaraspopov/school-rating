@@ -1,9 +1,9 @@
 <?php
 
-class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
+class srActivityWinnerCreateProcessor extends modObjectCreateProcessor
 {
-    public $objectType = 'srActivityCoefficient';
-    public $classKey = 'srActivityCoefficient';
+    public $objectType = 'srActivityWinner';
+    public $classKey = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
 
@@ -13,11 +13,14 @@ class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
      */
     public function beforeSet()
     {
-        $name = trim($this->getProperty('name'));
-        if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('schoolrating_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, array('name' => $name))) {
-            $this->modx->error->addField('name', $this->modx->lexicon('schoolrating_item_err_ae'));
+        $user_id = trim($this->getProperty('user_id'));
+        if (empty($user_id)) {
+            $this->modx->error->addField('user_id', $this->modx->lexicon('schoolrating_winner_err_user_ns'));
+        }
+
+        $resource_id = trim($this->getProperty('resource_id'));
+        if (empty($resource_id)) {
+            $this->modx->error->addField('resource_id', $this->modx->lexicon('schoolrating_winner_err_resource_ns'));
         }
 
         return parent::beforeSet();
@@ -25,4 +28,4 @@ class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'SchoolRatingCoefficientCreateProcessor';
+return 'srActivityWinnerCreateProcessor';

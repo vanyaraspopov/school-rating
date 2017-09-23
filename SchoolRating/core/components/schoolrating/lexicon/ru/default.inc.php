@@ -69,7 +69,7 @@ $_lang['schoolrating_sections_remove_confirm'] = 'Вы уверены, что х
 //  Рейтинг
 $_lang['schoolrating_rating_intro_msg'] = 'Здесь можно начислять баллы пользователям.';
 
-$_lang['schoolrating_rating'] = 'Баллы';
+$_lang['schoolrating_rating'] = 'Рейтинг';
 $_lang['schoolrating_rating_id'] = 'ID';
 $_lang['schoolrating_rating_user_id'] = 'ID пользователя';
 $_lang['schoolrating_rating_date'] = 'Дата начисления';
@@ -77,6 +77,8 @@ $_lang['schoolrating_rating_rating'] = 'Баллы';
 $_lang['schoolrating_rating_comment'] = 'Комментарий';
 
 $_lang['schoolrating_rating_create'] = 'Начислить баллы';
+$_lang['schoolrating_rating_create_err_nc'] = 'Выберите хотя бы одного пользователя.';
+$_lang['schoolrating_rating_view'] = 'Просмотреть баллы';
 $_lang['schoolrating_rating_update'] = 'Изменить запись';
 $_lang['schoolrating_rating_remove'] = 'Удалить запись';
 $_lang['schoolrating_ratings_remove'] = 'Удалить записи';
@@ -166,3 +168,4 @@ $_lang['schoolrating_winner_err_resource_ns'] = 'Не задано меропр�
 
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
+$_lang['schoolrating_coefficient_choice'] = 'Выберите коэффициент, по умолчанию - 1';
