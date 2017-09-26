@@ -8,9 +8,6 @@ SchoolRating.grid.ReportsUsers = function (config) {
         fields: this.getFields(config),
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
-        baseParams: {
-            action: 'mgr/report/getusers',
-        },
         listeners: {
         },
         viewConfig: {
@@ -60,7 +57,23 @@ Ext.extend(SchoolRating.grid.ReportsUsers, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return [];
+        return ['->', {
+            xtype: 'schoolrating-field-search',
+            width: 250,
+            listeners: {
+                search: {
+                    fn: function (field) {
+                        this._doSearch(field);
+                    }, scope: this
+                },
+                clear: {
+                    fn: function (field) {
+                        field.setValue('');
+                        this._clearSearch();
+                    }, scope: this
+                },
+            }
+        }];
     },
 
     onClick: function (e) {
@@ -80,6 +93,20 @@ Ext.extend(SchoolRating.grid.ReportsUsers, MODx.grid.Grid, {
             }
         }
         return this.processEvent('click', e);
+    },
+
+    _getSelectedIds: function () {
+        var ids = [];
+        var selected = this.getSelectionModel().getSelections();
+
+        for (var i in selected) {
+            if (!selected.hasOwnProperty(i)) {
+                continue;
+            }
+            ids.push(selected[i]['id']);
+        }
+
+        return ids;
     },
 
     _doSearch: function (tf) {

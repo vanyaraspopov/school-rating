@@ -95,6 +95,7 @@ $_lang['schoolrating_rating_report_date_start'] = 'Начало периода';
 $_lang['schoolrating_rating_report_date_end'] = 'Конец периода';
 $_lang['schoolrating_rating_report_date'] = 'Дата формирования отчёта';
 $_lang['schoolrating_rating_report_count'] = 'Количество учеников';
+$_lang['schoolrating_rating_report_count_all'] = '(все)';
 $_lang['schoolrating_rating_report_rating'] = 'Баллы';
 $_lang['schoolrating_rating_report_rating_position'] = 'Позиция в рейтинге';
 $_lang['schoolrating_rating_report_comment'] = 'Комментарий';

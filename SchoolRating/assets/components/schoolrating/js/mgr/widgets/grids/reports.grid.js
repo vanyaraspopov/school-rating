@@ -82,6 +82,12 @@ Ext.extend(SchoolRating.grid.Reports, MODx.grid.Grid, {
         }, {
             header: _('schoolrating_rating_report_count'),
             dataIndex: 'count',
+            renderer: function (value) {
+                if (!value) {
+                    value = _('schoolrating_rating_report_count_all');
+                }
+                return value;
+            },
             sortable: true,
             width: 70,
         }, {
@@ -144,10 +150,21 @@ Ext.extend(SchoolRating.grid.Reports, MODx.grid.Grid, {
         w.show(e.target);
     },
 
-    viewUsers: function (btn, e) {
+    viewUsers: function (btn, e, row) {
+        if (typeof(row) != 'undefined') {
+            this.menu.record = row.data;
+        }
+        else if (!this.menu.record) {
+            return false;
+        }
+        var id = this.menu.record.id;
+
         var w = MODx.load({
             xtype: 'schoolrating-reports-window-users',
             id: Ext.id(),
+            params: {
+                report_id: id
+            },
             listeners: {
                 success: {
                     fn: function () {

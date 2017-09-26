@@ -137,7 +137,11 @@ Ext.extend(SchoolRating.window.ReportUsers, MODx.Window, {
     getFields: function (config) {
         return {
             title: _('users'),
-            xtype: 'schoolrating-grid-reports-users'
+            xtype: 'schoolrating-grid-reports-users',
+            baseParams: {
+                action: 'mgr/report/users',
+                report_id: config.params.report_id
+            }
         };
     },
 
