@@ -102,3 +102,47 @@ Ext.extend(SchoolRating.window.CreateReport, MODx.Window, {
 
 });
 Ext.reg('schoolrating-reports-window-create', SchoolRating.window.CreateReport);
+
+SchoolRating.window.ReportUsers = function (config) {
+    config = config || {};
+    if (!config.id) {
+        config.id = 'schoolrating-reports-window-users';
+    }
+    Ext.applyIf(config, {
+        title: _('users'),
+        width: 700,
+        resizable: false,
+        collapsible: false,
+        maximized: true,
+        url: SchoolRating.config.connector_url,
+        action: '',
+        buttons: [{
+            text: _('close')
+            , scope: this
+            , handler: function () {
+                config.closeAction !== 'close' ? this.hide() : this.close();
+            }
+        }],
+        fields: this.getFields(config),
+        keys: [{
+            key: Ext.EventObject.ENTER, shift: true, fn: function () {
+                this.submit()
+            }, scope: this
+        }]
+    });
+    SchoolRating.window.ReportUsers.superclass.constructor.call(this, config);
+};
+Ext.extend(SchoolRating.window.ReportUsers, MODx.Window, {
+
+    getFields: function (config) {
+        return {
+            title: _('users'),
+            xtype: 'schoolrating-grid-reports-users'
+        };
+    },
+
+    loadDropZones: function () {
+    }
+
+});
+Ext.reg('schoolrating-reports-window-users', SchoolRating.window.ReportUsers);

@@ -144,6 +144,23 @@ Ext.extend(SchoolRating.grid.Reports, MODx.grid.Grid, {
         w.show(e.target);
     },
 
+    viewUsers: function (btn, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-reports-window-users',
+            id: Ext.id(),
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
     removeReport: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
