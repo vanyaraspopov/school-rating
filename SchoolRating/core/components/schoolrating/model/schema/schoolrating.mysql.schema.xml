@@ -69,6 +69,26 @@
         <aggregate alias="Section" class="srActivitySection" local="section_id" foreign="id" owner="foreign" cardinality="one"/>
     </object>
 
+    <object class="srUserRatingReport" table="schoolrating_userextra_rating_report" extends="xPDOSimpleObject">
+        <field key="date_start" dbtype="date" phptype="date" null="false"/>
+        <field key="date_end" dbtype="date" phptype="date" null="false"/>
+        <field key="date" dbtype="date" phptype="date" null="false"/>
+        <field key="count" dbtype="int" precision="11" phptype="integer" null="false" default="0"/>
+        <field key="comment" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
+
+        <composite alias="Users" class="srUserRatingReportUsers" local="id" foreign="report_id" owner="local" cardinality="many"/>
+    </object>
+
+    <object class="srUserRatingReportUsers" table="schoolrating_userextra_rating_report_users" extends="xPDOSimpleObject">
+        <field key="report_id" dbtype="int" precision="11" phptype="integer" null="false" />
+        <field key="user_id" dbtype="int" precision="11" phptype="integer" null="false" />
+        <field key="rating" dbtype="decimal" precision="10,2" phptype="double" null="false" default="0"/>
+        <field key="rating_position" dbtype="int" precision="11" phptype="integer" null="false"/>
+
+        <aggregate alias="Report" class="srActivitySection" local="report_id" foreign="id" owner="foreign" cardinality="one"/>
+        <aggregate alias="User" class="modUser" local="user_id" foreign="id" owner="foreign" cardinality="one"/>
+    </object>
+
     <object class="srActivitiesSnapshot" table="schoolrating_activities_snapshots" extends="xPDOSimpleObject">
         <field key="date" dbtype="date" phptype="date" null="false"/>
         <field key="comment" dbtype="varchar" precision="1000" phptype="string" null="false"/>

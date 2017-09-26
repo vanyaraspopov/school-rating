@@ -85,6 +85,27 @@ $_lang['schoolrating_ratings_remove'] = 'Удалить записи';
 $_lang['schoolrating_rating_remove_confirm'] = 'Вы уверены, что хотите удалить эту запись? Это приведёт к списанию баллов.';
 $_lang['schoolrating_ratings_remove_confirm'] = 'Вы уверены, что хотите удалить эти записи? Это приведёт к списанию баллов.';
 
+//  Отчёты по рётингу
+$_lang['schoolrating_rating_intro_msg'] = 'Здесь можно начислять баллы пользователям.';
+
+$_lang['schoolrating_rating_report'] = 'Отчёт';
+$_lang['schoolrating_rating_reports'] = 'Отчёты по периодам';
+$_lang['schoolrating_rating_report_user_id'] = 'ID пользователя';
+$_lang['schoolrating_rating_report_date_start'] = 'Начало периода';
+$_lang['schoolrating_rating_report_date_end'] = 'Конец периода';
+$_lang['schoolrating_rating_report_date'] = 'Дата формирования отчёта';
+$_lang['schoolrating_rating_report_count'] = 'Количество учеников';
+$_lang['schoolrating_rating_report_rating'] = 'Баллы';
+$_lang['schoolrating_rating_report_rating_position'] = 'Позиция в рейтинге';
+$_lang['schoolrating_rating_report_comment'] = 'Комментарий';
+
+$_lang['schoolrating_rating_report_create'] = 'Создать отчёт';
+$_lang['schoolrating_rating_report_view'] = 'Просмотреть пользователей';
+$_lang['schoolrating_rating_report_remove'] = 'Удалить отчёт';
+$_lang['schoolrating_rating_reports_remove'] = 'Удалить отчёты';
+$_lang['schoolrating_rating_report_remove_confirm'] = 'Вы уверены, что хотите удалить этот отчёт?';
+$_lang['schoolrating_rating_reports_remove_confirm'] = 'Вы уверены, что хотите удалить эти отчёты?';
+
 //  Мероприятия
 $_lang['schoolrating_activities_intro_msg'] = 'Здесь можно просмотреть мероприятия.';
 

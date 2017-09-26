@@ -102,6 +102,10 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
             text: '<i class="icon icon-plus"></i>&nbsp;' + _('schoolrating_rating_create'),
             handler: this.createRating,
             scope: this
+        }, {
+            text: '<i class="icon icon-calendar"></i>&nbsp;' + _('schoolrating_rating_reports'),
+            handler: function (){MODx.msg.alert('Сообщение', 'Окно с отчётами')},
+            scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
             width: 250,
