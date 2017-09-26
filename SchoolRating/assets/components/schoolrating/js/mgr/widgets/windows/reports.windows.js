@@ -54,7 +54,6 @@ SchoolRating.window.CreateReport = function (config) {
         saveBtnText: _('create'),
         url: SchoolRating.config.connector_url,
         action: 'mgr/report/create',
-        fileUpload: true,
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -69,16 +68,20 @@ Ext.extend(SchoolRating.window.CreateReport, MODx.Window, {
     getFields: function (config) {
         return [{
             xtype: 'datefield',
+            format: 'd.m.Y',
             fieldLabel: _('schoolrating_rating_report_date_start'),
             name: 'date_start',
             id: config.id + '-date_start',
             anchor: '99%',
+            allowBlank: false
         }, {
             xtype: 'datefield',
             fieldLabel: _('schoolrating_rating_report_date_end'),
+            format: 'd.m.Y',
             name: 'date_end',
             id: config.id + '-date_end',
             anchor: '99%',
+            allowBlank: false
         }, {
             xtype: 'numberfield',
             fieldLabel: _('schoolrating_rating_report_count'),

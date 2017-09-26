@@ -1,45 +1,30 @@
 <?php
-$xpdo_meta_map['srUserRating']= array (
+$xpdo_meta_map['srUserRatingReportUsers']= array (
   'package' => 'schoolrating',
   'version' => '1.1',
-  'table' => 'schoolrating_userextra_rating',
+  'table' => 'schoolrating_userextra_rating_report_users',
   'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
+    'report_id' => NULL,
     'user_id' => NULL,
-    'section_id' => NULL,
-    'comment' => '',
-    'date' => NULL,
     'rating' => 0,
+    'rating_position' => NULL,
   ),
   'fieldMeta' => 
   array (
-    'user_id' => 
+    'report_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '11',
       'phptype' => 'integer',
       'null' => false,
     ),
-    'section_id' => 
+    'user_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '11',
       'phptype' => 'integer',
-      'null' => true,
-    ),
-    'comment' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
-      'phptype' => 'string',
-      'null' => true,
-      'default' => '',
-    ),
-    'date' => 
-    array (
-      'dbtype' => 'date',
-      'phptype' => 'date',
       'null' => false,
     ),
     'rating' => 
@@ -50,21 +35,28 @@ $xpdo_meta_map['srUserRating']= array (
       'null' => false,
       'default' => 0,
     ),
+    'rating_position' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '11',
+      'phptype' => 'integer',
+      'null' => false,
+    ),
   ),
   'aggregates' => 
   array (
-    'User' => 
+    'Report' => 
     array (
-      'class' => 'modUser',
-      'local' => 'user_id',
+      'class' => 'srActivitySection',
+      'local' => 'report_id',
       'foreign' => 'id',
       'owner' => 'foreign',
       'cardinality' => 'one',
     ),
-    'Section' => 
+    'User' => 
     array (
-      'class' => 'srActivitySection',
-      'local' => 'section_id',
+      'class' => 'modUser',
+      'local' => 'user_id',
       'foreign' => 'id',
       'owner' => 'foreign',
       'cardinality' => 'one',
