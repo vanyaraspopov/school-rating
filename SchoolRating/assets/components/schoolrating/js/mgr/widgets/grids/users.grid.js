@@ -104,7 +104,7 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
             scope: this
         }, {
             text: '<i class="icon icon-calendar"></i>&nbsp;' + _('schoolrating_rating_reports'),
-            handler: function (){MODx.msg.alert('Сообщение', 'Окно с отчётами')},
+            handler: this.viewReports,
             scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
@@ -169,6 +169,23 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
             params: {
                 user_id: id
             },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
+    },
+
+    viewReports: function (grid, e) {
+        var w = MODx.load({
+            xtype: 'schoolrating-reports-window',
+            id: Ext.id(),
             listeners: {
                 success: {
                     fn: function () {
