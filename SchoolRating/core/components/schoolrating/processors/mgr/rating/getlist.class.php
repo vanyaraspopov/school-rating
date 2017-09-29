@@ -57,6 +57,13 @@ class srUserRatingGetListProcessor extends modObjectGetListProcessor
             ]);
         }
 
+        //  Фильтруем по группе польователей
+        $groups = $this->modx->user->getUserGroups();
+        $c->where([
+            'Section.usergroup_id:IN' => $groups,
+            'OR:Section.usergroup_id:IS' => null      //  Добавляем записи без направления
+        ]);
+
         return $c;
     }
 

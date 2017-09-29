@@ -51,6 +51,22 @@ class srActivityGetListProcessor extends modObjectGetListProcessor
             ));
         }
 
+        //  Добавляем TV направления
+        $eventsTvSection = $this->modx->getOption('schoolrating_events_tv_section');
+        $c->leftJoin('modTemplateVarResource', 'tvSection', 'modResource.id = tvSection.contentid');
+        $c->where([
+            'tvSection.tmplvarid' => $eventsTvSection
+        ]);
+
+        //  Фильтруем по группе польователей
+        $groups = $this->modx->user->getUserGroups();
+        $c->leftJoin('srActivitySection', 'srActivitySection', 'srActivitySection.name = tvSection.value');
+        $c->select($this->modx->getSelectColumns('srActivitySection', 'srActivitySection', null, ['name', 'usergroup_id']));
+        $c->where([
+            'srActivitySection.usergroup_id:IN' => $groups,
+            'OR:srActivitySection.usergroup_id:IS' => null      //  Добавляем мероприятие без направления
+        ]);
+
         return $c;
     }
 

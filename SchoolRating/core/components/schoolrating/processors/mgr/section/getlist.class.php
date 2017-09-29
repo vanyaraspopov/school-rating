@@ -39,6 +39,12 @@ class srActivitySectionGetListProcessor extends modObjectGetListProcessor
             ));
         }
 
+        //  Фильтруем по группе польователей
+        $groups = $this->modx->user->getUserGroups();
+        $c->where([
+            'usergroup_id:IN' => $groups
+        ]);
+
         return $c;
     }
 
