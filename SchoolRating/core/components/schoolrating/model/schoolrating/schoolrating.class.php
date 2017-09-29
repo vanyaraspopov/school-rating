@@ -46,6 +46,12 @@ class SchoolRating
             'eventsPast' => $eventsPast,
         ), $config);
 
+        $this->perm = array(
+            'snapshots' => $this->modx->hasPermission('snapshots'),
+            'edit_sections' => $this->modx->hasPermission('edit_sections'),
+            'edit_coefficients' => $this->modx->hasPermission('edit_coefficients')
+        );
+
         $this->modx->addPackage('schoolrating', $this->config['modelPath']);
         $this->modx->lexicon->load('schoolrating:default');
     }

@@ -256,11 +256,16 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
     },
 
     getTopBar: function () {
-        return [{
-            text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
-            handler: this.showSnapshots,
-            scope: this
-        }, '->', {
+        var topBar = [];
+        if (SchoolRating.perm.snapshots) {
+            topBar.push({
+                text: '<i class="icon icon-download"></i>&nbsp;' + _('schoolrating_activity_import_export'),
+                handler: this.showSnapshots,
+                scope: this
+            });
+        }
+        topBar.push('->');
+        topBar.push({
             xtype: 'schoolrating-field-search',
             width: 250,
             listeners: {
@@ -276,7 +281,8 @@ Ext.extend(SchoolRating.grid.Activities, MODx.grid.Grid, {
                     }, scope: this
                 },
             }
-        }];
+        });
+        return topBar;
     },
 
     onClick: function (e) {

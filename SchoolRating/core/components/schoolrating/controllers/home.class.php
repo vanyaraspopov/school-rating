@@ -94,6 +94,7 @@ class SchoolRatingHomeManagerController extends modExtraManagerController
         $this->addHtml('<script type="text/javascript">
         SchoolRating.config = ' . json_encode($this->SchoolRating->config) . ';
         SchoolRating.config.connector_url = "' . $this->SchoolRating->config['connectorUrl'] . '";
+        SchoolRating.perm = ' . json_encode($this->SchoolRating->perm) . ';
         Ext.onReady(function() {
             MODx.load({ xtype: "schoolrating-page-home"});
         });

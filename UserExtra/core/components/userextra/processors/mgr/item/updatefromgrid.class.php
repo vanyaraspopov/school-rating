@@ -10,7 +10,7 @@
 class UserExtraUpdateFromGridProcessor extends modObjectUpdateProcessor {
     public $classKey = 'modUser';
     public $languageTopics = array('user');
-    public $permission = 'save_user';
+    //public $permission = 'save_user';
     public $objectType = 'user';
     public $beforeSaveEvent = 'OnBeforeUserFormSave';
     public $afterSaveEvent = 'OnUserFormSave';

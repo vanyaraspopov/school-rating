@@ -19,17 +19,28 @@ SchoolRating.panel.Home = function (config) {
             defaults: {border: false, autoHeight: true},
             border: true,
             hideMode: 'offsets',
+            items: this.getTabs()
+        }]
+    });
+    SchoolRating.panel.Home.superclass.constructor.call(this, config);
+};
+Ext.extend(SchoolRating.panel.Home, MODx.Panel, {
+
+    getTabs: function () {
+        var tabs = [];
+        tabs.push({
+            title: _('schoolrating_activities'),
+            layout: 'anchor',
             items: [{
-                title: _('schoolrating_activities'),
-                layout: 'anchor',
-                items: [{
-                    html: _('schoolrating_activities_intro_msg'),
-                    cls: 'panel-desc',
-                }, {
-                    xtype: 'schoolrating-grid-activities',
-                    cls: 'main-wrapper',
-                }]
+                html: _('schoolrating_activities_intro_msg'),
+                cls: 'panel-desc',
             }, {
+                xtype: 'schoolrating-grid-activities',
+                cls: 'main-wrapper',
+            }]
+        });
+        if (SchoolRating.perm.edit_sections) {
+            tabs.push({
                 title: _('schoolrating_sections'),
                 layout: 'anchor',
                 items: [{
@@ -39,7 +50,10 @@ SchoolRating.panel.Home = function (config) {
                     xtype: 'schoolrating-grid-sections',
                     cls: 'main-wrapper',
                 }]
-            }, {
+            });
+        }
+        if (SchoolRating.perm.edit_coefficients) {
+            tabs.push({
                 title: _('schoolrating_coefficients'),
                 layout: 'anchor',
                 items: [{
@@ -49,20 +63,21 @@ SchoolRating.panel.Home = function (config) {
                     xtype: 'schoolrating-grid-coefficients',
                     cls: 'main-wrapper',
                 }]
+            });
+        }
+        tabs.push({
+            title: _('schoolrating_rating'),
+            layout: 'anchor',
+            items: [{
+                html: _('schoolrating_rating_intro_msg'),
+                cls: 'panel-desc',
             }, {
-                title: _('schoolrating_rating'),
-                layout: 'anchor',
-                items: [{
-                    html: _('schoolrating_rating_intro_msg'),
-                    cls: 'panel-desc',
-                }, {
-                    xtype: 'schoolrating-grid-users',
-                    cls: 'main-wrapper',
-                }]
+                xtype: 'schoolrating-grid-users',
+                cls: 'main-wrapper',
             }]
-        }]
-    });
-    SchoolRating.panel.Home.superclass.constructor.call(this, config);
-};
-Ext.extend(SchoolRating.panel.Home, MODx.Panel);
+        });
+        return tabs;
+    }
+
+});
 Ext.reg('schoolrating-panel-home', SchoolRating.panel.Home);
