@@ -132,7 +132,7 @@ Ext.extend(UserExtra.grid.Locking, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'username', 'active', 'locking_expire', 'actions'];
+        return ['id', 'username', 'active', 'blocked', 'locking_expire', 'actions'];
     },
 
     getColumns: function () {
@@ -148,7 +148,7 @@ Ext.extend(UserExtra.grid.Locking, MODx.grid.Grid, {
             width: 200,
         }, {
             header: _('userextra_locking_locked'),
-            dataIndex: 'active',
+            dataIndex: 'blocked',
             renderer: UserExtra.utils.renderBlocked,
             sortable: false,
             width: 250,

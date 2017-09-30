@@ -106,6 +106,6 @@ UserExtra.utils.renderBoolean = function(val,cell,row) {
 
 UserExtra.utils.renderBlocked = function(val,cell,row) {
     return val == '' || val == 0
-        ? '<span style="color:red">' + _('yes') + '<span>'
-        : '<span style="color:green">' + _('no') + '<span>';
+        ? '<span style="color:green">' + _('no') + '<span>'
+        : '<span style="color:red">' + _('yes') + '<span>';
 };

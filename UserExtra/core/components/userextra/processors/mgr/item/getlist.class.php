@@ -78,7 +78,7 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
         unset($objectArray['password'],$objectArray['cachepwd'],$objectArray['salt']);
 
         //  Кнопка заблокировать / разблокировать
-        if (!$objectArray['active']) {
+        if ($objectArray['blocked']) {
             $objectArray['actions'][] = array(
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',

@@ -1,7 +1,6 @@
 <?php
-require_once MODX_CORE_PATH . 'model/modx/processors/security/user/update.class.php';
 
-class UserExtraLockProcessor extends modUserUpdateProcessor
+class UserExtraLockProcessor extends modProcessor
 {
     public $objectType = 'modUser';
     public $classKey = 'modUser';
@@ -37,9 +36,10 @@ class UserExtraLockProcessor extends modUserUpdateProcessor
                 return $this->failure($this->modx->lexicon('userextra_item_err_nf'));
             }
 
-            $this->object->set('active', 0);
-            if ($this->object->save()) {
-                $this->fireAfterSaveEvent();
+            $profile = $this->object->getOne('Profile');
+            if ($profile) {
+                $profile->set('blocked', 1);
+                $profile->save();
             }
         }
 
