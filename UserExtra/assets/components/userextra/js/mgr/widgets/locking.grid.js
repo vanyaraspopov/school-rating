@@ -99,6 +99,38 @@ Ext.extend(UserExtra.grid.Locking, MODx.grid.Grid, {
         })
     },
 
+    notifyUserLocked: function () {
+        var ids = this._getSelectedIds();
+        if (!ids.length) {
+            return false;
+        }
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'mgr/item/notify',
+                ids: Ext.util.JSON.encode(ids),
+            },
+            listeners: {
+                success: {
+                    fn: function (response) {
+                        MODx.msg.alert(
+                            _('success'),
+                            response.message
+                        );
+                    }, scope: this
+                },
+                failure: {
+                    fn: function (response) {
+                        MODx.msg.alert(
+                            _('error'),
+                            response.message
+                        );
+                    }, scope: this
+                }
+            }
+        })
+    },
+
     getFields: function () {
         return ['id', 'username', 'active', 'locking_expire', 'actions'];
     },

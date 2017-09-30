@@ -77,6 +77,7 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
         $objectArray['cls'] = 'pupdate premove pcopy';
         unset($objectArray['password'],$objectArray['cachepwd'],$objectArray['salt']);
 
+        //  Кнопка заблокировать / разблокировать
         if (!$objectArray['active']) {
             $objectArray['actions'][] = array(
                 'cls' => '',
@@ -84,6 +85,17 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
                 'title' => $this->modx->lexicon('userextra_locking_unlock'),
                 'multiple' => $this->modx->lexicon('userextra_locking_unlock'),
                 'action' => 'unlockUser',
+                'button' => true,
+                'menu' => true,
+            );
+
+            //  Отправить уведомление о блокировке
+            $objectArray['actions'][] = array(
+                'cls' => '',
+                'icon' => 'icon icon-send',
+                'title' => $this->modx->lexicon('userextra_locking_notify_locked'),
+                'multiple' => $this->modx->lexicon('userextra_locking_notify_locked'),
+                'action' => 'notifyUserLocked',
                 'button' => true,
                 'menu' => true,
             );
