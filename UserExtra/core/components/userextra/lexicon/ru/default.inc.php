@@ -49,5 +49,6 @@ $_lang['userextra_locking_unlock'] = 'Разблокировать';
 
 $_lang['userextra_locking_notify_locked'] = 'Уведомить о блокировке';
 $_lang['userextra_locking_notify_subject'] = 'Блокировка аккаунта';
+$_lang['userextra_locking_notify_unlocked_subject'] = 'Ваш аккаунт разблокирован';
 $_lang['userextra_locking_notify_success'] = 'Уведомление успешно отправлено.';
 $_lang['userextra_locking_notify_failed'] = 'Во время отправки уведомления произошли ошибки. См. системный лог.';
