@@ -76,6 +76,29 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
         $objectArray['blocked'] = $object->get('blocked') ? true : false;
         $objectArray['cls'] = 'pupdate premove pcopy';
         unset($objectArray['password'],$objectArray['cachepwd'],$objectArray['salt']);
+
+        if (!$objectArray['active']) {
+            $objectArray['actions'][] = array(
+                'cls' => '',
+                'icon' => 'icon icon-power-off action-green',
+                'title' => $this->modx->lexicon('userextra_locking_unlock'),
+                'multiple' => $this->modx->lexicon('userextra_locking_unlock'),
+                'action' => 'unlockUser',
+                'button' => true,
+                'menu' => true,
+            );
+        } else {
+            $objectArray['actions'][] = array(
+                'cls' => '',
+                'icon' => 'icon icon-power-off action-gray',
+                'title' => $this->modx->lexicon('userextra_locking_lock'),
+                'multiple' => $this->modx->lexicon('userextra_locking_lock'),
+                'action' => 'lockUser',
+                'button' => true,
+                'menu' => true,
+            );
+        }
+
         return $objectArray;
     }
 

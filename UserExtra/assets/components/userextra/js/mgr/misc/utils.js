@@ -97,3 +97,15 @@ UserExtra.utils.renderActions = function (value, props, row) {
         res.join('')
     );
 };
+
+UserExtra.utils.renderBoolean = function(val,cell,row) {
+    return val == '' || val == 0
+        ? '<span style="color:red">' + _('no') + '<span>'
+        : '<span style="color:green">' + _('yes') + '<span>';
+};
+
+UserExtra.utils.renderBlocked = function(val,cell,row) {
+    return val == '' || val == 0
+        ? '<span style="color:red">' + _('yes') + '<span>'
+        : '<span style="color:green">' + _('no') + '<span>';
+};

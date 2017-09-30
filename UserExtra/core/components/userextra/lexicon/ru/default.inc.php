@@ -36,3 +36,13 @@ $_lang['userextra_item_err_save'] = 'Ошибка при сохранении П
 
 $_lang['userextra_grid_search'] = 'Поиск';
 $_lang['userextra_grid_actions'] = 'Действия';
+
+//  Блокировка пользователей
+$_lang['userextra_locking'] = 'Блокировка пользователей';
+$_lang['userextra_locking_intro_msg'] = 'Здесь Вы можете заблокировать пользователей.';
+
+$_lang['userextra_locking_locked'] = 'Заблокирован';
+$_lang['userextra_locking_expire'] = 'Срок блокировки';
+
+$_lang['userextra_locking_lock'] = 'Заблокировать';
+$_lang['userextra_locking_unlock'] = 'Разблокировать';

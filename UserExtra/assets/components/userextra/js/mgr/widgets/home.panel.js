@@ -29,6 +29,16 @@ UserExtra.panel.Home = function (config) {
                     xtype: 'userextra-grid-items',
                     cls: 'main-wrapper',
                 }]
+            }, {
+                title: _('userextra_locking'),
+                layout: 'anchor',
+                items: [{
+                    html: _('userextra_locking_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'userextra-grid-locking',
+                    cls: 'main-wrapper',
+                }]
             }]
         }]
     });

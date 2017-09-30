@@ -58,6 +58,7 @@ class UserExtraSecurityUserManagerController extends modManagerController {
         $this->addJavascript($jsUrl . 'mgr/misc/utils.js');
         $this->addJavascript($jsUrl . 'mgr/misc/combo.js');
         $this->addJavascript($jsUrl . 'mgr/widgets/items.grid.js');
+        $this->addJavascript($jsUrl . 'mgr/widgets/locking.grid.js');
         //$this->addJavascript($jsUrl . 'mgr/widgets/items.windows.js');
         $this->addJavascript($jsUrl . 'mgr/widgets/home.panel.js');
         $this->addJavascript($jsUrl . 'mgr/sections/home.js');

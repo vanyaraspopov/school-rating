@@ -36,9 +36,11 @@ class UserExtraUpdateFromGridProcessor extends modObjectUpdateProcessor {
 
         $data['extended']['agreement_filepath'] = $data['agreement_filepath'];
         $data['extended']['agreement_deadline'] = $data['agreement_deadline'];
+        $data['extended']['locking_expire'] = $data['locking_expire'];
 
         unset($data['agreement_filepath']);
         unset($data['agreement_deadline']);
+        unset($data['locking_expire']);
 
         if (empty($data)) return $this->modx->lexicon('invalid_data');
         $this->setProperties($data);
