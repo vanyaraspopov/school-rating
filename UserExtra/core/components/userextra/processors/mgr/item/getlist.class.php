@@ -61,8 +61,8 @@ class UserExtraGetListProcessor extends modObjectGetListProcessor {
     }
 
     public function prepareQueryAfterCount(xPDOQuery $c) {
-        $c->select($this->modx->getSelectColumns('modUser','modUser'));
-        $c->select($this->modx->getSelectColumns('modUserProfile','Profile'));
+        $c->select($this->modx->getSelectColumns('modUser','modUser', '', ['id', 'username', 'active']));
+        $c->select($this->modx->getSelectColumns('modUserProfile','Profile', '', ['internalKey', 'fullname', 'email', 'blocked', 'extended']));
         return $c;
     }
 
