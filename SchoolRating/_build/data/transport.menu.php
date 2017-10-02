@@ -5,10 +5,19 @@
 $menus = array();
 
 $tmp = array(
+    'schoolrating_root' => array(
+        'parent' => 'topnav',
+    ),
     'schoolrating' => array(
         'description' => 'schoolrating_menu_desc',
         'action' => 'home',
+        'parent' => 'schoolrating_root',
         //'icon' => '<i class="icon icon-large icon-modx"></i>',
+    ),
+    'schoolrating_log' => array(
+        'description' => 'schoolrating_logs_menu_desc',
+        'action' => 'logs',
+        'parent' => 'schoolrating_root',
     ),
 );
 

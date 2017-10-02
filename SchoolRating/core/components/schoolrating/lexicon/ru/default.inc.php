@@ -2,6 +2,7 @@
 include_once 'setting.inc.php';
 
 $_lang['schoolrating'] = 'Школа Рейтинг';
+$_lang['schoolrating_root'] = 'Школа Рейтинг';
 $_lang['schoolrating_menu_desc'] = 'Специально для проекта Школа Рейтинг';
 $_lang['schoolrating_intro_msg'] = 'Здесь можно настроить параметры мероприятий.';
 
@@ -193,3 +194,17 @@ $_lang['schoolrating_winner_err_place_ns'] = 'Не задано занятое �
 //  Комбобокс
 $_lang['schoolrating_section_choice'] = 'Выберите направление';
 $_lang['schoolrating_coefficient_choice'] = 'Выберите коэффициент, по умолчанию - 1';
+
+//  Логи
+$_lang['schoolrating_log'] = 'LOG';
+$_lang['schoolrating_logs'] = 'Логи';
+$_lang['schoolrating_logs_menu_desc'] = 'Логирование действий в системе';
+$_lang['schoolrating_logs_intro_msg'] = 'Здесь можно просмотреть лог действий пользователей.';
+
+$_lang['schoolrating_logs_username'] = 'Логин пользователя';
+$_lang['schoolrating_logs_action'] = 'Действие';
+$_lang['schoolrating_logs_date'] = 'Дата';
+$_lang['schoolrating_logs_ip'] = 'IP адрес';
+
+$_lang['schoolrating_logs_err_id_ns'] = 'Не задан ID записи';
+$_lang['schoolrating_logs_err_nf'] = 'Запись лога не найдена';
