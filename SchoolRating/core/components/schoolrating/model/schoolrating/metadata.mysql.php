@@ -11,5 +11,6 @@ $xpdo_meta_map = array (
     5 => 'srUserRatingReport',
     6 => 'srUserRatingReportUsers',
     7 => 'srActivitiesSnapshot',
+    8 => 'srLog',
   ),
 );
