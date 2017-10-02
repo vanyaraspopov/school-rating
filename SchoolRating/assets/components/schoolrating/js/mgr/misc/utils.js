@@ -106,6 +106,14 @@ SchoolRating.utils.renderDate = function (value, props, row) {
     }
 };
 
+SchoolRating.utils.renderDatetime = function (value, props, row) {
+    if (value) {
+        return Ext.util.Format.date(value, 'd.m.Y H:i:s');
+    } else {
+        return '&ndash;';
+    }
+};
+
 SchoolRating.utils.renderEventsGroup = function (value, props, row) {
     switch (value + '') {
         case SchoolRating.config.eventsFuture:

@@ -66,8 +66,9 @@ Ext.extend(SchoolRating.grid.Logs, MODx.grid.Grid, {
             sortable: false,
             width: 200
         }, {
-            header: _('schoolrating_logs_date'),
+            header: _('schoolrating_logs_datetime'),
             dataIndex: 'date',
+            renderer: SchoolRating.utils.renderDatetime,
             sortable: false,
             width: 250
         }, {

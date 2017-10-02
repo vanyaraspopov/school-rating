@@ -29,7 +29,7 @@ $xpdo_meta_map['srLog']= array (
     ),
     'date' => 
     array (
-      'dbtype' => 'date',
+      'dbtype' => 'datetime',
       'phptype' => 'date',
       'null' => false,
     ),

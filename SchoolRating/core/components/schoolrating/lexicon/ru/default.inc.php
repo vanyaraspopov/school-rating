@@ -203,7 +203,7 @@ $_lang['schoolrating_logs_intro_msg'] = 'Здесь можно просмотр�
 
 $_lang['schoolrating_logs_username'] = 'Логин пользователя';
 $_lang['schoolrating_logs_action'] = 'Действие';
-$_lang['schoolrating_logs_date'] = 'Дата';
+$_lang['schoolrating_logs_datetime'] = 'Дата и время';
 $_lang['schoolrating_logs_ip'] = 'IP адрес';
 
 $_lang['schoolrating_logs_err_id_ns'] = 'Не задан ID записи';
