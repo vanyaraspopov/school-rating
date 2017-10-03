@@ -20,9 +20,11 @@ if (in_array($modx->event->name, $events)) {
     //  Формирование текста записи лога
     $action = $modx->event->name;
     switch ($modx->event->name) {
+        case 'srOnParticipantCreate':
         case 'srOnParticipationAllow':
         case 'srOnParticipationDisallow':
             $phrases = [
+                'srOnParticipantCreate' => 'Добавлена заявка на участие в мероприятии. ',
                 'srOnParticipationAllow' => 'Одобрена заявка на участие в мероприятии. ',
                 'srOnParticipationDisallow' => 'Отклонена заявка на участие в мероприятии. ',
             ];
@@ -32,11 +34,26 @@ if (in_array($modx->event->name, $events)) {
             $c->select($modx->getSelectColumns('modResource', 'Activity', '', ['pagetitle']));
             $c->select($modx->getSelectColumns('modUser', 'User', '', ['username']));
             $c->where([
-                'id' => $modx->event->params['object']->get('id')
+                'resource_id' => $modx->event->params['object']->_fields['resource_id'],
+                'user_id' => $modx->event->params['object']->_fields['user_id'],
             ]);
             $obj = $modx->getObject('srActivityParticipant', $c);
             $eventName = $obj->get('pagetitle');
             $userName = $obj->get('username');
+            $action = $phrases[$modx->event->name] .
+                "Мероприятие: $eventName. " .
+                "Пользователь: $userName.";
+            break;
+        case 'srOnParticipantRemove':
+            $phrases = [
+                'srOnParticipantRemove' => 'Удалена заявка на участие в мероприятии. ',
+            ];
+            $resourceId = $modx->event->params['object']->_fields['resource_id'];
+            $userId = $modx->event->params['object']->_fields['user_id'];
+            $resource = $modx->getObject('modResource', $resourceId);
+            $user = $modx->getObject('modUser', $userId);
+            $eventName = $resource->get('pagetitle');
+            $userName = $user->get('username');
             $action = $phrases[$modx->event->name] .
                 "Мероприятие: $eventName. " .
                 "Пользователь: $userName.";
