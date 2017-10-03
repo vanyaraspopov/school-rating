@@ -30,7 +30,7 @@ $xpdo_meta_map['srLog']= array (
     'date' => 
     array (
       'dbtype' => 'datetime',
-      'phptype' => 'date',
+      'phptype' => 'datetime',
       'null' => false,
     ),
     'ipaddress' => 

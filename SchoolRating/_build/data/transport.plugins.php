@@ -11,6 +11,14 @@ $tmp = array(
         'events' => array(
             'srOnParticipantCreate' => array()
         )
+    ),
+    'srLog' => array(
+        'file' => 'srlog',
+        'description' => 'Пишет логи по событиям',
+        'events' => array(
+            'srOnParticipationAllow' => array(),
+            'srOnParticipationDisallow' => array()
+        )
     )
 );
 

@@ -206,5 +206,7 @@ $_lang['schoolrating_logs_action'] = 'Действие';
 $_lang['schoolrating_logs_datetime'] = 'Дата и время';
 $_lang['schoolrating_logs_ip'] = 'IP адрес';
 
-$_lang['schoolrating_logs_err_id_ns'] = 'Не задан ID записи';
-$_lang['schoolrating_logs_err_nf'] = 'Запись лога не найдена';
+$_lang['schoolrating_logs_err_username_ns'] = 'Не задан логин пользователя';
+$_lang['schoolrating_logs_err_action_ns'] = 'Не задано действие пользователя';
+$_lang['schoolrating_logs_err_datetime_ns'] = 'Не задана дата действия пользователя';
+$_lang['schoolrating_logs_err_ip_ns'] = 'Не задан IP адрес пользователя';

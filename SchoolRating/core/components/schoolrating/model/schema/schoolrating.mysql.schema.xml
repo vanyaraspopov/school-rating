@@ -98,7 +98,7 @@
     <object class="srLog" table="schoolrating_logs" extends="xPDOSimpleObject">
         <field key="username" dbtype="varchar" precision="255" phptype="string" null="false"/>
         <field key="action" dbtype="varchar" precision="255" phptype="string" null="false"/>
-        <field key="date" dbtype="datetime" phptype="date" null="false"/>
+        <field key="date" dbtype="datetime" phptype="datetime" null="false"/>
         <field key="ipaddress" dbtype="varchar" precision="15" phptype="string" null="false"/>
     </object>
 
