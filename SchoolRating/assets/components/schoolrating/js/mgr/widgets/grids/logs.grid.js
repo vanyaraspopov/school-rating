@@ -59,23 +59,25 @@ Ext.extend(SchoolRating.grid.Logs, MODx.grid.Grid, {
             header: _('schoolrating_logs_username'),
             dataIndex: 'username',
             sortable: false,
-            width: 200
+            width: 150,
+            editor: { xtype: 'textfield' }
         }, {
             header: _('schoolrating_logs_action'),
             dataIndex: 'action',
             sortable: false,
-            width: 200
+            width: 450,
+            editor: { xtype: 'textarea' }
         }, {
             header: _('schoolrating_logs_datetime'),
             dataIndex: 'date',
             renderer: SchoolRating.utils.renderDatetime,
             sortable: false,
-            width: 250
+            width: 150
         }, {
             header: _('schoolrating_logs_ip'),
             dataIndex: 'ipaddress',
             sortable: false,
-            width: 250
+            width: 150
         }];
     },
 
