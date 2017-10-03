@@ -7,7 +7,12 @@ $tmp = array(
     'srOnParticipantCreate',
     'srOnParticipantRemove',
     'srOnParticipationAllow',
-    'srOnParticipationDisallow'
+    'srOnParticipationDisallow',
+
+    //  srActivityWinner
+    'srOnWinnerCreate',
+    'srOnWinnerUpdate',
+    'srOnWinnerRemove',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */

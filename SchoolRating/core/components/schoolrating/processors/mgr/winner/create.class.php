@@ -6,6 +6,8 @@ class srActivityWinnerCreateProcessor extends modObjectCreateProcessor
     public $classKey = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
+    /** @var string $afterSaveEvent The name of the event to fire after saving */
+    public $afterSaveEvent = 'srOnWinnerCreate';
 
 
     /**

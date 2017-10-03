@@ -16,10 +16,16 @@ $tmp = array(
         'file' => 'srlog',
         'description' => 'Пишет логи по событиям',
         'events' => array(
+            //  srActivityParticipant
             'srOnParticipantCreate' => array(),
             'srOnParticipantRemove' => array(),
             'srOnParticipationAllow' => array(),
             'srOnParticipationDisallow' => array(),
+
+            //  srActivityWinner
+            'srOnWinnerCreate' => array(),
+            'srOnWinnerUpdate' => array(),
+            'srOnWinnerRemove' => array(),
         )
     )
 );

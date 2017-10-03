@@ -5,7 +5,7 @@ class srActivityWinnerUpdateFromGridProcessor extends modObjectUpdateProcessor {
     public $objectType = 'srActivityWinner';
     public $languageTopics = array('schoolrating');
     /** @var string $afterSaveEvent The name of the event to fire after saving */
-    public $afterSaveEvent = '';
+    public $afterSaveEvent = 'srOnWinnerUpdate';
 
     /**
      * We doing special check of permission

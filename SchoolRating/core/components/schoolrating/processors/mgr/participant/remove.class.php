@@ -46,6 +46,8 @@ class srActivityParticipantRemoveProcessor extends modObjectProcessor
                 $this->primaryKeyField => $this->object->get($this->primaryKeyField),
                 $this->objectType => &$this->object,
                 'object' => &$this->object,
+                'resource_id' => $this->object->get('resource_id'),
+                'user_id' => $this->object->get('user_id'),
             ));
         }
     }
