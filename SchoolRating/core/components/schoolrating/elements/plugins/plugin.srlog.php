@@ -25,6 +25,11 @@ $events = array(
     'srOnActivityCoefficientCreate',
     'srOnActivityCoefficientUpdate',
     'srOnActivityCoefficientRemove',
+
+    //  srActivitySection
+    'srOnActivitySectionCreate',
+    'srOnActivitySectionUpdate',
+    'srOnActivitySectionRemove',
 );
 
 /** @var modX $modx */
@@ -174,6 +179,23 @@ if (in_array($modx->event->name, $events)) {
                     "Название: $name. " .
                     "Значение: $value. " .
                     "CSS-класс: $css.";
+                break;
+
+            case 'srOnActivitySectionCreate':
+            case 'srOnActivitySectionUpdate':
+            case 'srOnActivitySectionRemove':
+                $phrases = [
+                    'srOnActivitySectionCreate' => 'Создано новое направление мероприятий. ',
+                    'srOnActivitySectionUpdate' => 'Изменёно направление мероприятий. ',
+                    'srOnActivitySectionRemove' => 'Удалёно направление мероприятий. ',
+                ];
+                $name = $modx->event->params['object']->_fields['name'];
+                $moderatorsGroupId = $modx->event->params['object']->_fields['usergroup_id'];
+                $moderatorsGroup = $modx->getObject('modUserGroup', $moderatorsGroupId);
+                $moderatorsGroupName = $moderatorsGroup->get('name');
+                $action = $phrases[$modx->event->name] .
+                    "Название: $name. " .
+                    "Группа модераторов: $moderatorsGroupName.";
                 break;
 
             default:

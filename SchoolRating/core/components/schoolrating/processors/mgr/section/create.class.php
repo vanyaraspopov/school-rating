@@ -6,6 +6,7 @@ class srActivitySectionCreateProcessor extends modObjectCreateProcessor
     public $classKey = 'srActivitySection';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
+    public $afterSaveEvent = 'srOnActivitySectionCreate';
 
 
     /**

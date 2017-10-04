@@ -40,6 +40,11 @@ $tmp = array(
             'srOnActivityCoefficientCreate' => array(),
             'srOnActivityCoefficientUpdate' => array(),
             'srOnActivityCoefficientRemove' => array(),
+
+            //  srActivitySection
+            'srOnActivitySectionCreate' => array(),
+            'srOnActivitySectionUpdate' => array(),
+            'srOnActivitySectionRemove' => array(),
         )
     )
 );

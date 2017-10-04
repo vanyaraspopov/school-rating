@@ -27,6 +27,11 @@ $tmp = array(
     'srOnActivityCoefficientCreate',
     'srOnActivityCoefficientUpdate',
     'srOnActivityCoefficientRemove',
+
+    //  srActivitySection
+    'srOnActivitySectionCreate',
+    'srOnActivitySectionUpdate',
+    'srOnActivitySectionRemove',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */

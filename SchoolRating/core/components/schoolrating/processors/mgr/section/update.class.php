@@ -6,6 +6,7 @@ class srActivitySectionUpdateProcessor extends modObjectUpdateProcessor
     public $classKey = 'srActivitySection';
     public $languageTopics = array('schoolrating');
     //public $permission = 'save';
+    public $afterSaveEvent = 'srOnActivitySectionUpdate';
 
 
     /**
