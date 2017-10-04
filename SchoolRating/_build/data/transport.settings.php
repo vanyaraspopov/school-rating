@@ -20,6 +20,14 @@ $tmp = array(
         'value' => '{base_url}SchoolRating/assets/components/schoolrating/',
         'area' => 'schoolrating_main',
     ),
+
+    // srLogs
+    'logs_expire_days' => array(
+        'xtype' => 'numberfield',
+        'value' => 60,
+        'area' => 'schoolrating_log',
+    ),
+
 );
 
 foreach ($tmp as $k => $v) {
