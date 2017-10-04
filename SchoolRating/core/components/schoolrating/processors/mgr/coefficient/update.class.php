@@ -1,11 +1,12 @@
 <?php
 
-class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
+class srActivityCoefficientUpdateProcessor extends modObjectUpdateProcessor
 {
     public $objectType = 'srActivityCoefficient';
     public $classKey = 'srActivityCoefficient';
     public $languageTopics = array('schoolrating');
     //public $permission = 'save';
+    public $afterSaveEvent = 'srOnActivityCoefficientUpdate';
 
 
     /**
@@ -45,4 +46,4 @@ class SchoolRatingCoefficientUpdateProcessor extends modObjectUpdateProcessor
     }
 }
 
-return 'SchoolRatingCoefficientUpdateProcessor';
+return 'srActivityCoefficientUpdateProcessor';

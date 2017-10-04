@@ -20,6 +20,11 @@ $events = array(
     //  srUserRatingReport
     'srOnReportCreate',
     'srOnReportRemove',
+
+    //  srActivityCoefficient
+    'srOnActivityCoefficientCreate',
+    'srOnActivityCoefficientUpdate',
+    'srOnActivityCoefficientRemove',
 );
 
 /** @var modX $modx */
@@ -152,6 +157,23 @@ if (in_array($modx->event->name, $events)) {
                     "ID: $id. " .
                     "Комментарий: $comment. " .
                     "Дата формирования: $date.";
+                break;
+
+            case 'srOnActivityCoefficientCreate':
+            case 'srOnActivityCoefficientUpdate':
+            case 'srOnActivityCoefficientRemove':
+                $phrases = [
+                    'srOnActivityCoefficientCreate' => 'Создан новый коэффициент мероприятий. ',
+                    'srOnActivityCoefficientUpdate' => 'Изменён коэффициент мероприятий. ',
+                    'srOnActivityCoefficientRemove' => 'Удалён коэффициент мероприятий. ',
+                ];
+                $name = $modx->event->params['object']->_fields['name'];
+                $value = $modx->event->params['object']->_fields['value'];
+                $css = $modx->event->params['object']->_fields['css_class'];
+                $action = $phrases[$modx->event->name] .
+                    "Название: $name. " .
+                    "Значение: $value. " .
+                    "CSS-класс: $css.";
                 break;
 
             default:

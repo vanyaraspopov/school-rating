@@ -35,6 +35,11 @@ $tmp = array(
             //  srUserRatingReport
             'srOnReportCreate' => array(),
             'srOnReportRemove' => array(),
+
+            //  srActivityCoefficient
+            'srOnActivityCoefficientCreate' => array(),
+            'srOnActivityCoefficientUpdate' => array(),
+            'srOnActivityCoefficientRemove' => array(),
         )
     )
 );

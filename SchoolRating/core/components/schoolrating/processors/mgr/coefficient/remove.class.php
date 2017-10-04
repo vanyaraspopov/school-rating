@@ -1,11 +1,12 @@
 <?php
 
-class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
+class srActivityCoefficientRemoveProcessor extends modObjectProcessor
 {
     public $objectType = 'srActivityCoefficient';
     public $classKey = 'srActivityCoefficient';
     public $languageTopics = array('schoolrating');
     //public $permission = 'remove';
+    public $afterRemoveEvent = 'srOnActivityCoefficientRemove';
 
 
     /**
@@ -23,17 +24,33 @@ class SchoolRatingCoefficientRemoveProcessor extends modObjectProcessor
         }
 
         foreach ($ids as $id) {
-            /** @var SchoolRatingItem $object */
-            if (!$object = $this->modx->getObject($this->classKey, $id)) {
+            /** @var srActivityCoefficient $this->object */
+            if (!$this->object = $this->modx->getObject($this->classKey, $id)) {
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            $object->remove();
+            if($this->object->remove()){
+                $this->fireAfterRemoveEvent();
+            }
         }
 
         return $this->success();
     }
 
+    /**
+     * If specified, fire the after remove event
+     * @return void
+     */
+    public function fireAfterRemoveEvent() {
+        if (!empty($this->afterRemoveEvent)) {
+            $this->modx->invokeEvent($this->afterRemoveEvent,array(
+                $this->primaryKeyField => $this->object->get($this->primaryKeyField),
+                $this->objectType => &$this->object,
+                'object' => &$this->object,
+            ));
+        }
+    }
+
 }
 
-return 'SchoolRatingCoefficientRemoveProcessor';
+return 'srActivityCoefficientRemoveProcessor';

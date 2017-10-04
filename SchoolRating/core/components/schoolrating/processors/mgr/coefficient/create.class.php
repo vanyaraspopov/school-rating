@@ -1,12 +1,12 @@
 <?php
 
-class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
+class srActivityCoefficientCreateProcessor extends modObjectCreateProcessor
 {
     public $objectType = 'srActivityCoefficient';
     public $classKey = 'srActivityCoefficient';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
-
+    public $afterSaveEvent = 'srOnActivityCoefficientCreate';
 
     /**
      * @return bool
@@ -25,4 +25,4 @@ class SchoolRatingCoefficientCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'SchoolRatingCoefficientCreateProcessor';
+return 'srActivityCoefficientCreateProcessor';

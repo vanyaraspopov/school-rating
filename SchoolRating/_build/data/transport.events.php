@@ -22,6 +22,11 @@ $tmp = array(
     //  srUserRatingReport
     'srOnReportCreate',
     'srOnReportRemove',
+
+    //  srActivityCoefficient
+    'srOnActivityCoefficientCreate',
+    'srOnActivityCoefficientUpdate',
+    'srOnActivityCoefficientRemove',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */
