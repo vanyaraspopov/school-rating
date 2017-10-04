@@ -6,6 +6,7 @@ class srUserRatingUpdateProcessor extends modObjectUpdateProcessor
     public $classKey = 'srUserRating';
     public $languageTopics = array('schoolrating');
     //public $permission = 'save';
+    public $afterSaveEvent = 'srOnUserRatingUpdate';
 
 
     /**

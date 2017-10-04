@@ -13,6 +13,11 @@ $tmp = array(
     'srOnWinnerCreate',
     'srOnWinnerUpdate',
     'srOnWinnerRemove',
+
+    //  srUserRating
+    'srOnUserRatingCreate',
+    'srOnUserRatingUpdate',
+    'srOnUserRatingRemove',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */

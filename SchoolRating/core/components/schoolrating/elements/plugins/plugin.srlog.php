@@ -11,6 +11,11 @@ $events = array(
     'srOnWinnerCreate',
     'srOnWinnerUpdate',
     'srOnWinnerRemove',
+
+    //  srUserRating
+    'srOnUserRatingCreate',
+    'srOnUserRatingUpdate',
+    'srOnUserRatingRemove',
 );
 
 /** @var modX $modx */
@@ -92,6 +97,41 @@ if (in_array($modx->event->name, $events)) {
                     "Пользователь: $userName. " .
                     "Место: $position.";
                 break;
+
+            case 'srOnUserRatingCreate':
+            case 'srOnUserRatingUpdate':
+                $phrases = [
+                    'srOnUserRatingCreate' => 'Пользователю начислены баллы. ',
+                    'srOnUserRatingUpdate' => 'Изменена запись о начислении баллов пользователю. ',
+                ];
+                $c = $modx->newQuery('srUserRating');
+                $c->leftJoin('modUser', 'User');
+                $c->select($modx->getSelectColumns('modUser', 'User', '', ['username']));
+                $c->select($modx->getSelectColumns('srUserRating', 'srUserRating', '', ['rating']));
+                $c->where([
+                    'id' => $modx->event->params['object']->_fields['id'],
+                ]);
+                $obj = $modx->getObject('srUserRating', $c);
+                $userName = $obj->get('username');
+                $rating = $obj->get('rating');
+                $action = $phrases[$modx->event->name] .
+                    "Пользователь: $userName. " .
+                    "Баллы: $rating.";
+                break;
+
+            case 'srOnUserRatingRemove':
+                $phrases = [
+                    'srOnUserRatingRemove' => 'Удалена запись о начислении баллов пользователю. ',
+                ];
+                $rating = $modx->event->params['object']->_fields['rating'];
+                $userId = $modx->event->params['object']->_fields['user_id'];
+                $user = $modx->getObject('modUser', $userId);
+                $userName = $user->get('username');
+                $action = $phrases[$modx->event->name] .
+                    "Пользователь: $userName. " .
+                    "Баллы: $rating.";
+                break;
+
             default:
                 break;
         }

@@ -6,7 +6,7 @@ class srUserRatingCreateProcessor extends modObjectCreateProcessor
     public $classKey = 'srUserRating';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
-
+    public $afterSaveEvent = 'srOnUserRatingCreate';
 
     /**
      * @return bool
@@ -27,6 +27,7 @@ class srUserRatingCreateProcessor extends modObjectCreateProcessor
 
     public function afterSave()
     {
+        /** @var srUserRating $this->object */
         $this->object->recalculateUserRating();
     }
 

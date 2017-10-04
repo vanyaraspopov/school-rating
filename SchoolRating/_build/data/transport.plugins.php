@@ -26,6 +26,11 @@ $tmp = array(
             'srOnWinnerCreate' => array(),
             'srOnWinnerUpdate' => array(),
             'srOnWinnerRemove' => array(),
+
+            //  srUserRating
+            'srOnUserRatingCreate' => array(),
+            'srOnUserRatingUpdate' => array(),
+            'srOnUserRatingRemove' => array(),
         )
     )
 );
