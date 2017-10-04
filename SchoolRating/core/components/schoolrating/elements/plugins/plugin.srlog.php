@@ -16,6 +16,10 @@ $events = array(
     'srOnUserRatingCreate',
     'srOnUserRatingUpdate',
     'srOnUserRatingRemove',
+
+    //  srUserRatingReport
+    'srOnReportCreate',
+    'srOnReportRemove',
 );
 
 /** @var modX $modx */
@@ -55,6 +59,7 @@ if (in_array($modx->event->name, $events)) {
                     "Мероприятие: $eventName. " .
                     "Пользователь: $userName.";
                 break;
+
             case 'srOnParticipantRemove':
             case 'srOnWinnerRemove':
                 $phrases = [
@@ -130,6 +135,23 @@ if (in_array($modx->event->name, $events)) {
                 $action = $phrases[$modx->event->name] .
                     "Пользователь: $userName. " .
                     "Баллы: $rating.";
+                break;
+
+            case 'srOnReportCreate':
+            case 'srOnReportRemove':
+                $phrases = [
+                    'srOnReportCreate' => 'Создан отчёт по рейтингу пользователей за период ',
+                    'srOnReportRemove' => 'Удалён отчёт по рейтингу пользователей за период ',
+                ];
+                $id = $modx->event->params['object']->_fields['id'];
+                $date = $modx->event->params['object']->_fields['date'];
+                $dateStart = $modx->event->params['object']->_fields['date_start'];
+                $dateEnd = $modx->event->params['object']->_fields['date_end'];
+                $comment = $modx->event->params['object']->_fields['comment'];
+                $action = $phrases[$modx->event->name] . "$dateStart - $dateEnd " .
+                    "ID: $id. " .
+                    "Комментарий: $comment. " .
+                    "Дата формирования: $date.";
                 break;
 
             default:

@@ -31,6 +31,10 @@ $tmp = array(
             'srOnUserRatingCreate' => array(),
             'srOnUserRatingUpdate' => array(),
             'srOnUserRatingRemove' => array(),
+
+            //  srUserRatingReport
+            'srOnReportCreate' => array(),
+            'srOnReportRemove' => array(),
         )
     )
 );

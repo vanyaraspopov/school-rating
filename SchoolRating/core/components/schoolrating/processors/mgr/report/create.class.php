@@ -6,7 +6,7 @@ class srUserRatingReportCreateProcessor extends modObjectCreateProcessor
     public $classKey = 'srUserRatingReport';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
-
+    public $afterSaveEvent = 'srOnReportCreate';
 
     /**
      * @return bool
