@@ -6,6 +6,7 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
     public $classKey = 'srActivitiesSnapshot';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
+    public $afterSaveEvent = 'srOnActivitiesSnapshotCreate';
 
 
     /**

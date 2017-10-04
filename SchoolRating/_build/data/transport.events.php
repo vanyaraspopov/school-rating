@@ -32,6 +32,12 @@ $tmp = array(
     'srOnActivitySectionCreate',
     'srOnActivitySectionUpdate',
     'srOnActivitySectionRemove',
+
+    //  srActivitiesSnapshot
+    'srOnActivitiesSnapshotCreate',
+    'srOnActivitiesSnapshotApply',
+    'srOnActivitiesSnapshotUpload',
+    'srOnActivitiesSnapshotRemove',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */

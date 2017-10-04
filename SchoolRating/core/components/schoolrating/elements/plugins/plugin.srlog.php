@@ -30,6 +30,12 @@ $events = array(
     'srOnActivitySectionCreate',
     'srOnActivitySectionUpdate',
     'srOnActivitySectionRemove',
+
+    //  srActivitiesSnapshot
+    'srOnActivitiesSnapshotCreate',
+    'srOnActivitiesSnapshotApply',
+    'srOnActivitiesSnapshotUpload',
+    'srOnActivitiesSnapshotRemove',
 );
 
 /** @var modX $modx */
@@ -196,6 +202,23 @@ if (in_array($modx->event->name, $events)) {
                 $action = $phrases[$modx->event->name] .
                     "Название: $name. " .
                     "Группа модераторов: $moderatorsGroupName.";
+                break;
+
+            case 'srOnActivitiesSnapshotCreate':
+            case 'srOnActivitiesSnapshotApply':
+            case 'srOnActivitiesSnapshotUpload':
+            case 'srOnActivitiesSnapshotRemove':
+                $phrases = [
+                    'srOnActivitiesSnapshotCreate' => 'Создан снимок имеющихся мероприятий. ',
+                    'srOnActivitiesSnapshotApply' => 'Применён снимок мероприятий. ',
+                    'srOnActivitiesSnapshotUpload' => 'Загружен снимок мероприятий. ',
+                    'srOnActivitiesSnapshotRemove' => 'Удалён снимок мероприятий. ',
+                ];
+                $id = $modx->event->params['object']->_fields['id'];
+                $comment = $modx->event->params['object']->_fields['comment'];
+                $action = $phrases[$modx->event->name] .
+                    "ID: $id. " .
+                    "Комментарий: $comment.";
                 break;
 
             default:

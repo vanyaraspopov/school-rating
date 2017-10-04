@@ -45,6 +45,12 @@ $tmp = array(
             'srOnActivitySectionCreate' => array(),
             'srOnActivitySectionUpdate' => array(),
             'srOnActivitySectionRemove' => array(),
+
+            //  srActivitiesSnapshot
+            'srOnActivitiesSnapshotCreate' => array(),
+            'srOnActivitiesSnapshotApply' => array(),
+            'srOnActivitiesSnapshotUpload' => array(),
+            'srOnActivitiesSnapshotRemove' => array(),
         )
     )
 );

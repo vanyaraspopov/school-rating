@@ -6,6 +6,7 @@ class srActivitiesSnapshotRemoveProcessor extends modObjectProcessor
     public $classKey = 'srActivitiesSnapshot';
     public $languageTopics = array('schoolrating');
     //public $permission = 'remove';
+    public $afterRemoveEvent = 'srOnActivitiesSnapshotRemove';
 
 
     /**
@@ -23,13 +24,14 @@ class srActivitiesSnapshotRemoveProcessor extends modObjectProcessor
         }
 
         foreach ($ids as $id) {
-            /** @var srActivitiesSnapshot $object */
-            if (!$object = $this->modx->getObject($this->classKey, $id)) {
+            /** @var srActivitiesSnapshot $this->object */
+            if (!$this->object = $this->modx->getObject($this->classKey, $id)) {
                 return $this->failure($this->modx->lexicon('schoolrating_item_err_nf'));
             }
 
-            if ($object->remove() ) {
-                $this->deleteSnapshotDocument($object->get('filepath'));
+            if ($this->object->remove() ) {
+                $this->deleteSnapshotDocument($this->object->get('filepath'));
+                $this->fireAfterRemoveEvent();
             }
         }
 
@@ -38,6 +40,20 @@ class srActivitiesSnapshotRemoveProcessor extends modObjectProcessor
 
     private function deleteSnapshotDocument($filename) {
         unlink(MODX_BASE_PATH . $filename);
+    }
+
+    /**
+     * If specified, fire the after remove event
+     * @return void
+     */
+    public function fireAfterRemoveEvent() {
+        if (!empty($this->afterRemoveEvent)) {
+            $this->modx->invokeEvent($this->afterRemoveEvent,array(
+                $this->primaryKeyField => $this->object->get($this->primaryKeyField),
+                $this->objectType => &$this->object,
+                'object' => &$this->object,
+            ));
+        }
     }
 
 }

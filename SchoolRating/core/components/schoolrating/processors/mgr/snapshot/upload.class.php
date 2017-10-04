@@ -1,11 +1,12 @@
 <?php
 
-class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
+class srActivitiesSnapshotUploadProcessor extends modObjectCreateProcessor
 {
     public $objectType = 'srActivitiesSnapshot';
     public $classKey = 'srActivitiesSnapshot';
     public $languageTopics = array('schoolrating');
     //public $permission = 'create';
+    public $afterSaveEvent = 'srOnActivitiesSnapshotUpload';
 
 
     /**
@@ -52,4 +53,4 @@ class srActivitiesSnapshotCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'srActivitiesSnapshotCreateProcessor';
+return 'srActivitiesSnapshotUploadProcessor';

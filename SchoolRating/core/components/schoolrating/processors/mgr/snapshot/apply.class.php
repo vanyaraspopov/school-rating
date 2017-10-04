@@ -8,6 +8,7 @@ class srActivitiesSnapshotApplyProcessor extends modObjectProcessor
     //public $permission = 'remove';
     /** @var boolean $checkViewPermission If set to true, will check the view permission on modAccessibleObjects */
     public $checkViewPermission = true;
+    public $afterApplyEvent = 'srOnActivitiesSnapshotApply';
 
     /**
      * {@inheritDoc}
@@ -41,7 +42,13 @@ class srActivitiesSnapshotApplyProcessor extends modObjectProcessor
             return $this->failure('Данные, спарсенные из файла excel, не прошли валидацию');
         }
 
-        return $this->applyDataToActivities($importData);
+
+        if ($this->applyDataToActivities($importData)) {
+            $this->fireAfterApplyEvent();
+            return $this->success();
+        } else {
+            return $this->failure('В результате применения снимка произошли ошибки.');
+        }
     }
 
     private function applyDataToActivities($data)
@@ -91,11 +98,7 @@ class srActivitiesSnapshotApplyProcessor extends modObjectProcessor
             }
         }
 
-        if ($isError) {
-            return $this->failure('В результате применения снимка произошли ошибки.');
-        } else {
-            return $this->success();
-        }
+        return !$isError;
     }
 
     /**
@@ -152,6 +155,20 @@ class srActivitiesSnapshotApplyProcessor extends modObjectProcessor
         }
 
         return !$isError;
+    }
+
+    /**
+     * If specified, fire the after remove event
+     * @return void
+     */
+    public function fireAfterApplyEvent() {
+        if (!empty($this->afterApplyEvent)) {
+            $this->modx->invokeEvent($this->afterApplyEvent,array(
+                $this->primaryKeyField => $this->object->get($this->primaryKeyField),
+                $this->objectType => &$this->object,
+                'object' => &$this->object,
+            ));
+        }
     }
 
 }
