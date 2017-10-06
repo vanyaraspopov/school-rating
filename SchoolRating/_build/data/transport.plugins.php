@@ -12,6 +12,13 @@ $tmp = array(
             'srOnParticipantCreate' => array()
         )
     ),
+    'srOnUserRemove' => array(
+        'file' => 'srOnUserRemove',
+        'description' => 'При удалении пользователя удаляет связанные с этим пользователем объекты компонента SchoolRating.',
+        'events' => array(
+            'OnUserRemove' => array()
+        )
+    ),
     'srLog' => array(
         'file' => 'srlog',
         'description' => 'Пишет логи по событиям',
