@@ -106,6 +106,11 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
             text: '<i class="icon icon-calendar"></i>&nbsp;' + _('schoolrating_rating_reports'),
             handler: this.viewReports,
             scope: this
+        }, {
+            text: '<i class="icon icon-edit"></i>&nbsp;' + _('schoolrating_rating_recalculate_all'),
+            cls: 'primary-button',
+            handler: this.recalculateAll,
+            scope: this
         }, '->', {
             xtype: 'schoolrating-field-search',
             width: 250,
@@ -152,6 +157,25 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
         w.reset();
         w.setValues({active: true});
         w.show(e.target);
+    },
+
+    recalculateAll: function (btn, e) {
+        MODx.msg.confirm({
+            title: _('schoolrating_rating_recalculate_all'),
+            text: _('schoolrating_rating_recalculate_all'),
+            url: this.config.url,
+            params: {
+                action: 'mgr/rating/recalculateAll'
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        return true;
     },
 
     viewRating: function (grid, e, row) {
