@@ -79,7 +79,7 @@ $_lang['schoolrating_rating_comment'] = 'Комментарий';
 
 $_lang['schoolrating_rating_create'] = 'Начислить баллы';
 $_lang['schoolrating_rating_create_err_nc'] = 'Выберите хотя бы одного пользователя.';
-$_lang['schoolrating_rating_recalculate_all'] = 'Перечситать баллы';
+$_lang['schoolrating_rating_recalculate_all'] = 'Пересчитать баллы';
 $_lang['schoolrating_rating_view'] = 'Просмотреть баллы';
 $_lang['schoolrating_rating_update'] = 'Изменить запись';
 $_lang['schoolrating_rating_remove'] = 'Удалить запись';
