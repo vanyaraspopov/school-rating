@@ -15,10 +15,16 @@
 
 		input.addEventListener( 'change', function( e )
 		{
+			const max = this.getAttribute( 'data-multiple-max' ) || 3;
 			var fileName = '';
-			if( this.files && this.files.length > 1 )
-				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-			else
+			if( this.files && this.files.length > 1 ) {
+				if (this.files.length > max) {
+					alert('Недопустимое количество файлов.');
+					this.value = '';
+				} else {
+					fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+				}
+			} else
 				fileName = e.target.value.split( '\\' ).pop();
 
 			if( fileName )
