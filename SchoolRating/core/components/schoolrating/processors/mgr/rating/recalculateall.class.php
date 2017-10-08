@@ -44,7 +44,7 @@ class srUserRatingRecalculateAllProcessor extends modUserGetListProcessor
         $profile = $this->modx->getObject('modUserProfile', ['internalKey' => $user->get('id')]);
         if ($profile) {
             $extended = $profile->get('extended');
-            $extended['rating'] = $user->get('rating_total');
+            $extended['rating'] = $user->get('rating_total') ? $user->get('rating_total') : 0;
             $profile->set('extended', $extended);
             $profile->save();
         }
