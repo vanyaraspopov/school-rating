@@ -36,6 +36,14 @@ Ext.extend(SchoolRating.window.CreateSection, MODx.Window, {
             id: config.id + '-usergroup_id',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'textfield',
+            fieldLabel: _('schoolrating_coefficient_css_class_prefix'),
+            description: _('schoolrating_coefficient_css_class_prefix_help'),
+            name: 'css_class',
+            id: config.id + '-css_class',
+            anchor: '99%',
+            allowBlank: true,
         }];
     },
 
@@ -88,6 +96,14 @@ Ext.extend(SchoolRating.window.UpdateSection, MODx.Window, {
             id: config.id + '-usergroup_id',
             anchor: '99%',
             allowBlank: false,
+        }, {
+            xtype: 'textfield',
+            fieldLabel: _('schoolrating_coefficient_css_class_prefix'),
+            description: _('schoolrating_coefficient_css_class_prefix_help'),
+            name: 'css_class',
+            id: config.id + '-css_class',
+            anchor: '99%',
+            allowBlank: true,
         }];
     },
 

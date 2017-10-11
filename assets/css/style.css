@@ -101,9 +101,12 @@ body {
 	background: url(../images/logo.png) no-repeat top left;
 	font-size: 15.4px;
 	height: 41px;
+	-webkit-background-size: 47px;
+	     -o-background-size: 47px;
+	        background-size: 47px;
 }
 .logo p {
-	padding-left: 44px;
+	padding-left: 50px;
 	line-height: 1em
 }
 .logo p:first-child {
@@ -568,16 +571,21 @@ h2 {
 	-webkit-box-shadow: -2px 2px 2px rgba(0, 0, 0, .15);
 	box-shadow: -2px 2px 2px rgba(0, 0, 0, .15)
 }
-.event_card img {
+.event_pic{
 	height: 340px;
-	width: 100%
+	width: 100%;
+	background-position: top center !important;
 }
+// .event_card img {
+// 	height: 340px;
+// 	width: 100%
+// }
 .event_card .event_title {
 	padding: 15px 25px;
 	height: 66px
 }
 .event_card .event_title a {
-	border-bottom: 2px solid #2f4953;
+	padding-bottom: 1px;
 	font-size: 20px;
 	font-family: SegoeUIBold;
 	color: #0c4054;
@@ -593,8 +601,19 @@ h2 {
 	-o-transition: .3s;
 	transition: .3s
 }
+.event_card .event_title a span{
+	border-bottom: 2px solid #2f4953;
+	-webkit-transition: 0.3s;
+	   -moz-transition: 0.3s;
+	    -ms-transition: 0.3s;
+	     -o-transition: 0.3s;
+	        transition: 0.3s;
+}
 .event_card .event_title a:hover {
 	color: #00aef0;
+	border-color: transparent
+}
+.event_card .event_title a:hover span{
 	border-color: transparent
 }
 .event_card .bottom {
@@ -762,6 +781,7 @@ h2 {
 	transition: .3s;
 	margin: 4px auto 20px
 }
+
 .news_card:before {
 	content: "";
 	position: absolute;
@@ -1157,10 +1177,10 @@ img.rounded_img {
 .adr:before, .phone_i:before, .mail_i:before {
 	content: "";
 	position: absolute;
-	top: 3px;
+	top: 2px;
 	left: 0;
 	width: 20px;
-	height: 17px;
+	height: 20px;
 	background: url(../images/all.png) no-repeat;
 	background-position: -235px -154px
 }
@@ -1880,6 +1900,66 @@ aside .news_card {
 .my_events p span{
 	font-family: SegoeUIBold;
 }
+
+.link_icon{
+	width: 25px;
+	display: inline-block;
+	height: 25px;
+	margin-right: 10px;
+	border-bottom: none !important;
+	float: left;
+	margin-top: 3px;
+}
+.sport_icon{
+	background: url(../images/blue_star.png) no-repeat center center;
+	-webkit-background-size: contain;
+	     -o-background-size: contain;
+	        background-size: contain;
+}
+.culture_icon{
+	background: url(../images/green_star.png) no-repeat center center;
+	-webkit-background-size: contain;
+	     -o-background-size: contain;
+	        background-size: contain;
+}
+.education_icon{
+	background: url(../images/yellow_star.png) no-repeat center center;
+	-webkit-background-size: contain;
+	     -o-background-size: contain;
+	        background-size: contain;
+}
+.youth_icon{
+	background: url(../images/red_star.png) no-repeat center center;
+	-webkit-background-size: contain;
+	     -o-background-size: contain;
+	        background-size: contain;
+}
+.society_icon{
+	background: url(../images/pink_star.png) no-repeat center center;
+	-webkit-background-size: contain;
+	     -o-background-size: contain;
+	        background-size: contain;
+}
+.event_card .event_title.culture_title a:hover  span{
+	color: #59a66a;
+}
+.event_card .education_title.event_title a:hover  span{
+	color: #fcd447;
+}
+.event_card .youth_title.event_title a:hover  span{
+	color: #ee4d39;
+}
+.event_card .society_title.event_title a:hover  span{
+	color: #ed5c91;
+}
+.filter_grade .jq-selectbox__dropdown{
+	text-align: left;
+	width: auto;
+	min-width: 170px;
+}
+.gallery_section .event_pic{
+	height: 240px;
+}
 @media (min-width:1200px) {
 	.container {
 		width: 1200px
@@ -2027,7 +2107,7 @@ aside .news_card {
 	.event_card .bottom {
 		padding: 15px 20px
 	}
-	.event_card img {
+	.event_pic {
 		height: 235px
 	}
 	.event_card {
@@ -2089,9 +2169,9 @@ aside .news_card {
 	.cabinet_in .icon_enter {
 		margin-right: 0
 	}
-	.event_card img {
-		height: auto
-	}
+	// .event_pic {
+	// 	height: auto
+	// }
 	footer, .social_list, .footer_links {
 		text-align: center
 	}

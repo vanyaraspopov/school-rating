@@ -59,6 +59,8 @@ $_lang['schoolrating_sections'] = 'Направления';
 $_lang['schoolrating_section_id'] = 'ID';
 $_lang['schoolrating_section_name'] = 'Название';
 $_lang['schoolrating_section_usergroup_id'] = 'Группа модераторов';
+$_lang['schoolrating_coefficient_css_class_prefix'] = 'Префикс CSS класса';
+$_lang['schoolrating_coefficient_css_class_prefix_help'] = 'Префикс CSS класса, используемый для отрисовки разметки, касающейся данного направления мероприятий. Не меняйте его значение, если не понимаете.';
 
 $_lang['schoolrating_section_create'] = 'Добавить направление';
 $_lang['schoolrating_section_update'] = 'Изменить направление';

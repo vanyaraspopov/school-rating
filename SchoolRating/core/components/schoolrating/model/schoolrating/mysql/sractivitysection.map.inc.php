@@ -8,6 +8,7 @@ $xpdo_meta_map['srActivitySection']= array (
   array (
     'name' => NULL,
     'usergroup_id' => NULL,
+    'css_class' => '',
   ),
   'fieldMeta' => 
   array (
@@ -24,6 +25,14 @@ $xpdo_meta_map['srActivitySection']= array (
       'precision' => '11',
       'phptype' => 'integer',
       'null' => false,
+    ),
+    'css_class' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '50',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
   ),
   'indexes' => 
