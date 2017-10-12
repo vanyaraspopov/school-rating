@@ -528,7 +528,8 @@ header nav ul li a:hover {
 .reg_banner .text {
 	font-size: 18px;
 	text-transform: uppercase;
-	font-family: "DSEraserCyr"
+
+	font-family: "DSEraserCyr", SegoeUISemiBold
 }
 .reg_banner .text {
 	float: right;
@@ -576,10 +577,10 @@ h2 {
 	width: 100%;
 	background-position: top center !important;
 }
-// .event_card img {
+/*// .event_card img {
 // 	height: 340px;
 // 	width: 100%
-// }
+// }*/
 .event_card .event_title {
 	padding: 15px 25px;
 	height: 66px
@@ -2169,9 +2170,9 @@ aside .news_card {
 	.cabinet_in .icon_enter {
 		margin-right: 0
 	}
-	// .event_pic {
+	/*// .event_pic {
 	// 	height: auto
-	// }
+	// }*/
 	footer, .social_list, .footer_links {
 		text-align: center
 	}
@@ -2432,6 +2433,12 @@ aside .news_card {
 	}
 	.attainment_block {
 	    margin-bottom: 20px;
+	}
+	.reg_banner p.title{
+		font-size: 30px;
+	}
+	.reg_banner .text{
+		font-size: 14px;
 	}
 }
 
