@@ -38,8 +38,8 @@ Ext.extend(SchoolRating.window.CreateSection, MODx.Window, {
             allowBlank: false,
         }, {
             xtype: 'textfield',
-            fieldLabel: _('schoolrating_coefficient_css_class_prefix'),
-            description: _('schoolrating_coefficient_css_class_prefix_help'),
+            fieldLabel: _('schoolrating_coefficient_css_class'),
+            description: _('schoolrating_coefficient_css_class_help'),
             name: 'css_class',
             id: config.id + '-css_class',
             anchor: '99%',
@@ -98,8 +98,8 @@ Ext.extend(SchoolRating.window.UpdateSection, MODx.Window, {
             allowBlank: false,
         }, {
             xtype: 'textfield',
-            fieldLabel: _('schoolrating_coefficient_css_class_prefix'),
-            description: _('schoolrating_coefficient_css_class_prefix_help'),
+            fieldLabel: _('schoolrating_coefficient_css_class'),
+            description: _('schoolrating_coefficient_css_class_help'),
             name: 'css_class',
             id: config.id + '-css_class',
             anchor: '99%',

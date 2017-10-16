@@ -630,7 +630,14 @@ h2 {
 }
 .event_card .bottom .place {
 	text-decoration: underline;
-	margin-right: 55px
+	margin-right: 5px;
+	max-width: 75%;
+	min-width: 130px;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	-ms-text-overflow: ellipsis;
+	    text-overflow: ellipsis;
 }
 .event_card .bottom .date {
 	float: right;
@@ -1146,7 +1153,7 @@ img.rounded_img {
 .event_address {
 	padding: 25px 0
 }
-.event_address .adr, .event_address .blank {
+.event_address .adr {
 	margin-left: 10px
 }
 .event_address .map_wrap {
@@ -1162,20 +1169,20 @@ img.rounded_img {
 .info_text.active:after {
 	display: none
 }
-.blank, .adr, .phone_i, .mail_i {
+.adr, .phone_i, .mail_i {
 	position: relative;
 	padding-left: 30px;
 	color: #5E5E5E;
 	font-size: 14px;
 	margin-bottom: 20px
 }
-.blank a, .adr a, .phone_i a, .mail_i a {
+.adr a, .phone_i a, .mail_i a {
 	color: #5e5e5e
 }
-.blank span, .adr span, .phone_i span, .mail_i span {
+.adr span, .phone_i span, .mail_i span {
 	color: #000
 }
-.blank:before, .adr:before, .phone_i:before, .mail_i:before {
+.adr:before, .phone_i:before, .mail_i:before {
 	content: "";
 	position: absolute;
 	top: 2px;
@@ -1190,9 +1197,6 @@ img.rounded_img {
 	color: #000;
 	text-decoration: underline;
 	margin: 28px 0 18px 28px
-}
-.blank:before {
-	background-position: 0px 0px;
 }
 .phone_i:before {
 	width: 18px;
@@ -1964,6 +1968,50 @@ aside .news_card {
 .gallery_section .event_pic{
 	height: 240px;
 }
+.filter_sport,
+.filter_sport .jq-selectbox__select-text{
+	background: url(../images/blue_star.png) no-repeat 10px center;
+	-webkit-background-size: 15px;
+	     -o-background-size: 15px;
+	        background-size: 15px;
+}
+.filter_education,
+.filter_education .jq-selectbox__select-text{
+	background: url(../images/yellow_star.png) no-repeat 10px center;
+	-webkit-background-size: 15px;
+	     -o-background-size: 15px;
+	        background-size: 15px;
+}
+.filter_culture,
+.filter_culture .jq-selectbox__select-text{
+	background: url(../images/green_star.png) no-repeat 10px center;
+	-webkit-background-size: 15px;
+	     -o-background-size: 15px;
+	        background-size: 15px;
+}
+.filter_youth,
+.filter_youth .jq-selectbox__select-text{
+	background: url(../images/red_star.png) no-repeat 10px center;
+	-webkit-background-size: 15px;
+	     -o-background-size: 15px;
+	        background-size: 15px;
+}
+.filter_society,
+.filter_society .jq-selectbox__select-text{
+	background: url(../images/pink_star.png) no-repeat 10px center;
+	-webkit-background-size: 15px;
+	     -o-background-size: 15px;
+	        background-size: 15px;
+}
+.filter_select .jq-selectbox li{
+	padding-left: 35px;
+}
+.filter_select .jq-selectbox__select{
+	padding-left: 0;
+}
+.filter_select .jq-selectbox__select-text{
+	padding-left: 35px;
+}
 @media (min-width:1200px) {
 	.container {
 		width: 1200px
@@ -1994,7 +2042,9 @@ aside .news_card {
 		padding: 45px 25px
 	}
 	.event_card .bottom .place {
-		margin-right: 20px
+		margin-right: 20px;
+		min-width: 0;
+		max-width: 63%;
 	}
 	.news_card {
 		padding: 15px;
@@ -2056,6 +2106,11 @@ aside .news_card {
 		text-align: center;
 		border-top: 1px solid rgba(255, 255, 255, .5);
 		padding: 10px 0 20px
+	}
+	.event_card .bottom .place{
+		width: 100%;
+		max-width: none;
+		margin-bottom: 5px;
 	}
 	header nav ul li {
 		display: block;
@@ -2189,6 +2244,9 @@ aside .news_card {
 	}
 	.footer_menu {
 		margin: 20px 0
+	}
+	.event_card .bottom .place{
+		white-space: normal;
 	}
 	footer {
 		padding: 35px 0 50px
