@@ -42,7 +42,7 @@ $_lang['schoolrating_coefficient_id'] = 'ID';
 $_lang['schoolrating_coefficient_name'] = 'Название';
 $_lang['schoolrating_coefficient_value'] = 'Значение';
 $_lang['schoolrating_coefficient_css_class'] = 'CSS класс';
-$_lang['schoolrating_coefficient_css_class_help'] = 'CSS класс, используемый для отрисовки иконки.Не меняйте его значение, если не понимаете.';
+$_lang['schoolrating_coefficient_css_class_help'] = 'CSS класс, используемый для отрисовки разметки, касающейся данного уровня мероприятий. Не меняйте его значение, если не понимаете.';
 
 $_lang['schoolrating_coefficient_create'] = 'Добавить коэффициент';
 $_lang['schoolrating_coefficient_update'] = 'Изменить коэффициент';
@@ -59,8 +59,8 @@ $_lang['schoolrating_sections'] = 'Направления';
 $_lang['schoolrating_section_id'] = 'ID';
 $_lang['schoolrating_section_name'] = 'Название';
 $_lang['schoolrating_section_usergroup_id'] = 'Группа модераторов';
-$_lang['schoolrating_coefficient_css_class'] = 'Префикс CSS класса';
-$_lang['schoolrating_coefficient_css_class_help'] = 'Префикс CSS класса, используемый для отрисовки разметки, касающейся данного направления мероприятий. Не меняйте его значение, если не понимаете.';
+$_lang['schoolrating_section_css_class'] = 'CSS класс';
+$_lang['schoolrating_section_css_class_help'] = 'CSS класс, используемый для отрисовки разметки, касающейся данного направления мероприятий. Не меняйте его значение, если не понимаете.';
 
 $_lang['schoolrating_section_create'] = 'Добавить направление';
 $_lang['schoolrating_section_update'] = 'Изменить направление';
