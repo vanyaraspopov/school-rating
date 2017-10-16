@@ -1146,7 +1146,7 @@ img.rounded_img {
 .event_address {
 	padding: 25px 0
 }
-.event_address .adr {
+.event_address .adr, .event_address .blank {
 	margin-left: 10px
 }
 .event_address .map_wrap {
@@ -1162,20 +1162,20 @@ img.rounded_img {
 .info_text.active:after {
 	display: none
 }
-.adr, .phone_i, .mail_i {
+.blank, .adr, .phone_i, .mail_i {
 	position: relative;
 	padding-left: 30px;
 	color: #5E5E5E;
 	font-size: 14px;
 	margin-bottom: 20px
 }
-.adr a, .phone_i a, .mail_i a {
+.blank a, .adr a, .phone_i a, .mail_i a {
 	color: #5e5e5e
 }
-.adr span, .phone_i span, .mail_i span {
+.blank span, .adr span, .phone_i span, .mail_i span {
 	color: #000
 }
-.adr:before, .phone_i:before, .mail_i:before {
+.blank:before, .adr:before, .phone_i:before, .mail_i:before {
 	content: "";
 	position: absolute;
 	top: 2px;
@@ -1190,6 +1190,9 @@ img.rounded_img {
 	color: #000;
 	text-decoration: underline;
 	margin: 28px 0 18px 28px
+}
+.blank:before {
+	background-position: 0px 0px;
 }
 .phone_i:before {
 	width: 18px;
