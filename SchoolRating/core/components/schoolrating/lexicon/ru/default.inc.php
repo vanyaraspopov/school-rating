@@ -173,6 +173,11 @@ $_lang['schoolrating_activities_participants_remove_confirm'] = 'Вы увере
 $_lang['schoolrating_activities_participants_selected_allow'] = 'Одобрить';
 $_lang['schoolrating_activities_participants_selected_disallow'] = 'Отклонить';
 
+$_lang['schoolrating_activities_participants_selected_email'] = 'Написать письмо';
+$_lang['schoolrating_activities_participants_email'] = 'Написать письмо';
+$_lang['schoolrating_activities_participants_email_subject'] = 'Тема письма';
+$_lang['schoolrating_activities_participants_email_text'] = 'Текст письма';
+
 $_lang['schoolrating_activity_participant_err_user_ns'] = 'Не задан пользователь';
 $_lang['schoolrating_activity_participant_err_resource_ns'] = 'Не задано мероприятие';
 

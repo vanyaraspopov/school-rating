@@ -109,7 +109,7 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
             header: _('schoolrating_activity_participant_allowed'),
             dataIndex: 'allowed',
             sortable: true,
-            editor: { xtype: 'combo-boolean' },
+            editor: {xtype: 'combo-boolean'},
             renderer: this.renderBoolean,
             width: 100,
         }];
@@ -118,14 +118,18 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
     getTopBar: function () {
         return [{
             text: _('bulk_actions')
-            ,menu: [{
+            , menu: [{
                 text: _('schoolrating_activities_participants_selected_allow')
-                ,handler: this.allowSelected
-                ,scope: this
-            },{
+                , handler: this.allowSelected
+                , scope: this
+            }, {
                 text: _('schoolrating_activities_participants_selected_disallow')
-                ,handler: this.disallowSelected
-                ,scope: this
+                , handler: this.disallowSelected
+                , scope: this
+            }, {
+                text: _('schoolrating_activities_participants_selected_email')
+                , handler: this.emailSelected
+                , scope: this
             }]
         }, '->', {
             xtype: 'schoolrating-field-search',
@@ -165,43 +169,70 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         return this.processEvent('click', e);
     },
 
-    allowSelected: function() {
+    allowSelected: function () {
         var cs = this.getSelectedAsList();
         if (cs === false) return false;
 
         MODx.Ajax.request({
             url: this.config.url
-            ,params: {
+            , params: {
                 action: 'mgr/participant/allowMultiple'
-                ,ids: cs
+                , ids: cs
             }
-            ,listeners: {
-                'success': {fn:function(r) {
-                    this.getSelectionModel().clearSelections(true);
-                    this.refresh();
-                },scope:this}
+            , listeners: {
+                'success': {
+                    fn: function (r) {
+                        this.getSelectionModel().clearSelections(true);
+                        this.refresh();
+                    }, scope: this
+                }
             }
         });
         return true;
     },
-    disallowSelected: function() {
+    disallowSelected: function () {
         var cs = this.getSelectedAsList();
         if (cs === false) return false;
 
         MODx.Ajax.request({
             url: this.config.url
-            ,params: {
+            , params: {
                 action: 'mgr/participant/disallowMultiple'
-                ,ids: cs
+                , ids: cs
             }
-            ,listeners: {
-                'success': {fn:function(r) {
-                    this.getSelectionModel().clearSelections(true);
-                    this.refresh();
-                },scope:this}
+            , listeners: {
+                'success': {
+                    fn: function (r) {
+                        this.getSelectionModel().clearSelections(true);
+                        this.refresh();
+                    }, scope: this
+                }
             }
         });
         return true;
+    },
+    emailSelected: function (btn, e) {
+        var cs = this.getSelectedAsList();
+        if (cs === false) return false;
+
+        var w = MODx.load({
+            xtype: 'schoolrating-activity-window-email',
+            id: Ext.id(),
+            params: {
+                resource_id: this.config.baseParams.resource_id,
+                ids: cs
+            },
+            listeners: {
+                success: {
+                    fn: function () {
+                        this.refresh();
+                    }, scope: this
+                }
+            }
+        });
+        w.reset();
+        w.setValues({active: true});
+        w.show(e.target);
     },
 
     _getSelectedIds: function () {
@@ -228,7 +259,7 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
     },
 
-    renderBoolean: function(val,cell,row) {
+    renderBoolean: function (val, cell, row) {
         return val == '' || val == 0
             ? '<span style="color:red">' + _('no') + '<span>'
             : '<span style="color:green">' + _('yes') + '<span>';
