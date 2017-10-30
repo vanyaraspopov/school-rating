@@ -69,7 +69,7 @@ Ext.extend(SchoolRating.grid.Users, MODx.grid.Grid, {
         return [this.sm, {
             header: _('id'),
             dataIndex: 'id',
-            hidden: true,
+            hidden: false,
             sortable: true,
             width: 70
         }, {

@@ -95,6 +95,12 @@ Ext.extend(SchoolRating.grid.ActivitiesParticipants, MODx.grid.Grid, {
             hidden: true,
             width: 70
         }, {
+            header: _('schoolrating_activity_participant_user_id'),
+            dataIndex: 'user_id',
+            sortable: true,
+            hidden: false,
+            width: 70
+        }, {
             header: _('schoolrating_activity'),
             dataIndex: 'pagetitle',
             sortable: true,
