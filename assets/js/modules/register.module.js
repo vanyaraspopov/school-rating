@@ -25,6 +25,7 @@
     var ajaxUrl = $regConfirmForm.data('ajax-url');
 
     $regForm.find('input[type="tel"]').mask('+7 (999) 999-99-99');
+    $regForm.find('input.js-date').mask('99.99.9999');
     $regForm.on('submit', submitHandler);
     $regConfirmForm.on('submit', function () {
         return false;

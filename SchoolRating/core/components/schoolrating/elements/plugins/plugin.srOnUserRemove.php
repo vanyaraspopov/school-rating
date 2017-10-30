@@ -14,9 +14,9 @@ switch ($modx->event->name) {
                 return 'Could not load SchoolRating class!';
             }
             $userId = $user->get('id');
-            $this->modx->removeCollection('srActivityParticipant', ['user_id' => $userId]);
-            $this->modx->removeCollection('srActivityWinner', ['user_id' => $userId]);
-            $this->modx->removeCollection('srUserRating', ['user_id' => $userId]);
+            $modx->removeCollection('srActivityParticipant', ['user_id' => $userId]);
+            $modx->removeCollection('srActivityWinner', ['user_id' => $userId]);
+            $modx->removeCollection('srUserRating', ['user_id' => $userId]);
         }
 
         break;
