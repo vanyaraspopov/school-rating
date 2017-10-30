@@ -1780,8 +1780,8 @@ aside .news_card {
 	width: 160px;
 }
 .rating_card .img_wrap img{
-	min-width: 100%;
-	min-height: 100%;
+	/*min-width: 100%;
+	min-height: 100%;*/
 }
 .apprentice_info{
 	position: relative;

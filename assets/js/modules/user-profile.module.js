@@ -1,6 +1,6 @@
 'use strict';
 
-(function($) {
+(function ($) {
     var filterFormSelector = '#filter-form';
     var filterContentWrapper = '#userRatesWrapper';
     var filterContent = '#userRates';
@@ -9,7 +9,7 @@
 
     var ajaxUrl = $filterForm.data('location');
 
-    var submitFormHandler = function() {
+    var submitFormHandler = function () {
         var data = $filterForm.serialize();
         $(filterContentWrapper).load(ajaxUrl + ' ' + filterContent, data);
         return false;
@@ -56,4 +56,37 @@
             $cpForm[0].reset();
         }
     }
+})(jQuery);
+
+
+//  Обрезка изображения
+(function ($) {
+    var imageSelector = '#img-photo';
+
+    $(imageSelector).each(function () {
+        var image = $(this),
+            cropwidth = image.attr('cropwidth'),
+            cropheight = image.attr('cropheight'),
+            results = image.next('.results'),
+            x = $('.cropX', results),
+            y = $('.cropY', results),
+            w = $('.cropW', results),
+            h = $('.cropH', results),
+            download = results.next('.download').find('a');
+
+        image.cropbox({
+            width: cropwidth,
+            height: cropheight,
+            maxZoom: 2.0,
+            showControls: 'auto'
+            //controls: $cropControls
+        })
+            .on('cropbox', function (event, results, img) {
+                x.text(results.cropX);
+                y.text(results.cropY);
+                w.text(results.cropW);
+                h.text(results.cropH);
+                download.attr('href', img.getDataURL());
+            });
+    });
 })(jQuery);
