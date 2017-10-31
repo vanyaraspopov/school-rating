@@ -11,7 +11,14 @@
 .jcrop-holder {
   direction: ltr;
   text-align: left;
+  margin: 0 auto;
 }
+
+/* Делаем круглую рамку */
+.jcrop-holder > div > div{
+  border-radius: 100%;
+}
+
 /* Selection Border */
 .jcrop-vline,
 .jcrop-hline {
@@ -21,13 +28,13 @@
 }
 .jcrop-vline {
   height: 100%;
-  width: 1px !important;
+  /*width: 1px !important;*/
 }
 .jcrop-vline.right {
   right: 0;
 }
 .jcrop-hline {
-  height: 1px !important;
+  /*height: 1px !important;*/
   width: 100%;
 }
 .jcrop-hline.bottom {
@@ -162,4 +169,9 @@
 .jcrop-holder img,
 img.jcrop-preview {
   max-width: none;
+}
+
+/* Не показываем радиокнопку. Не понятно зачем она */
+input.jcrop-keymgr {
+  visibility: hidden;
 }

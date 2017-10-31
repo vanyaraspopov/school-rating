@@ -64,6 +64,9 @@ $(function () {
     var maxFileSize = 2 * 1024 * 1024;
     var fileSizeLimitText = 'Размер файла больше чем 2 Мб';
 
+    var imgWidth = 160;
+    var imgHeight = 160;
+
     var cropPhotoModalSelector = '#cropPhotoModal';
     var imageSelector = '#img-photo';
     var imageErrorSelector = '#img-error';
@@ -74,14 +77,8 @@ $(function () {
     var $imageError = $(imageErrorSelector);
     var $input = $(inputSelector);
 
-    //  При закрытии модального окна очищаем инпут и убираем изображение
-    $cropPhotoModal.on('hide.bs.modal', function () {
-        $image.attr('src', '');
-        $input.val('');
-    });
-
     // Произошло изменение значения инпута
-    $input.change(function (e) {
+    $input.on('change', function (e) {
         // Если браузер не поддерживает FileReader, то ничего не делаем
         if (!window.FileReader) {
             console.log('Браузер не поддерживает File API');
@@ -110,59 +107,43 @@ $(function () {
         $(reader).on('load', function (event) {
             // Указываем в качестве значения атрибута src изображения содержимое файла (картинки)
             $image.attr('src', event.target.result);
-
-            setTimeout(function () {
-                //  crop.js
-                var x1, y1, x2, y2, crop = 'crop/';
-                var jcrop_api;
-
-                $image.Jcrop({
-                    onChange: showCoords,
-                    onSelect: showCoords,
-                    aspectRatio: 1,
-                    minSize: [160, 160]
-                }, function () {
-                    jcrop_api = this;
-                });
-
-                // Изменение координат
-                function showCoords(c) {
-                    x1 = c.x;
-                    $('#x1').val(c.x);
-                    y1 = c.y;
-                    $('#y1').val(c.y);
-                    x2 = c.x2;
-                    $('#x2').val(c.x2);
-                    y2 = c.y2;
-                    $('#y2').val(c.y2);
-
-                    $('#w').val(c.w);
-                    $('#h').val(c.h);
-                }
-
-                function release() {
-                    jcrop_api.release();
-                }
-
-                //  Покажем модалку
-                $cropPhotoModal.modal('show');
-            }, 1000);
-
+            cropInit();
         });
         // Запускает процесс чтения файла (изображения). После завершения чтения файла его содержимое будет доступно посредством атрибута result
         reader.readAsDataURL(file);
 
     });
 
-    // Перед отправкой формы на сервер...
-    $("#updateProfile").submit(function (e) {
-        // Проверяем значения поля photo. Если оно равно пустой строке, то данные отправляем
-        if ($input.val() == '') {
-            return;
+    function cropInit() {
+        var jcrop_api;
+
+        $image.Jcrop({
+            onChange: setCoords,
+            onSelect: setCoords,
+            //aspectRatio: 1,
+            minSize: [imgWidth, imgHeight],
+            setSelect: [0, 0, imgWidth, imgHeight],
+            boxWidth: 500,
+            boxHeight: 400
+        }, function () {
+            jcrop_api = this;
+            $cropPhotoModal.modal('show');
+            //  При закрытии модального окна очищаем инпут и убираем изображение
+            $cropPhotoModal.on('hide.bs.modal', function () {
+                $image.attr('src', '');
+                $input.val('');
+                jcrop_api.destroy();
+            });
+        });
+
+        // При изменении координат расставляем их по инпутам
+        function setCoords(c) {
+            $('#x1').val(c.x);
+            $('#y1').val(c.y);
+            $('#x2').val(c.x2);
+            $('#y2').val(c.y2);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
         }
-        // Если элемент содержит некоторую строку (ошибки связанные с фото), то отменяем отправку формы
-        if ((($imageError.text()).length > 0)) {
-            e.preventDefault();
-        }
-    });
+    }
 });
