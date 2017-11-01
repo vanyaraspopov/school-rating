@@ -2015,6 +2015,39 @@ aside .news_card {
 .filter_select .jq-selectbox__select-text{
 	padding-left: 35px;
 }
+
+.options_block .feedback-button {
+	margin: 10px 2px;
+}
+.feedback-button {
+	padding: 3px;
+	border-radius: 4px;
+	background-color: #fff;
+	width: 54px;
+	font-family: SegoeUIItalic
+}
+.feedback-button a.btn {
+	margin: 2px 0 0;
+	background: 0 0;
+	box-shadow: none;
+	border: 0;
+	color: #919191;
+	padding: 0 8px 0 10px;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-ms-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s
+}
+.feedback-button a.btn:hover {
+	border: 0;
+	box-shadow: none;
+	color: #00aef0
+}
+.feedback-button .glyphicon-question-sign {
+	font-size: 23px
+}
+
 @media (min-width:1200px) {
 	.container {
 		width: 1200px
@@ -2154,8 +2187,7 @@ aside .news_card {
 		margin: auto
 	}
 	.options_block #custom-search-input {
-		margin: 10px auto;
-		float: none !important
+		margin: 10px 70px 10px 0;
 	}
 	.options_block {
 		background-repeat: repeat
@@ -2506,7 +2538,7 @@ aside .news_card {
 	}
 }
 
-@media screen and (max-width:420px) {
+@media screen and (max-width:425px) {
 	.form_wrap .line.checkbox_wrap label {
 		max-width: 250px;
 		padding-left: 0
@@ -2514,5 +2546,9 @@ aside .news_card {
 	.attention {
 		padding-top: 0;
 		margin-bottom: 25px
+	}
+	.options_block #custom-search-input {
+		margin: 10px auto;
+		max-width: 100%;
 	}
 }
