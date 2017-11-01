@@ -120,7 +120,7 @@ $(function () {
         $image.Jcrop({
             onChange: setCoords,
             onSelect: setCoords,
-            //aspectRatio: 1,
+            aspectRatio: 1,
             minSize: [imgWidth, imgHeight],
             setSelect: [0, 0, imgWidth, imgHeight],
             boxWidth: 500,
