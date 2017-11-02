@@ -529,7 +529,7 @@ header nav ul li a:hover {
 	font-size: 18px;
 	text-transform: uppercase;
 
-	font-family: "DSEraserCyr", SegoeUISemiBold
+	font-family: SegoeUISemiBold;
 }
 .reg_banner .text {
 	float: right;
@@ -569,13 +569,18 @@ h2 {
 	border-radius: 4px;
 	font-size: 0;
 	overflow: hidden;
+	max-width: 470px;
+
 	-webkit-box-shadow: -2px 2px 2px rgba(0, 0, 0, .15);
 	box-shadow: -2px 2px 2px rgba(0, 0, 0, .15)
 }
 .event_pic{
-	height: 340px;
+	height: 470px;
 	width: 100%;
 	background-position: top center !important;
+	-webkit-background-size: 100% 100% !important;
+	     -o-background-size: 100% 100% !important;
+	        background-size: 100% 100% !important;
 }
 /*// .event_card img {
 // 	height: 340px;
@@ -631,7 +636,7 @@ h2 {
 .event_card .bottom .place {
 	text-decoration: underline;
 	margin-right: 5px;
-	max-width: 75%;
+	max-width: 65%;
 	min-width: 130px;
 	float: left;
 	overflow: hidden;
@@ -1542,7 +1547,8 @@ img.rounded_img {
 	margin: 23px 0;
 	height: 50px;
 	line-height: 50px;
-	width: 270px
+	width: 270px;
+	max-width: 100%;
 }
 input.form-control {
 	height: 41px
@@ -2015,7 +2021,12 @@ aside .news_card {
 .filter_select .jq-selectbox__select-text{
 	padding-left: 35px;
 }
-
+.news_section .event_card{
+	max-width: 470px;
+}
+.news_section .event_card>a>img{
+	height: 470px;
+}
 .options_block .feedback-button {
 	margin: 10px 2px;
 }
@@ -2061,6 +2072,9 @@ aside .news_card {
 		text-overflow: ellipsis;
 		text-align: left;
 		display: inline-block
+	}
+	.event_pic{
+		height: 450px;
 	}
 	.options_block .options ul li {
 		margin-right: 0
@@ -2127,6 +2141,12 @@ aside .news_card {
 	}
 	.reg_top li.active a {
 		font-size: 30px
+	}
+	.news_section .event_card{
+		max-width: 450px;
+	}
+	.news_section .event_card>a>img{
+		height: 450px;
 	}
 }
 @media (max-width:991px) {
@@ -2202,7 +2222,7 @@ aside .news_card {
 		padding: 15px 20px
 	}
 	.event_pic {
-		height: 235px
+		height: 345px
 	}
 	.event_card {
 		max-width: 570px
@@ -2258,6 +2278,12 @@ aside .news_card {
 		position: relative;
 		margin-bottom: 20px
 	}
+	.news_section .event_card{
+		max-width: 345px;
+	}
+	.news_section .event_card>a>img{
+		height: 345px;
+	}
 }
 @media (max-width:768px) {
 	.cabinet_in .icon_enter {
@@ -2273,6 +2299,12 @@ aside .news_card {
 		max-width: 220px;
 		text-align: left;
 		margin: 0 auto 20px
+	}
+	.event_card{
+		max-width: 370px;
+	}
+	.event_pic{
+		width: 370px;
 	}
 	footer .cright, footer .rules {
 		max-width: 100%
@@ -2550,5 +2582,17 @@ aside .news_card {
 	.options_block #custom-search-input {
 		margin: 10px auto;
 		max-width: 100%;
+	}
+	.event_card{
+		width: 290px;
+	}
+	.event_pic{
+		height: 290px;
+	}
+	.news_section .event_card{
+		max-width: 290px;
+	}
+	.news_section .event_card>a>img{
+		height: 290px;
 	}
 }
