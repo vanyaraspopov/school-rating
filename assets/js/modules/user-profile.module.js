@@ -162,18 +162,34 @@ $(document).ready(function () {
         }
     }
 
+    var colors = ['#ed5c91', '#ee4d39', '#59a66a', '#fcd447', '#00aef0', '#dddddd'];
+
     var plot1 = $.jqplot(chart, [chartData], {
+        grid: {
+            background: 'white',
+            borderColor: 'white',
+            shadow: false
+        },
         gridPadding: {top: 0, bottom: 38, left: 0, right: 0},
+        seriesColors: colors,
         seriesDefaults: {
             renderer: $.jqplot.PieRenderer,
-            trendline: {show: false},
-            rendererOptions: {padding: 8, showDataLabels: true}
+            trendline: {
+                show: false
+            },
+            rendererOptions: {
+                padding: 8,
+                showDataLabels: true,
+                dataLabels: 'value',
+                dataLabelFormatString: '%s'
+            }
         },
         legend: {
             show: true,
             placement: 'outside',
             rendererOptions: {
-                numberRows: 1
+                numberRows: 3,
+                numberColumns: 3
             },
             location: 's',
             marginTop: '15px'
