@@ -986,6 +986,7 @@ footer .footer_menu li a:hover {
 	background-position: -256px -8px
 }
 .footer_links .phone {
+	color: white;
 	display: block;
 	font-size: 18px
 }
