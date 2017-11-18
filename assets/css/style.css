@@ -1817,6 +1817,11 @@ aside .news_card {
 	color: #012837;
 	font-family: SegoeUIBold;
 }
+.apprentice_info .user_id{
+	font-size: 16px;
+	color: gray;
+	margin-top: -15px;
+}
 .apprentice_info .balls{
 	font-size: 14px;
 	color: #666;
@@ -1826,7 +1831,7 @@ aside .news_card {
 	font-size: 14px;
 }
 .noprize_list .rating_card{
-	height: 320px;
+	height: 350px;
 	width: 270px;
 	max-width: 100%;
 	padding: 25px 20px 0;
@@ -1851,6 +1856,10 @@ aside .news_card {
 }
 .noprize_list .apprentice_info .name{
 	font-size: 16px;
+}
+.noprize_list .apprentice_info .user_id{
+	font-size: 12px;
+	margin-top: -10px;
 }
 .noprize_list .apprentice_info p{
 	margin-bottom: 7px;
@@ -2058,6 +2067,10 @@ aside .news_card {
 }
 .feedback-button .glyphicon-question-sign {
 	font-size: 23px
+}
+.share {
+	font-size: 14px;
+	color: #999;
 }
 
 @media (min-width:1200px) {
