@@ -2072,6 +2072,24 @@ aside .news_card {
 	font-size: 14px;
 	color: #999;
 }
+table.user_rating th {
+	text-align: center;
+}
+.section-star {
+	display: block;
+	width: 50px;
+	height: 30px;
+	position: absolute;
+	top: 35px;
+	left: 240px;
+	background-size: 30px;
+}
+.noprize_list .section-star {
+	z-index: 9999;
+	top: 20px;
+	left: 195px;
+	background-size: 20px;
+}
 
 @media (min-width:1200px) {
 	.container {

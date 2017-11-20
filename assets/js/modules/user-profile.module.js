@@ -153,16 +153,27 @@ $(function () {
 $(document).ready(function () {
     var chart = 'chart';
     var $chart = $('#' + chart);
+    if (!$chart.length) {
+        return;
+    }
     var data = $chart.data('rating');
+    var sectionColors = {
+        'Общество': '#ed5c91',
+        'Молодёжь': '#ee4d39',
+        'Культура': '#59a66a',
+        'Образование': '#fcd447',
+        'Спорт': '#00aef0',
+        'Прочее': '#dddddd'
+    };
 
     var chartData = [];
+    var colors = [];
     for (var name in data) {
         if (data.hasOwnProperty(name)) {
             chartData.push([name, data[name]]);
+            colors.push(sectionColors[name]);
         }
     }
-
-    var colors = ['#ed5c91', '#ee4d39', '#59a66a', '#fcd447', '#00aef0', '#dddddd'];
 
     var plot1 = $.jqplot(chart, [chartData], {
         grid: {
