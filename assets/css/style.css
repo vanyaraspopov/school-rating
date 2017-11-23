@@ -2070,7 +2070,12 @@ aside .news_card {
 }
 .share {
 	font-size: 14px;
-	color: #999;
+}
+.share p {
+	margin: 10px auto;
+}
+.share ul {
+	margin: 0;
 }
 table.user_rating th {
 	text-align: center;
