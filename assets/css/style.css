@@ -2095,7 +2095,9 @@ table.user_rating th {
 	left: 195px;
 	background-size: 20px;
 }
-
+.col_3 .event_pic{
+	height: 370px;
+}
 @media (min-width:1200px) {
 	.container {
 		width: 1200px
@@ -2110,7 +2112,7 @@ table.user_rating th {
 		text-align: left;
 		display: inline-block
 	}
-	.event_pic{
+	.event_pic, .col_3 .event_pic{
 		height: 450px;
 	}
 	.options_block .options ul li {
@@ -2258,7 +2260,7 @@ table.user_rating th {
 	.event_card .bottom {
 		padding: 15px 20px
 	}
-	.event_pic {
+	.event_pic, .col_3 .event_pic {
 		height: 345px
 	}
 	.event_card {
@@ -2340,7 +2342,7 @@ table.user_rating th {
 	.event_card{
 		max-width: 370px;
 	}
-	.event_pic{
+	.event_pic, .col_3 .event_pic{
 		width: 370px;
 	}
 	footer .cright, footer .rules {
@@ -2622,8 +2624,9 @@ table.user_rating th {
 	}
 	.event_card{
 		width: 290px;
+		width: 100%;
 	}
-	.event_pic{
+	.event_pic, .col_3 .event_pic{
 		height: 290px;
 	}
 	.news_section .event_card{
