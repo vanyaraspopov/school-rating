@@ -38,6 +38,9 @@ $tmp = array(
     'srOnActivitiesSnapshotApply',
     'srOnActivitiesSnapshotUpload',
     'srOnActivitiesSnapshotRemove',
+
+    //  OnHybridAuthServiceCreated
+    'OnHybridAuthServiceCreated',
 );
 foreach ($tmp as $k => $v) {
     /** @var modEvent $event */

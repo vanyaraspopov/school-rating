@@ -19,6 +19,13 @@ $tmp = array(
             'OnUserRemove' => array()
         )
     ),
+    'srOnHybridAuthServiceCreated' => array(
+        'file' => 'srOnHybridAuthServiceCreated',
+        'description' => 'Срабатывает, когда пользователь привязывает к своему аккаунту социальную сеть.',
+        'events' => array(
+            'OnHybridAuthServiceCreated' => array()
+        )
+    ),
     'srLog' => array(
         'file' => 'srlog',
         'description' => 'Пишет логи по событиям',
