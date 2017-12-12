@@ -10,6 +10,7 @@
         "phpmailer/phpmailer": "^5.2",
         "jhaoda/smscenter": "^2.0",
         "verot/class.upload.php": "^0.33.0",
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "facebook/graph-sdk": "^5.6"
     }
 }
