@@ -4,15 +4,17 @@ switch ($modx->event->name) {
 
     case 'OnHybridAuthServiceCreated':
 
-        if (!$modx->user->get('id')) {
-            return false;
-        }
-        $username = $modx->user->get('username');
         $params = $modx->event->params['object']->toArray();
+        $internalKey = $params['internalKey'];
+        $user = $modx->getObject('modUser', $internalKey);
+        if (!$user) {
+            return 'Неизвестный пользователь';
+        }
+        $username = $user->get('username');
         $comment = "$username привязал социальную сеть " . $params['provider'];
         $modx->log(modX::LOG_LEVEL_INFO, $comment);
 
-        $profile = $modx->user->getOne('Profile');
+        $profile = $user->getOne('Profile');
         $extended = $profile->get('extended');
         $alreadyAttachedKey = 'social_net_already_attached';
         if ($extended[$alreadyAttachedKey]) {
@@ -22,7 +24,7 @@ switch ($modx->event->name) {
         $rating = $modx->getOption('schoolrating_rating_for_social');
         $mySqlDateFormat = 'Y-m-d H:i:s';
         $ratingData = [
-            'user_id' => $modx->user->get('id'),
+            'user_id' => $internalKey,
             'comment' => $comment,
             'date' => date($mySqlDateFormat),
             'rating' => $rating
