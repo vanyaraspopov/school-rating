@@ -2077,6 +2077,30 @@ aside .news_card {
 .share ul {
 	margin: 0;
 }
+.share .social_list {
+	text-align: left;
+}
+.share .social_list li {
+	padding-left: 0;
+	padding-right: 0;
+	vertical-align: top;
+}
+.share .social_list li a {
+	width: 35px;
+	height: 35px;
+	margin: 1px;
+	background: url(../images/all.png) no-repeat;
+	display: block
+}
+.share .social_list .vk a {
+	background-position: -154px -10px
+}
+.share .social_list .inst a {
+	background-position: -207px -8px
+}
+.share .social_list .fb a {
+	background-position: -258px -12px
+}
 table.user_rating th {
 	text-align: center;
 }
