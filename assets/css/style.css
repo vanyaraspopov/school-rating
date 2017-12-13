@@ -2098,8 +2098,19 @@ aside .news_card {
 .share .social_list .inst a {
 	background-position: -207px -8px
 }
+.share .social_list .fb a,
 .share .social_list .fb a {
-	background-position: -258px -12px
+	height: 30px;
+}
+.share .social_list .fb a {
+	width: 100%;
+	margin: 0;
+	background: #3b5998;
+	display: inline-block;
+	padding-top: 4px;
+}
+.share .btn-social.btn-xs>:first-child {
+	line-height: 30px;
 }
 table.user_rating th {
 	text-align: center;
