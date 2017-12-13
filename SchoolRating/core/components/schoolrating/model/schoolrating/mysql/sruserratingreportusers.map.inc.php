@@ -4,6 +4,10 @@ $xpdo_meta_map['srUserRatingReportUsers']= array (
   'version' => '1.1',
   'table' => 'schoolrating_userextra_rating_report_users',
   'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'report_id' => NULL,

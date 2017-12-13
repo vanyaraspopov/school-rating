@@ -1,3 +1,3 @@
 <?php
-require_once (dirname(dirname(__FILE__)) . '/sractivitywinner.class.php');
+require_once (dirname(__DIR__) . '/sractivitywinner.class.php');
 class srActivityWinner_mysql extends srActivityWinner {}

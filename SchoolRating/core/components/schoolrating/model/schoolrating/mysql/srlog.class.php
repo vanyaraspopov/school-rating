@@ -1,3 +1,3 @@
 <?php
-require_once (dirname(dirname(__FILE__)) . '/srlog.class.php');
+require_once (dirname(__DIR__) . '/srlog.class.php');
 class srLog_mysql extends srLog {}

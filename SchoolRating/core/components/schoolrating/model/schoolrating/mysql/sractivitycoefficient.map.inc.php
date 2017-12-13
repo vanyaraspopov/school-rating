@@ -4,6 +4,10 @@ $xpdo_meta_map['srActivityCoefficient']= array (
   'version' => '1.1',
   'table' => 'schoolrating_activity_coefficients',
   'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'name' => NULL,

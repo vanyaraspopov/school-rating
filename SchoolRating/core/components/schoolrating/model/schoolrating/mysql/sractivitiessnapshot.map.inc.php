@@ -4,6 +4,10 @@ $xpdo_meta_map['srActivitiesSnapshot']= array (
   'version' => '1.1',
   'table' => 'schoolrating_activities_snapshots',
   'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'date' => NULL,
