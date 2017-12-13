@@ -17,6 +17,10 @@ $tmp = array(
         'file' => 'srRemoveParticipant',
         'description' => 'Удаляет заявку на участие в мероприятии.',
     ),
+    'srRatingForSharing' => array(
+        'file' => 'srRatingForSharing',
+        'description' => 'Начисляет пользователю баллы за постинг в соцсети.',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

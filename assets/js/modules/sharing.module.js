@@ -3,6 +3,7 @@
 (function ($) {
     var $sharingList = $('#sharingList');
     var url = $sharingList.data('url');
+    var resource = $sharingList.data('resource');
 
     //  vk
     var $vk = $('#vk_like');
@@ -56,7 +57,8 @@
     function updateRating(netFlag) {
         var data = {
             snippet: 'srRatingForSharing',
-            net: netFlag
+            net: netFlag,
+            resource: resource
         };
         $.ajax({
             url: url,
