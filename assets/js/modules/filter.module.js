@@ -22,13 +22,17 @@
 
     var submitFormHandler = function () {
         var criteria = $filterForm.serializeArray();
-        var filters = [];
+        var filters = getCurrentFilters();
         for (var i in criteria) {
-            if (criteria[i].value) {
-                filters.push(criteria[i].name + criterionDelimiter + criteria[i].value);
+            if (criteria.hasOwnProperty(i)) {
+                if (criteria[i].value) {
+                    filters[criteria[i].name] = criteria[i].value;
+                } else {
+                    delete filters[criteria[i].name];
+                }
             }
         }
-        var filterString = filters.join(criteriaDelimiter);
+        var filterString = filtersToString(filters);
         window.location.href = location + aliasFilter + '/' + filterString;
         return false;
     };
@@ -42,23 +46,49 @@
             var filterString = tmp[tmp.length - 1];
             var criteria = filterString.split(criteriaDelimiter);
             for (var i in criteria) {
-                var cr = criteria[i].split(criterionDelimiter);
+                if (criteria.hasOwnProperty(i)) {
+                    var cr = criteria[i].split(criterionDelimiter);
 
-                if (cr[0] == levelKey) {
-                    $filterLevel.find('option[value=' + cr[1] + ']').attr('selected', 'selected');
-                }
+                    if (cr[0] == levelKey) {
+                        $filterLevel.find('option[value=' + cr[1] + ']').attr('selected', 'selected');
+                    }
 
-                if (cr[0] == sectionKey) {
-                    $filterSection.find('option[value=' + decodeURIComponent(cr[1]) + ']').attr('selected', 'selected');
+                    if (cr[0] == sectionKey) {
+                        $filterSection.find('option[value=' + decodeURIComponent(cr[1]) + ']').attr('selected', 'selected');
+                    }
                 }
             }
         }
-    };
+    }
 
     function prepareLocation(location) {
         if (location[location.length - 1] !== '/') {
             location += '/';
         }
         return location;
+    }
+
+    function getCurrentFilters() {
+        var filters = {};
+        var tmp = window.location.pathname.split('/');
+        if (tmp.length > 3 && tmp[tmp.length - 3] == alias && tmp[tmp.length - 2] == aliasFilter) {
+            var filterString = tmp[tmp.length - 1];
+            var criteria = filterString.split(criteriaDelimiter);
+            for (var i = 0; i < criteria.length; i++) {
+                var cr = criteria[i].split(criterionDelimiter);
+                filters[cr[0]] = decodeURIComponent(cr[1]);
+            }
+        }
+        return filters;
+    }
+
+    function filtersToString(filters) {
+        var filtersArr = [];
+        for (var name in filters) {
+            if (filters.hasOwnProperty(name)) {
+                filtersArr.push(name + criterionDelimiter + filters[name])
+            }
+        }
+        return filtersArr.join(criteriaDelimiter);
     }
 })(jQuery);

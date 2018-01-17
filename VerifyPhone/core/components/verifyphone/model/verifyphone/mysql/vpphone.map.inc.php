@@ -7,7 +7,7 @@ $xpdo_meta_map['vpPhone']= array (
   'fields' => 
   array (
     'phone' => NULL,
-    'code_hash' => NULL,
+    'code' => NULL,
     'verified' => 0,
   ),
   'fieldMeta' => 
@@ -19,7 +19,7 @@ $xpdo_meta_map['vpPhone']= array (
       'phptype' => 'string',
       'null' => false,
     ),
-    'code_hash' => 
+    'code' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '32',
