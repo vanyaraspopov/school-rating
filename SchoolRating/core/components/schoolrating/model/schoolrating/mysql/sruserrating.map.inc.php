@@ -15,6 +15,7 @@ $xpdo_meta_map['srUserRating']= array (
     'comment' => '',
     'date' => NULL,
     'rating' => 0,
+    'forSharing' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -51,6 +52,14 @@ $xpdo_meta_map['srUserRating']= array (
       'dbtype' => 'decimal',
       'precision' => '10,2',
       'phptype' => 'double',
+      'null' => false,
+      'default' => 0,
+    ),
+    'forSharing' => 
+    array (
+      'dbtype' => 'tinyint',
+      'precision' => '1',
+      'phptype' => 'boolean',
       'null' => false,
       'default' => 0,
     ),
