@@ -3,7 +3,7 @@
 $(function () {
     var $calendar = $('#eventCalendar');
     var _dateFormat = 'MM.DD.YYYY';
-    var _eventsFile = '../js/event-calendar/events.json';
+    var _eventsFile = 'assets/js/event-calendar/events.json.php';
 
     //  Запрашиваем json файл с мероприятиями
     $.getJSON(_eventsFile, function(json) {
@@ -75,7 +75,7 @@ $(function () {
             var date = moment(_date).format(_dateFormat);
             var url = dates[date];
             if (url) {
-                window.location.href = url;
+                window.open(url, '_blank');
             }
         });
 
