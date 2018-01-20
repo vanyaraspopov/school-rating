@@ -79,7 +79,7 @@ try {
             $item['url'] = MODX_SITE_URL . $dateEvents[0]['uri'];
         } else {
             $filter = (new DateTime($date))->format('d.m.Y');
-            $item['url'] = MODX_SITE_URL . $eventsAlias . "filter/date--$filter";
+            $item['url'] = MODX_SITE_URL . $eventsAlias . "filter/date-$filter";
         }
         $output[] = $item;
     }
