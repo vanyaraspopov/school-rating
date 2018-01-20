@@ -2,14 +2,30 @@
 
 $(function () {
     var $calendar = $('#eventCalendar');
-    var _dateFormat = 'MM.DD.YYYY';
+    var _dateFormat = 'DD.MM.YYYY';
     var _eventsFile = 'assets/js/event-calendar/events.json.php';
 
     //  Запрашиваем json файл с мероприятиями
     $.getJSON(_eventsFile, function (json) {
 
+        //  Создаём ассоциативный массив типа {"date": "url"}
+        var dates = {};
+        for (var i in json) {
+            if (json.hasOwnProperty(i)) {
+                var date = moment(json[i]['date']).format(_dateFormat);
+                dates[date] = json[i]['url'];
+            }
+        }
+
+        /**
+         * ВНИМАНИЕ!
+         * В библиотеке jQuery Event Calendar были произведены правки
+         * необходимые для проекта.
+         * В истории коммитов под тегом "event-calendar-change"
+         */
         //  Вешаем календарь
         $calendar.eventCalendar({
+            dates: dates,
             jsonData: json,
             jsonDateFormat: 'human',
             locales: {
@@ -53,39 +69,6 @@ $(function () {
 
         //  Скрываем вывод списка мероприятий
         $('.eventCalendar-list-wrap').hide();
-
-        //  Создаём ассоциативный массив типа {"date": "url"}
-        var dates = {};
-        for (var i in json) {
-            if (json.hasOwnProperty(i)) {
-                var date = moment(json[i]['date']).format(_dateFormat);
-                dates[date] = json[i]['url'];
-            }
-        }
-
-        //  Вешаем обработчики событий
-        $calendar.on('DOMSubtreeModified', setClickHandlers);
-
-        //  Обрабатываем клик по ссылке в календаре
-        function setClickHandlers(e) {
-            $('.eventCalendar-day a').on('click', openEvents);
-        }
-
-        //  Открываем окно с мероприятиями
-        function openEvents(e) {
-            e.preventDefault();
-            var year = (Number)($calendar.attr('data-current-year')),
-                month = ((Number)($calendar.attr('data-current-month'))),
-                day = (Number)($(this).parent().attr('rel'));
-            month++;
-
-            var _date = new Date(year + '-' + month + '-' + day);
-            var date = moment(_date).format(_dateFormat);
-            var url = dates[date];
-            if (url) {
-                window.open(url, '_blank');
-            }
-        }
 
     });
 });

@@ -102,7 +102,7 @@
 
 			flags.wrap.on('click','.eventCalendar-day a',function(e){
 			//flags.wrap.find('.eventCalendar-day a').live('click',function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				var year = flags.wrap.attr('data-current-year'),
 					month = flags.wrap.attr('data-current-month'),
 					day = $(this).parent().attr('rel');
@@ -262,7 +262,10 @@
 			if (day > 0 && dayCount === day && year === currentYear) {
 				dayClass = "today";
 			}
-			daysList.push('<li id="dayList_' + dayCount + '" rel="'+dayCount+'" class="eventCalendar-day '+dayClass+'"><a href="#">' + dayCount + '</a></li>');
+			var tmpDt = new Date(year, month, dayCount);
+			var dateKey = moment(tmpDt).format('DD.MM.YYYY');
+			var url = eventsOpts.dates[dateKey] ? eventsOpts.dates[dateKey] : '#';
+			daysList.push('<li id="dayList_' + dayCount + '" rel="'+dayCount+'" class="eventCalendar-day '+dayClass+'"><a href="'+url+'" target="_blank">' + dayCount + '</a></li>');
 		}
 		$eventsCalendarDaysList.append(daysList.join(''));
 
