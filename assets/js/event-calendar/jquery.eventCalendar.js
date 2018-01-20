@@ -102,7 +102,9 @@
 
 			flags.wrap.on('click','.eventCalendar-day a',function(e){
 			//flags.wrap.find('.eventCalendar-day a').live('click',function(e){
-				//e.preventDefault();
+                if (e.target.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
 				var year = flags.wrap.attr('data-current-year'),
 					month = flags.wrap.attr('data-current-month'),
 					day = $(this).parent().attr('rel');
