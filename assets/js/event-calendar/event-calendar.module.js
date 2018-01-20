@@ -6,7 +6,7 @@ $(function () {
     var _eventsFile = 'assets/js/event-calendar/events.json.php';
 
     //  Запрашиваем json файл с мероприятиями
-    $.getJSON(_eventsFile, function(json) {
+    $.getJSON(_eventsFile, function (json) {
 
         //  Вешаем календарь
         $calendar.eventCalendar({
@@ -63,8 +63,16 @@ $(function () {
             }
         }
 
+        //  Вешаем обработчики событий
+        $calendar.on('DOMSubtreeModified', setClickHandlers);
+
         //  Обрабатываем клик по ссылке в календаре
-        $('.eventCalendar-day a').on('click', function(e){
+        function setClickHandlers(e) {
+            $('.eventCalendar-day a').on('click', openEvents);
+        }
+
+        //  Открываем окно с мероприятиями
+        function openEvents(e) {
             e.preventDefault();
             var year = (Number)($calendar.attr('data-current-year')),
                 month = ((Number)($calendar.attr('data-current-month'))),
@@ -77,7 +85,7 @@ $(function () {
             if (url) {
                 window.open(url, '_blank');
             }
-        });
+        }
 
     });
 });
